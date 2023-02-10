@@ -37,7 +37,7 @@ def upgrade():
     op.create_table('plants',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('price', sa.Integer(), nullable=False),
+    sa.Column('price', sa.Float(), nullable=False),
     sa.Column('details', sa.String(), nullable=False),
     sa.Column('preview_image_url', sa.String(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
