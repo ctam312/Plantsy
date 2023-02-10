@@ -7,9 +7,9 @@ class Plant(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
+    name = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    details = db.Column(db.String(200), nullable=False)
+    details = db.Column(db.String, nullable=False)
     preview_image_url = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
 
