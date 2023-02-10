@@ -14,3 +14,14 @@ class CartItem(db.Model):
 
     shopping_session = db.relationship("ShoppingSession", back_populates="cart_item")
     plant = db.relationship("Plant", back_populates="cart_item")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'quantity': self.quantity,
+            'session_id': self.session_id
+            'plant_id': self.plant_id
+
+            # 'shopping_session': self.shopping_session.to_dict()
+            # 'plant': self.plant.to_dict()
+        }
