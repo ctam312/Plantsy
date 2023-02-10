@@ -5,7 +5,7 @@ from app.models import Plant, db
 
 plants_routes = Blueprint('plants_routes', __name__)
 
-# GET ROUTEs
+# GET ROUTES
 @plants_routes.route("/")
 def plants_home():
     allPlants = Plant.query.all()
