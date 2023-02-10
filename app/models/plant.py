@@ -17,3 +17,18 @@ class Plant(db.Model):
     review = db.relationship("Review", back_populates="plant")
     image = db.relationship("Image", back_populates="plant")
     cart_item = db.relationship("CartItem", back_populates="plant")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'price': self.price
+            'details': self.details
+            'preview_image_url': self.preview_image_url
+            'user_id': self.user_id
+
+            'user': self.user.to_dict()
+            'review': self.review.to_dict()
+            'image': self.image.to_dict()
+            'cart_item': self.cart_item.to_dict()
+        }

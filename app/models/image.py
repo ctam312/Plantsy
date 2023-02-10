@@ -11,3 +11,12 @@ class Image(db.Model):
     url = db.Column(db.String, nullable=False)
 
     plant = db.relationship("Plant", back_populates="image")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'plant_id': self.plant_id
+            'url': self.url
+
+            # 'plant': self.plant.to_dict()
+        }
