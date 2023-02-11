@@ -15,3 +15,16 @@ class Review(db.Model):
     plant = db.relationship("Plant", back_populates="review")
     user = db.relationship("User", back_populates="review")
     review_image = db.relationship("ReviewImage", back_populates="review")
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "review": self.review,
+            "stars": self.stars,
+            "plant_id": self.plant_id,
+            "user_id": self.user_id,
+
+            "user": self.user.to_dict(),
+            "review_image": self.review_image.to_dict()
+        }

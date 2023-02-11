@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { loadPlantReviewsThunk } from "../../store/reviewReducer";
 
 
 
@@ -7,10 +9,12 @@ const ReviewsForPlant = ({plant}) =>{
     const dispatch = useDispatch();
     const { plantId } = useParams();
 
-
-
     let reviews = useSelector((state) => state.reviews)
     let reviewsArr = Object.values(reviews)
+
+    useEffect(() => {
+        dispatch(loadPlantReviewsThunk(plantId));
+    }, [dispatch, plantId])
 
     let reviewImg;
 
