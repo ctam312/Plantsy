@@ -17,12 +17,12 @@ export const load_plant_ac = (plant) => ({
 
 export const create_plant_ac = (newPlant) => ({
     type: CREATE_PLANT,
-    newPlant,
+    newPlant
 })
 
 export const edit_plant_ac = (plant) => ({
     type: EDIT_PLANT,
-    plant,
+    plant
 })
 
 export const delete_plant_ac = (plantId) => ({
