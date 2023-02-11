@@ -16,7 +16,7 @@ def plants_home():
 def plant_details(plantId):
     plant = Plant.query.get(plantId)
     return plant.to_dict()
-    
+
 #POST ROUTE
 @plants_routes.route('/', methods = ["POST"])
 @login_required
@@ -58,3 +58,16 @@ def edit_plants_listing(id):
         db.session.commit()
         return plant.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+#DELETE ROUTE
+@plants_routes.route("/<int:plantId>", methods=["DELETE"])
+@login_required
+def delete_plant(plantId):
+    plant = Plant.query.get(plantId)
+    db.session.delete(plant)
+    db.session.commit()
+    return {
+        "statusCode": 200,
+        "message": "deleted successfully"
+    }
