@@ -108,6 +108,31 @@ export default function plantsReducer(state = initialState, action){
             return newState
         }
 
+        case LOAD_PLANT: {
+            const newState = { ...state, singlePlant: {} }
+            newState.singlePlant = action.plant
+            return newState
+        }
+
+        case CREATE_PLANT: {
+            const newState = { ...state, singlePlant:{} }
+            newState.allPlants[action.plant.id] = action.plant
+            return newState
+        }
+
+        case EDIT_PLANT: {
+            const newState = { ...state, singlePlant: {} }
+            newState.allPlants[action.plant.id] = action.plant
+            newState.singlePlant = action.plant
+            return newState
+        }
+
+        case DELETE_PLANT: {
+            const newState = { ...state, singlePlant: {} }
+            delete newState.allPlants[action.plantId]
+            return newState
+        }
+
         default:
             return state
     }
