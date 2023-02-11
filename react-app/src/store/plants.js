@@ -1,0 +1,1 @@
+const LOAD_PLANTS = 'plants/LOAD_PLANTS'
