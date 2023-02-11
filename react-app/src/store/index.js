@@ -5,7 +5,7 @@ import plantsReducer from './plants'
 
 const rootReducer = combineReducers({
   session,
-  plants: 
+  plants: plantsReducer
 });
 
 
