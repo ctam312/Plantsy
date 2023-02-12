@@ -9,6 +9,7 @@ plants_routes = Blueprint('plants_routes', __name__)
 # GET ROUTES
 @plants_routes.route("/")
 def plants_home():
+    print('PLANT ROUTES R BUSSIN IT DOWN')
     allPlants = Plant.query.all()
     return {"allPlants": [plant.to_dict() for plant in allPlants]}
 
