@@ -27,8 +27,8 @@ class Plant(db.Model):
             'preview_image_url': self.preview_image_url,
             'user_id': self.user_id,
 
-            'user': self.user.to_dict(),
-            'review': self.review.to_dict(),
-            'image': self.image.to_dict(),
-            'cart_item': self.cart_item.to_dict()
+            # 'user': self.user.to_dict(),
+            # 'review': self.review.to_dict(),
+            # 'image': self.image.to_dict(),
+            # 'cart_item': self.cart_item.to_dict()
         }
