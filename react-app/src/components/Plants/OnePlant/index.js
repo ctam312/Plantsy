@@ -24,12 +24,12 @@ const OnePlant = () => {
 			<p>Details: {myPlant.details}</p>
 			<img src={myPlant.preview_image_url} alt={myPlant.name} />
 			<div className="edit-delete-modal">
-				{user && user?.id === myPlant?.ownerId ? (
+				{user && user?.id === myPlant?.user_id ? (
 					<div className="edit-delete-btn">
 						<OpenModalButton
 							className="edit-spot"
 							modalComponent={<EditPlant />}
-							buttonText="Edit Spot"
+							buttonText="Edit Plant"
 						/>
 						{/* <OpenModalButton
 							className="delete-spot"
