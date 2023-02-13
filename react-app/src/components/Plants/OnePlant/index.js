@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { getPlantDetailsThunk } from "../../store/plants";
+import { useSelector } from "react-redux"
+import { getPlantDetailsThunk } from "../../../store/plants";
 
 const OnePlant = ({ match }) => {
-	const [plant, setPlant] = useState({});
-	const { id } = match.params;
+	const myPlant = useSelector((state) => state.spots.oneSpot)
+	const { }
 
 	useEffect(() => {
-		const fetchData = async () => {
-			const plant = await getPlantDetailsThunk(id);
-			setPlant(plant);
-		};
+		dispatchEvent(getPlantDetailsThunk())
 
-		fetchData();
-	}, [id]);
 
-	return (
+	if (!myPlant?.id)return null (
 		<div>
 			<h1>{plant.name}</h1>
 			<p>Price: {plant.price}</p>
