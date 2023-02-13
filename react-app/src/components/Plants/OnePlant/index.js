@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux"
+import { useParams, useHistory } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 import { getPlantDetailsThunk } from "../../../store/plants";
 
-const OnePlant = ({ match }) => {
-	const myPlant = useSelector((state) => state.spots.oneSpot)
-	const { }
+const OnePlant = () => {
+	const myPlant = useSelector((state) => state.plants.singlePlant)
+	const dispatch = useDispatch();
+	const { plantId } = useParams();
+	const history = useHistory();
 
 	useEffect(() => {
-		dispatchEvent(getPlantDetailsThunk())
+		dispatch(getPlantDetailsThunk(plantId)).catch(() => history.push("/"));
+	}, [dispatch, plantId, history]);
 
 
-	if (!myPlant?.id)return null (
+	if (!myPlant?.id)return null; 
+	return (
 		<div>
-			<h1>{plant.name}</h1>
-			<p>Price: {plant.price}</p>
-			<p>Details: {plant.details}</p>
-			<img src={plant.preview_image_url} alt={plant.name} />
+			<h1>{myPlant.name}</h1>
+			<p>Price: {myPlant.price}</p>
+			<p>Details: {myPlant.details}</p>
+			<img src={myPlant.preview_image_url} alt={myPlant.name} />
 		</div>
 	);
 };
