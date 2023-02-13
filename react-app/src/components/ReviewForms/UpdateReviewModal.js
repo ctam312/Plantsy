@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { createPlantReviewThunk } from "../../store/reviewReducer";
+import { createPlantReviewThunk, updateReviewForPlantThunk } from "../../store/reviewReducer";
 
 
 const UpdateReviewModal = ({review}) => {
@@ -30,7 +30,7 @@ const UpdateReviewModal = ({review}) => {
             user_id: sessionUser.user.id
         }
 
-        return await dispatch(createPlantReviewThunk(reviewDetails, reviews.id))
+        return await dispatch(updateReviewForPlantThunk(reviewDetails, reviews.id))
             .then(() => history.push(`/plants/${plantId}`))
             .then(setIsLoaded(true))
             .then(() => closeModal())

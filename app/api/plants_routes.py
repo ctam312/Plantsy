@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify, request, session, redirect
 from flask_login import login_required
 from app.forms.plant_form import PlantForm
-from app.models import Plant, db
+from app.forms.review_form import ReviewForm
+from app.models import Plant, Review, db
 from app.api.auth_routes import validation_errors_to_error_messages
+from sqlalchemy import func
 
 plants_routes = Blueprint('plants_routes', __name__)
 
@@ -72,3 +74,43 @@ def delete_plant(plantId):
         "statusCode": 200,
         "message": "deleted successfully"
     }
+
+
+# GET Reviews of a Plant
+@plants_routes.route('/<int:plantId>/reviews') #  ****  throw this into plants route *****
+def all_reviews(plantId):
+  """ Route to return and display all the reviews of a plant """
+  reviews = Review.query.filter(Review.plant_id == plantId) #.join user table, review images
+  # return reviews.to_dict(), 200
+  avg_star_rating = db.session.query(func.avg(Review.stars)).filter(Review.plant_id == plantId).scalar()
+  print("AVERATE STAR RATING =========================> <=======================", avg_star_rating)
+  review_dicts = [review.to_dict() for review in reviews]
+  for review_dict in review_dicts:
+    review_dict['avg_star_rating'] = avg_star_rating
+  return review_dicts, 200
+
+# Create Review for Plant
+@plants_routes.route('/<int:plantId>/reviews/', methods=['POST'])
+@login_required
+def create_review():
+    """Route to create a new review"""
+    form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+      params = {
+        "review": form.data['review'],
+        "stars": form.data['stars'],
+        "url": form.data['url'],
+        "plant_id": form.data['plant_id'],
+        'user_id': form.data['user_id']
+      }
+
+      review = Review(**params)
+      print("REVIEW =================> ROUTER", review)
+
+      # request_data = request.get_json()
+      # new_review = Review(request_data)
+      db.session.add(review)
+      db.session.commit()
+      return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

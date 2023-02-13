@@ -38,17 +38,22 @@ export const loadPlantReviewsThunk = (plantId) => async dispatch => {
 }
 
 export const createPlantReviewThunk = (reviewDetails, plantId) => async dispatch => {
-    const response = await fetch(`/api/plants/${plantId}/reviews`, {
+    const response = await fetch(`/api/plants/${plantId}/reviews/`, {
         method: "POST",
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(reviewDetails)
     });
 
+    console.log("RESPONSE NOT OK ================>",response)
+
     if (response.ok) {
         const review = await response.json()
+        console.log("REVIEW CREATE THUNKER ===============>", review)
         await dispatch(createReviewForPlant(review))
         return review
     }
+
+    return response
 }
 
 export const updateReviewForPlantThunk = (reviewDetails, reviewId) => async dispatch => {
@@ -93,12 +98,18 @@ const reviewReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_REVIEWS_PLANT: {
             const newState = {}
-            action.plantReviews.reviews.forEach(review => {
+            action.plantReviews.forEach(review => {
                 newState[review.id] = review
             })
+            // console.log(newState)
+            return newState
         }
-        // case CREATE_REVIEW_PLANT: {
-        // }
+        case CREATE_REVIEW_PLANT: {
+            const newState = {...state}
+            newState.plant[action.review.id] = action.review
+            console.log("CREATE REVIEW PLANT REDUCER NEW STATE =====>", newState)
+            return newState
+        }
         // case UPDATE_REVIEW_PLANT: {
 
         // }
