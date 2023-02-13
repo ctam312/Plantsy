@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPlantDetailsThunk } from "../../../store/plants";
 import OpenModalButton from "../../OpenModalButton";
 import EditPlant from "../EditPlant";
+import DeletePlantModal from "../DeletePlant/DeletePlant";
 
 const OnePlant = () => {
 	const myPlant = useSelector((state) => state.plants.singlePlant);
@@ -31,11 +32,11 @@ const OnePlant = () => {
 							modalComponent={<EditPlant />}
 							buttonText="Edit Plant"
 						/>
-						{/* <OpenModalButton
+						<OpenModalButton
 							className="delete-spot"
-							modalComponent={<DeleteSpot />}
+							modalComponent={<DeletePlantModal />}
 							buttonText="Delete Spot"
-						/> */}
+						/>
 					</div>
 				) : (
 					// <div className="create-review-button">

@@ -65,27 +65,27 @@ export const createPlantThunk = (plant) => async (dispatch) => {
     return res;
 }
 
-export const editPlantThunk = (plant) => async (dispatch) => {
-    const res = await fetch(`/api/plants/${plant.id}`, {
+export const editPlantThunk = (editedPlant, plantNeed) => async (dispatch) => {
+    const res = await fetch(`/api/plants/${plantNeed.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(plant),
+        body: JSON.stringify(editedPlant),
     });
     if (res.ok) {
-        const editedPlant = await res.json();
-        dispatch(edit_plant_ac(editedPlant));
-        return editedPlant;
+        const editedPlantnew = await res.json();
+        dispatch(edit_plant_ac(editedPlantnew));
+        return editedPlantnew;
     }
     return res;
 }
 
-export const deletePlantThunk = (plant) => async (dispatch) => {
-    const res = await fetch(`/api/plants/${plant.id}`, {
+export const deletePlantThunk = (plantId) => async (dispatch) => {
+    const res = await fetch(`/api/plants/${plantId}`, {
         method: 'DELETE'
     })
     if (res.ok) {
         const deletedPlant = await res.json()
-        dispatch(delete_plant_ac(deletedPlant))
+        dispatch(delete_plant_ac(plantId))
         return deletedPlant
     }
     return res
@@ -124,7 +124,7 @@ export default function plantsReducer(state = initialState, action){
 
         case EDIT_PLANT: {
             const newState = { ...state, singlePlant: {} }
-            newState.allPlants[action.plant.id] = action.plant
+            newState.allPlants[action.plantId] = action.plant
             newState.singlePlant = action.plant
             return newState
         }

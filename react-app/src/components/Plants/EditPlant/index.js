@@ -15,7 +15,7 @@ function EditPlant() {
 	const [name, setName] = useState(myPlant?.name || "");
 	const [price, setPrice] = useState(myPlant?.price || "");
     const [details, setDetails] = useState(myPlant?.details || "");
-    
+
 	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
@@ -34,18 +34,23 @@ function EditPlant() {
 		const editedPlant = {
 			name,
 			price,
-            details
+            details,
+			// preview_image_url: myPlant.preview_image_url,
+			// user_id: myPlant.user_id
 		};
 
-		const { id } = myPlant;
-
+		const { id, preview_image_url, user_id } = myPlant;
+		console.log(myPlant)
+		
 		const plantNeed = {
 			id,
+			preview_image_url,
+			user_id
 		};
 
 		dispatch(editPlantThunk(editedPlant, plantNeed))
 		.then(() => dispatch(getPlantDetailsThunk(myPlant.id)))
-			.then(() => history.push(`/plants/${id}`))
+			.then(() => history.push(`/plants/${plantNeed.id}`))
 			.then(closeModal)
 			.catch(async (res) => {
 				// console.log(res)
