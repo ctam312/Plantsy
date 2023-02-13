@@ -26,20 +26,13 @@ def all_reviews(plantId):
   # return reviews.to_dict(), 200
   return [review.to_dict() for review in reviews], 200 # add somethign to check if there is even anything inside the query, if not repond with an error
 
-
-# @review_routes.route('/reviews')
-# def all_review():
-#   reviews = Review.query.all()
-#   print(reviews)
-#   return [review.to_dict() for review in reviews]
-
-
 # create a review
 @review_routes.route('/<int:plantId>/reviews', methods=['POST'])
 @login_required
 def create_review():
     """Route to create a new review"""
     form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
       params = {
         "review": form.data['review'],
@@ -76,19 +69,6 @@ def create_review():
 #     return new_review.to_dict()
 #   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-# delete a review
-# @review_routes.route('/<int:reviewId>', methods=['DELETE'])
-# @login_required
-# def delete_review(reviewId):
-#   """ Route to delete a review """
-#   review = Review.query.get(reviewId)
-#   if review is None:
-#     return 'error, review not found', 404
-#   db.session.delete(review)
-#   db.session.commit()
-#   return "Review deleted successfully", 200
-
-
 @review_routes.route('/<int:reviewId>', methods=['PUT'])
 @login_required
 def edit_review(reviewId):
@@ -100,6 +80,8 @@ def edit_review(reviewId):
   # update_data = request.get_json()
   # form = ReviewForm(data=update_data)
   form = ReviewForm()
+  form["csrf_token"].data = request.cookies["csrf_token"]
+
   data = form.data
   if form.validate_on_submit():
     # review = Review.query.get(reviewId)
@@ -112,3 +94,16 @@ def edit_review(reviewId):
     return review.to_dict(), 200
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# delete a review
+@review_routes.route('/<int:reviewId>', methods=['DELETE'])
+@login_required
+def delete_review(reviewId):
+  """ Route to delete a review """
+  review = Review.query.get(reviewId)
+  if review is None:
+    return 'error, review not found', 404
+  db.session.delete(review)
+  db.session.commit()
+  return "Review deleted successfully", 200

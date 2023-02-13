@@ -26,8 +26,8 @@ const UpdateReviewModal = ({review}) => {
             review: editReview,
             stars,
             image,
-            // plant_id: plantId,
-            // user_id: sessionUser.user.id
+            plant_id: plantId,
+            user_id: sessionUser.user.id
         }
 
         return await dispatch(createPlantReviewThunk(reviewDetails, reviews.id))

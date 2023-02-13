@@ -21,9 +21,9 @@ const ReviewsForPlant = ({plant}) =>{
 
     const cards = reviewsArr.map(review => {
 
-        if (review.Img) { /* switch this to check review image variable */
+        if (review.review_image.url) { /* switch this to check review image variable */
             reviewImg = (
-                <img src='{image.url}'/>
+                <img src='{review.review_image.url}'/>
             )
         } else {
             reviewImg = null
@@ -33,12 +33,12 @@ const ReviewsForPlant = ({plant}) =>{
         return (
             <div className="review-card-container">
                 <div>
-                    <div>review.stars</div>
-                    <div>review.review</div>
-                    <div>Purchased item: item.name</div>
+                    <div>{review.stars}</div>
+                    <div>{review.review}</div>
+                    <div>Purchased item: {plant.name}</div>
                     <div>
                         <i className="fas fa-user fa-2x" />
-                        <div>review.user.name</div>
+                        <div>{review.user.username}</div>
                         {/* <div> date? </div> */}
                     </div>
                 </div>
