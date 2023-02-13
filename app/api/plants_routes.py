@@ -41,15 +41,15 @@ def create_plants_listing():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 #PUT ROUTE
-@plants_routes.route('/', methods = ["PUT"])
+@plants_routes.route("/<int:plantId>", methods = ["PUT"])
 @login_required
-def edit_plants_listing(id):
+def edit_plants_listing(plantId):
     form = PlantForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     data = form.data
 
     if form.validate_on_submit():
-        plant = Plant.query.get(id)
+        plant = Plant.query.get(plantId)
         plant.name = data['name'],
         plant.price = data['price'],
         plant.details = data['details'],

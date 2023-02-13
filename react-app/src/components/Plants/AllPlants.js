@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAllPlantsThunk } from "../../store/plants";
+import "./AllPlants.css"
 
 function AllPlants() {
   const dispatch = useDispatch();
@@ -30,6 +31,12 @@ function AllPlants() {
                 src={plant.preview_image_url}
                 alt={`NO IMAGE AVAILABLE`}
               />
+            </div>
+
+            <div className="plants-details-wrapper">
+                <div className="plant-details">
+                    <p className="name">{plant.name}</p>
+                </div>
             </div>
 
             <div className="plant-price">
