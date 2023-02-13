@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { useModal } from "../../context/Modal";
-import { editSpot } from "../../store/spots";
-import { getSpot } from "../../store/spots";
-import "./EditSpot.css";
+import { editPlantThunk, getPlantDetailsThunk } from "../../../store/plants";
+import { useModal } from "../../../context/Modal";
+import "./EditPlant.css";
 
-function EditSpot() {
+function EditPlant() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const { closeModal } = useModal();
@@ -16,55 +15,37 @@ function EditSpot() {
 	const [name, setName] = useState(myPlant?.name || "");
 	const [price, setPrice] = useState(myPlant?.price || "");
     const [details, setDetails] = useState(myPlant?.details || "");
-    const [, setPrice] = useState(myPlant?.price || "");
     
-
-
 	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
 		const errorArr = [];
-		if (name.length <= 0 || name.length >= 50)
-			errorArr.push("Name must be less than 50 characters");
-		if (address.length === 0) errorArr.push("You must enter a valid Address.");
-		if (city.length === 0) errorArr.push("You must enter a valid city.");
-		if (state.length === 0) errorArr.push("You must enter a valid state.");
-		if (country.length === 0) errorArr.push("You must enter a valid country.");
-		if (description.length === 0)
-			errorArr.push("You must enter a valid description.");
-		if (price <= 0) errorArr.push("You must enter a valid price.");
+		if (name.length === 0) errorArr.push("You must enter a name.");
+		if (price.length <= 0) errorArr.push("You must enter a valid price.");
+		if (details.length === 0) errorArr.push("You must have some details about the plant.");
 
 		setErrors(errorArr);
-	}, [name, address, city, state, country, description, price]);
+	}, [name, price, details]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setErrors([]);
 
-		const editedSpot = {
-			address,
-			city,
-			state,
-			country,
-			lat: 88.0,
-			lng: 188.88,
+		const editedPlant = {
 			name,
-			description,
 			price,
+            details
 		};
 
-		const { id, numReviews, avgStarRating, SpotImages } = spot;
+		const { id } = myPlant;
 
-		const spotNeed = {
+		const plantNeed = {
 			id,
-			numReviews,
-			avgStarRating,
-			SpotImages,
 		};
 
-		dispatch(editSpot(editedSpot, spotNeed))
-		.then(() => dispatch(getSpot(spot.id)))
-			.then(() => history.push(`/spots/${id}`))
+		dispatch(editPlantThunk(editedPlant, plantNeed))
+		.then(() => dispatch(getPlantDetailsThunk(myPlant.id)))
+			.then(() => history.push(`/plants/${id}`))
 			.then(closeModal)
 			.catch(async (res) => {
 				// console.log(res)
@@ -104,57 +85,21 @@ function EditSpot() {
 						/>
 					</label>
 					<label className="edit-spot-form-label">
-						Address:
-						<input
-						className="edit-spot-form-input"
-							type="text"
-							value={address}
-							onChange={(e) => setAddress(e.target.value)}
-						/>
-					</label>
-					<label className="edit-spot-form-label">
-						City:
-						<input
-						className="edit-spot-form-input"
-							type="text"
-							value={city}
-							onChange={(e) => setCity(e.target.value)}
-						/>
-					</label>
-					<label className="edit-spot-form-label">
-						State:
-						<input
-						className="edit-spot-form-input"
-							type="text"
-							value={state}
-							onChange={(e) => setState(e.target.value)}
-						/>
-					</label>
-					<label className="edit-spot-form-label">
-						Country:
-						<input
-						className="edit-spot-form-input"
-							type="text"
-							value={country}
-							onChange={(e) => setCountry(e.target.value)}
-						/>
-					</label>
-					<label className="edit-spot-form-label">
-						Description:
-						<input
-						className="edit-spot-form-input"
-							type="text"
-							value={description}
-							onChange={(e) => setDescription(e.target.value)}
-						/>
-					</label>
-					<label className="edit-spot-form-label">
 						Price:
 						<input
 						className="edit-spot-form-input"
-							type="number"
+							type="text"
 							value={price}
 							onChange={(e) => setPrice(e.target.value)}
+						/>
+					</label>
+					<label className="edit-spot-form-label">
+						Details:
+						<input
+						className="edit-spot-form-input"
+							type="text"
+							value={details}
+							onChange={(e) => setDetails(e.target.value)}
 						/>
 					</label>
 					<button className ="submitBtn" type="submit">Apply Edits</button>
@@ -164,4 +109,4 @@ function EditSpot() {
 	);
 }
 
-export default EditSpot;
+export default EditPlant;
