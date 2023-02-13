@@ -18,6 +18,7 @@ class Review(db.Model):
 
 
     def to_dict(self):
+        print('self.user =============> ', self.user)
         return {
             "id": self.id,
             "review": self.review,
@@ -25,6 +26,10 @@ class Review(db.Model):
             "plant_id": self.plant_id,
             "user_id": self.user_id,
 
-            "user": self.user.to_dict(),
-            "review_image": self.review_image.to_dict()
+            # "user": self.user.to_dict(),
+            "review_image": [img.to_dict() for img in self.review_image],
+
+            "user": {"username": self.user.username, "email": self.user.email}
+
+            # "review_image": self.review_image.to_dict()
         }

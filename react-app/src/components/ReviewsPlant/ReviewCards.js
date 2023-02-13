@@ -10,6 +10,7 @@ const ReviewsForPlant = ({plant}) =>{
     const { plantId } = useParams();
 
     let reviews = useSelector((state) => state.reviews)
+    // console.log('REVIEWS =====> ', reviews)
     let reviewsArr = Object.values(reviews)
 
     useEffect(() => {
@@ -50,6 +51,7 @@ const ReviewsForPlant = ({plant}) =>{
 
     return(
         <div className="review-container">
+            <h1>REVIEWS</h1>
             <div className="total-average-review">
                 <div>reviews_count</div>
                 <div>review.avgStarRating</div>
@@ -59,4 +61,4 @@ const ReviewsForPlant = ({plant}) =>{
     )
 }
 
-export default ReviewsForPlant
+export default ReviewsForPlant;

@@ -97,14 +97,14 @@ const reviewReducer = (state = initialState, action) => {
                 newState[review.id] = review
             })
         }
-        case CREATE_REVIEW_PLANT: {
-        }
-        case UPDATE_REVIEW_PLANT: {
+        // case CREATE_REVIEW_PLANT: {
+        // }
+        // case UPDATE_REVIEW_PLANT: {
 
-        }
-        case DELETE_REVIEW: {
+        // }
+        // case DELETE_REVIEW: {
 
-        }
+        // }
         default: {
             return state
         }

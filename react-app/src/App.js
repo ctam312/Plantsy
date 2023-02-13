@@ -5,6 +5,9 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import ReviewsForPlant from "./components/ReviewsPlant/ReviewCards";
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +21,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path='/plants/:plantId'>
+            <ReviewsForPlant />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>

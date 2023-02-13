@@ -22,8 +22,16 @@ def validation_errors_to_error_messages(validation_errors):
 def all_reviews(plantId):
   """ Route to return and display all the reviews of a plant """
   reviews = Review.query.filter(Review.plant_id == plantId) #.join user table, review images
-  # print(reviews.to_dict())
-  return [review.to_dict() for review in reviews] # add somethign to check if there is even anything inside the query, if not repond with an error
+  print('print --------------->', reviews)
+  # return reviews.to_dict(), 200
+  return [review.to_dict() for review in reviews], 200 # add somethign to check if there is even anything inside the query, if not repond with an error
+
+
+# @review_routes.route('/reviews')
+# def all_review():
+#   reviews = Review.query.all()
+#   print(reviews)
+#   return [review.to_dict() for review in reviews]
 
 
 # create a review
@@ -33,11 +41,21 @@ def create_review():
     """Route to create a new review"""
     form = ReviewForm()
     if form.validate_on_submit():
-      request_data = request.get_json()
-      new_review = Review(request_data)
-      db.session.add(new_review)
+      params = {
+        "review": form.data['review'],
+        "stars": form.data['stars'],
+        "url": form.data['url'],
+        "plant_id": form.data['plant_id'],
+        'user_id': form.data['user_id']
+      }
+
+      review = Review(**params)
+
+      # request_data = request.get_json()
+      # new_review = Review(request_data)
+      db.session.add(review)
       db.session.commit()
-      return new_review.to_dict()
+      return review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 #create review v2
@@ -79,11 +97,18 @@ def edit_review(reviewId):
   if review is None:
     return 'error, review not found', 404
 
-  update_data = request.get_json()
-  form = ReviewForm(data=update_data)
+  # update_data = request.get_json()
+  # form = ReviewForm(data=update_data)
+  form = ReviewForm()
+  data = form.data
   if form.validate_on_submit():
-    form.populate_obj(review)
+    # review = Review.query.get(reviewId)
+    review.review = data['name']
+    review.stars = data['stars']
+    review.plant_id = data['plant_id']
+    review.user_id = data['user_id']
+    # form.populate_obj(review)
     db.session.commit()
     return review.to_dict(), 200
 
-  return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
