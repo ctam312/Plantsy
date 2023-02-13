@@ -5,7 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import OnePlant from "./components/Plants/OnePlant";
+import OnePlant from "./components/Plants/Plants/OnePlant";
 import AllPlants from "./components/Plants/AllPlants";
 
 function App() {
