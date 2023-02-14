@@ -59,7 +59,10 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
             })
         })
         if (response2.ok) {
-            // const reviewImageData = await response2.json()
+            const reviewImageData = await response2.json()
+            // const {url} = reviewImageData;
+            review.review_image.push(reviewImageData)
+            // console.log('review thunker ===========> ', review)
             await dispatch(createReviewForPlant(review))
             return review
         }
@@ -118,7 +121,9 @@ const reviewReducer = (state = initialState, action) => {
         }
         case CREATE_REVIEW_PLANT: {
             const newState = {...state}
-            newState.plant[action.review.id] = action.review
+            console.log('newState log ========> ', newState)
+            console.log('action review =============> ',action.review)
+            newState[parseInt(action.review.id)] = action.review
             console.log("CREATE REVIEW PLANT REDUCER NEW STATE =====>", newState)
             return newState
         }
