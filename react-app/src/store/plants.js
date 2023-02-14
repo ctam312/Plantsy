@@ -120,7 +120,7 @@ export default function plantsReducer(state = initialState, action){
 
         case CREATE_PLANT: {
             const newState = { ...state, singlePlant:{} }
-            newState.allPlants[action.plant.id] = action.plant
+            newState.allPlants[action.newPlant.id] = action.newPlant
             return newState
         }
 
