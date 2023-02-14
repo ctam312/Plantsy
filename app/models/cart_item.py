@@ -19,7 +19,7 @@ class CartItem(db.Model):
         return {
             'id': self.id,
             'quantity': self.quantity,
-            'session_id': self.session_id
+            'session_id': self.session_id,
             'plant_id': self.plant_id
 
             # 'shopping_session': self.shopping_session.to_dict()

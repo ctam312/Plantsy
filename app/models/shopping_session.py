@@ -12,4 +12,4 @@ class ShoppingSession(db.Model):
     total_price = db.Column(db.Integer, nullable=False)
 
     user = db.relationship("User", back_populates="shopping_session")
-    cart_item = db.relationship("CartItem", back_populates="shopping_session")
+    cart_item = db.relationship("CartItem", back_populates="shopping_session", cascade="all, delete")

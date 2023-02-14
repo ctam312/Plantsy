@@ -4,6 +4,8 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import CreatePlantModal from "../Plants/CreatePlant";
+
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -47,6 +49,17 @@ function ProfileButton({ user }) {
           <>
             <li>{user.username}</li>
             <li>{user.email}</li>
+            <li className ="li-button">
+        
+						<button>
+							<OpenModalButton
+								itemText="Create a new plant"
+								onItemClick={closeMenu}
+								modalComponent={<CreatePlantModal/>}
+							/>
+						</button>
+            
+						</li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>
