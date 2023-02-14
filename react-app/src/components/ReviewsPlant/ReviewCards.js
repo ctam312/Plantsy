@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { loadPlantReviewsThunk } from "../../store/reviewReducer";
 import { getPlantDetailsThunk } from "../../store/plants";
 import UpdateReviewModal from "../ReviewForms/UpdateReviewModal";
+import DeleteReview from "./DeleteReview";
 import OpenModalButton from "../OpenModalButton";
 
 
@@ -24,9 +25,8 @@ const ReviewsForPlant = () =>{
     let reviewImg;
 
     const cards = reviewsArr.map(review => {
-        console.log(review)
-        if (review.review_image) { /* switch this to check review image variable */
-            review.review_image.forEach(image => {
+        if (review?.review_image) { /* switch this to check review image variable */
+            review?.review_image.forEach(image => {
                 reviewImg = (
                     <img src={image.url} alt=""/>
                 )
@@ -44,8 +44,8 @@ const ReviewsForPlant = () =>{
             </div> */}
             <div className="review-card-container" key={review.id}>
                 <div>
-                    <div>{review.stars}</div>
-                    <div>{review.review}</div>
+                    <div>{review?.stars}</div>
+                    <div>{review?.review}</div>
                     <div>Purchased item: {myPlant.name}</div>
                     <div>
                         <i className="fas fa-user fa-2x" />
@@ -62,6 +62,10 @@ const ReviewsForPlant = () =>{
                         }
                       />
                   ) : null}
+                  {user !== null && user?.id === review?.user_id ?
+                    <DeleteReview review={review} myPlant={myPlant}/>
+                    : null
+                }
                 </div>
                 <div>
                     {reviewImg}

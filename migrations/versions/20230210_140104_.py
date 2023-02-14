@@ -97,7 +97,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('review_id', sa.Integer(), nullable=False),
     sa.Column('url', sa.String(), nullable=False),
-    sa.ForeignKeyConstraint(['review_id'], ['reviews.id'], ),
+    sa.ForeignKeyConstraint(['review_id'], ['reviews.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

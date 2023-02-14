@@ -76,7 +76,6 @@ def validation_errors_to_error_messages(validation_errors):
 def edit_review(reviewId):
   """ Route to edit a review """
   review = Review.query.get(reviewId)
-  print("SINGLE REVIEW ID =======>", review)
   if review is None:
     return 'error, review not found', 404
 
@@ -95,17 +94,17 @@ def edit_review(reviewId):
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-# # delete a review
-# @review_routes.route('/<int:reviewId>', methods=['DELETE'])
-# @login_required
-# def delete_review(reviewId):
-#   """ Route to delete a review """
-#   review = Review.query.get(reviewId)
-#   if review is None:
-#     return 'error, review not found', 404
-#   db.session.delete(review)
-#   db.session.commit()
-#   return "Review deleted successfully", 200
+# delete a review
+@review_routes.route('/<int:reviewId>', methods=['DELETE'])
+@login_required
+def delete_review(reviewId):
+  """ Route to delete a review """
+  review = Review.query.get(reviewId)
+  if review is None:
+    return 'error, review not found', 404
+  db.session.delete(review)
+  db.session.commit()
+  return "Review deleted successfully", 200
 
 # add review image
 @review_routes.route('/<int:reviewId>/images', methods=['POST'])

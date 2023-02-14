@@ -14,7 +14,7 @@ class Review(db.Model):
 
     plant = db.relationship("Plant", back_populates="review")
     user = db.relationship("User", back_populates="review")
-    review_image = db.relationship("ReviewImage", back_populates="review")
+    review_image = db.relationship("ReviewImage", back_populates="review", cascade="all, delete")
 
 
     def to_dict(self):
@@ -26,10 +26,7 @@ class Review(db.Model):
             "plant_id": self.plant_id,
             "user_id": self.user_id,
 
-            # "user": self.user.to_dict(),
             "review_image": [img.to_dict() for img in self.review_image],
 
             "user": {"username": self.user.username, "email": self.user.email}
-
-            # "review_image": self.review_image.to_dict()
         }

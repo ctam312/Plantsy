@@ -79,11 +79,15 @@ export const updateReviewForPlantThunk = (reviewDetails, review ) => async dispa
 }
 
 export const deleteReviewForPlantThunk = (reviewId) => async dispatch => {
+    console.log("reviewId from DELETE THUNKER", reviewId)
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: "DELETE"
     })
 
+    console.log("RESPONSE AM I GETTING HERE BEFORE CONDITONAL =========?")
+
     if (response.ok) {
+        console.log("AM I GETTING HIT HERE ? DELETE THUNKER ==========?")
         await dispatch(deleteReviewForPlant(reviewId))
     }
 
@@ -105,26 +109,27 @@ const initialState = {plant: {}}
 const reviewReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_REVIEWS_PLANT: {
-            const newState = {}
+            const getReviews = {}
             action.plantReviews.forEach(review => {
-                newState[review.id] = review
+                getReviews[review.id] = review
             })
-            // console.log(newState)
-            return newState
+            return getReviews
         }
         case CREATE_REVIEW_PLANT: {
-            const newState = {...state}
-            newState[parseInt(action.review.id)] = action.review
-            return newState
+            const createReviews = {...state}
+            createReviews[parseInt(action.review.id)] = action.review
+            return createReviews
         }
         case UPDATE_REVIEW_PLANT: {
-            const newState = {...state}
-            newState[parseInt(action.review.id)] = action.review
-            return newState
+            const updateReviews = {...state}
+            updateReviews[parseInt(action.review.id)] = action.review
+            return updateReviews
         }
-        // case DELETE_REVIEW: {
-
-        // }
+        case DELETE_REVIEW: {
+            const removeReview = {...state}
+            delete removeReview[action.reviewId]
+            return removeReview
+        }
         default: {
             return state
         }
