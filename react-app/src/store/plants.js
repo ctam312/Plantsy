@@ -1,8 +1,8 @@
 const LOAD_ALL_PLANTS = 'plants/LOAD_ALL_PLANTS';
-const LOAD_PLANT = 'plants/LOAD_PLANTS';
-const CREATE_PLANT = 'plants/CREATE_PLANTS';
-const EDIT_PLANT = 'plants/EDIT_PLANTS';
-const DELETE_PLANT = 'plants/DELETE_PLANTS';
+const LOAD_PLANT = 'plants/LOAD_PLANT';
+const CREATE_PLANT = 'plants/CREATE_PLANT';
+const EDIT_PLANT = 'plants/EDIT_PLANT';
+const DELETE_PLANT = 'plants/DELETE_PLANT';
 
 // Action creators
 export const load_all_plants_ac = (plants) => ({
@@ -60,7 +60,9 @@ export const createPlantThunk = (plant) => async (dispatch) => {
     if (res.ok) {
         const newPlant = await res.json();
         dispatch(create_plant_ac(newPlant));
+        console.log(newPlant);
         return newPlant;
+
     }
     return res;
 }

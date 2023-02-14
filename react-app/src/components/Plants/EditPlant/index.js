@@ -40,7 +40,7 @@ function EditPlant() {
 		};
 
 		const { id, preview_image_url, user_id } = myPlant;
-		console.log(myPlant)
+		// console.log(myPlant)
 		
 		const plantNeed = {
 			id,
