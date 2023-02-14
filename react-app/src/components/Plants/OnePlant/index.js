@@ -10,11 +10,11 @@ import CreateReviewModal from "../../ReviewForms/CreateReviewModal";
 
 const OnePlant = () => {
 	const myPlant = useSelector((state) => state.plants.singlePlant);
-	// console.log("======================", myPlant)
 	const user = useSelector((state) => state.session.user)
+	const review = useSelector((state) => state.reviews)
+	const reviewsArr = Object.values(review)
 	const dispatch = useDispatch();
 	const { plantId } = useParams();
-	// console.log("PLANT ID =======================>", plantId, myPlant.id)
 	const history = useHistory();
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -26,9 +26,9 @@ const OnePlant = () => {
 
 	if (!myPlant?.id) return null;
 
-	let userLoggedInReview = null
-	if (user.user?.id !== null) {
-		userLoggedInReview = (
+	let reviewButton = null
+	if (!user || user?.id !== myPlant.user_id) {
+		reviewButton = (
 			<div className="create-review-modal-btn">
 				{user.user?.id !== myPlant.user_id ? (
 					<div>
@@ -42,6 +42,14 @@ const OnePlant = () => {
 				) : null }
 			</div>
 		)
+	}
+
+	if (user) {
+		reviewsArr.forEach(review => {
+			if(review.user_id === user.id) {
+				reviewButton = (<div>{null}</div>)
+			}
+		})
 	}
 
 	return (
@@ -75,7 +83,7 @@ const OnePlant = () => {
 						<p>create button here</p>
 					</div>
 				)}
-				{userLoggedInReview}
+				{reviewButton}
 				<ReviewsForPlant />
 			</div>
 		</div>

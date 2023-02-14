@@ -44,12 +44,8 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
         body: JSON.stringify(reviewDetails)
     });
 
-
-    console.log("RESPONSE NOT OK ================>",response)
-
     if (response.ok) {
         const review = await response.json()
-        console.log('review image thunk creation ======== ', review)
         const response2 = await fetch(`/api/reviews/${review.id}/images`, {
             method: "POST",
             headers:{'Content-Type': 'application/json'},
@@ -60,13 +56,10 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
         })
         if (response2.ok) {
             const reviewImageData = await response2.json()
-            // const {url} = reviewImageData;
             review.review_image.push(reviewImageData)
-            // console.log('review thunker ===========> ', review)
             await dispatch(createReviewForPlant(review))
             return review
         }
-        // console.log("REVIEW CREATE THUNKER ===============>", review)
     }
     return response
 }

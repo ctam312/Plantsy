@@ -11,8 +11,6 @@ const ReviewsForPlant = () =>{
 
     let reviews = useSelector((state) => state.reviews)
 	const myPlant = useSelector((state) => state.plants.singlePlant);
-    // const sessionUser = useSelector((state) => state.session)
-    // console.log("MY PLANT COMPONENT PAGE =======================>", sessionUser)
     let reviewsArr = Object.values(reviews)
 
     useEffect(() => {
@@ -36,10 +34,10 @@ const ReviewsForPlant = () =>{
 
         return (
             <>
-            <div className="total-average-review" key={review}>
+            {/* <div className="total-average-review" key={review}>
                 <div>{reviewsArr.length}</div>
                 <div>{review.avg_star_rating}</div>
-            </div>
+            </div> */}
             <div className="review-card-container" key={review.id}>
                 <div>
                     <div>{review.stars}</div>
