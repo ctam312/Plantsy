@@ -27,10 +27,10 @@ const CreateReviewModal = () => {
             review,
             stars,
             // review_image: image,
-            plant_id: myPlant.id,
-            user_id: sessionUser.user.id
+            plant_id: myPlant?.id,
+            user_id: sessionUser?.user?.id
         }
-        console.log('image from component =========> ', image)
+        // console.log('image from component =========> ', image)
 
         const revImage = {
             url: image

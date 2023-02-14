@@ -27,10 +27,10 @@ const OnePlant = () => {
 	if (!myPlant?.id) return null;
 
 	let reviewButton = null
-	if (!user || user?.id !== myPlant.user_id) {
+	if (!user || user?.id !== myPlant?.user_id) {
 		reviewButton = (
 			<div className="create-review-modal-btn">
-				{user.user?.id !== myPlant.user_id ? (
+				{user?.user?.id !== myPlant?.user_id ? (
 					<div>
 						<OpenModalButton
 							buttonText="Leave Review"
