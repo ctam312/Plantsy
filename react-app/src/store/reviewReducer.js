@@ -37,22 +37,34 @@ export const loadPlantReviewsThunk = (plantId) => async dispatch => {
     }
 }
 
-export const createPlantReviewThunk = (reviewDetails, plantId) => async dispatch => {
-    const response = await fetch(`/api/plants/${plantId}/reviews/`, {
+export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => async dispatch => {
+    const response = await fetch(`/api/plants/${myPlant.id}/reviews`, {
         method: "POST",
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(reviewDetails)
     });
 
+
     console.log("RESPONSE NOT OK ================>",response)
 
     if (response.ok) {
         const review = await response.json()
-        console.log("REVIEW CREATE THUNKER ===============>", review)
-        await dispatch(createReviewForPlant(review))
-        return review
+        console.log('review image thunk creation ======== ', review)
+        const response2 = await fetch(`/api/reviews/${review.id}/images`, {
+            method: "POST",
+            headers:{'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                url: revImage.url,
+                review_id: review.id
+            })
+        })
+        if (response2.ok) {
+            // const reviewImageData = await response2.json()
+            await dispatch(createReviewForPlant(review))
+            return review
+        }
+        // console.log("REVIEW CREATE THUNKER ===============>", review)
     }
-
     return response
 }
 

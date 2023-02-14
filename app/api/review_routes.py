@@ -3,6 +3,8 @@ from flask_login import login_required
 from ..models.review import Review
 from ..forms.review_form import ReviewForm
 from ..models import db
+from ..models.review_image import ReviewImage
+from ..forms.review_image_form import ReviewImageForm
 
 review_routes = Blueprint('review', __name__)
 
@@ -107,3 +109,21 @@ def validation_errors_to_error_messages(validation_errors):
 #   db.session.delete(review)
 #   db.session.commit()
 #   return "Review deleted successfully", 200
+
+# add review image
+@review_routes.route('/<int:reviewId>/images', methods=['POST'])
+@login_required
+def add_review_image(reviewId):
+  """ Route to add a image to a review """
+  form = ReviewImageForm()
+  form["csrf_token"].data = request.cookies["csrf_token"]
+  if form.validate_on_submit():
+    params = {
+        "url": form.data['url'],
+        "review_id": reviewId,
+      }
+    new_review_image = ReviewImage(**params)
+    db.session.add(new_review_image)
+    db.session.commit()
+    return new_review_image.to_dict()
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 401

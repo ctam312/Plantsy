@@ -27,14 +27,18 @@ const CreateReviewModal = () => {
         const reviewDetails = {
             review,
             stars,
-            image,
+            // review_image: image,
             plant_id: myPlant.id,
             user_id: sessionUser.user.id
         }
 
+        const revImage = {
+            url: image
+        }
+
         console.log(reviewDetails.user_id)
 
-        return await dispatch(createPlantReviewThunk(reviewDetails, myPlant.id))
+        return await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage))
             .then(() => history.push(`/plants/${myPlant.id}`))
             .then(setIsLoaded(true))
             .then(() => closeModal())

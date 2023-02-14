@@ -90,26 +90,30 @@ def all_reviews(plantId):
   return review_dicts, 200
 
 # Create Review for Plant
-@plants_routes.route('/<int:plantId>/reviews/', methods=['POST'])
+@plants_routes.route('/<int:plantId>/reviews', methods=['POST'])
 @login_required
-def create_review():
+def create_review(plantId):
     """Route to create a new review"""
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
+      print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
       params = {
         "review": form.data['review'],
         "stars": form.data['stars'],
-        "url": form.data['url'],
-        "plant_id": form.data['plant_id'],
+        # "url": form.data['url'],
+        "plant_id": plantId,
         'user_id': form.data['user_id']
       }
+    #   data = request.json
+    #   print('route handler ------------------',data)
 
       review = Review(**params)
-      print("REVIEW =================> ROUTER", review)
+
+    #   print("REVIEW =================> ROUTER", review)
 
       # request_data = request.get_json()
-      # new_review = Review(request_data)
+    #   new_review = Review(**data)
       db.session.add(review)
       db.session.commit()
       return review.to_dict()
