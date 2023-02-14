@@ -64,8 +64,8 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
     return response
 }
 
-export const updateReviewForPlantThunk = (reviewDetails, reviewId) => async dispatch => {
-    const response = await fetch(`/api/reviews/${reviewId}`, {
+export const updateReviewForPlantThunk = (reviewDetails, review ) => async dispatch => {
+    const response = await fetch(`/api/reviews/${review.id}`, {
         method: 'PUT',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(reviewDetails)
@@ -114,15 +114,14 @@ const reviewReducer = (state = initialState, action) => {
         }
         case CREATE_REVIEW_PLANT: {
             const newState = {...state}
-            console.log('newState log ========> ', newState)
-            console.log('action review =============> ',action.review)
             newState[parseInt(action.review.id)] = action.review
-            console.log("CREATE REVIEW PLANT REDUCER NEW STATE =====>", newState)
             return newState
         }
-        // case UPDATE_REVIEW_PLANT: {
-
-        // }
+        case UPDATE_REVIEW_PLANT: {
+            const newState = {...state}
+            newState[parseInt(action.review.id)] = action.review
+            return newState
+        }
         // case DELETE_REVIEW: {
 
         // }

@@ -83,7 +83,6 @@ def all_reviews(plantId):
   reviews = Review.query.filter(Review.plant_id == plantId) #.join user table, review images
   # return reviews.to_dict(), 200
   avg_star_rating = db.session.query(func.avg(Review.stars)).filter(Review.plant_id == plantId).scalar()
-  print("AVERATE STAR RATING =========================> <=======================", avg_star_rating)
   review_dicts = [review.to_dict() for review in reviews]
   for review_dict in review_dicts:
     review_dict['avg_star_rating'] = avg_star_rating
@@ -97,23 +96,14 @@ def create_review(plantId):
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-      print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
       params = {
         "review": form.data['review'],
         "stars": form.data['stars'],
-        # "url": form.data['url'],
         "plant_id": plantId,
         'user_id': form.data['user_id']
       }
-    #   data = request.json
-    #   print('route handler ------------------',data)
-
       review = Review(**params)
 
-    #   print("REVIEW =================> ROUTER", review)
-
-      # request_data = request.get_json()
-    #   new_review = Review(**data)
       db.session.add(review)
       db.session.commit()
       return review.to_dict()

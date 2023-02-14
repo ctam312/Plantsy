@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadPlantReviewsThunk } from "../../store/reviewReducer";
 import { getPlantDetailsThunk } from "../../store/plants";
+import UpdateReviewModal from "../ReviewForms/UpdateReviewModal";
+import OpenModalButton from "../OpenModalButton";
 
 
 const ReviewsForPlant = () =>{
@@ -10,6 +12,7 @@ const ReviewsForPlant = () =>{
     const { plantId } = useParams();
 
     let reviews = useSelector((state) => state.reviews)
+    const user = useSelector((state) => state.session.user)
 	const myPlant = useSelector((state) => state.plants.singlePlant);
     let reviewsArr = Object.values(reviews)
 
@@ -21,6 +24,7 @@ const ReviewsForPlant = () =>{
     let reviewImg;
 
     const cards = reviewsArr.map(review => {
+        console.log(review)
         if (review.review_image) { /* switch this to check review image variable */
             review.review_image.forEach(image => {
                 reviewImg = (
@@ -48,6 +52,16 @@ const ReviewsForPlant = () =>{
                         <div>{review.user?.username}</div>
                         {/* <div> date? </div> */}
                     </div>
+                    {user !== null && user?.id === review?.user_id ? (
+                        <OpenModalButton
+                        buttonText="Edit"
+                        modalComponent={
+                          <UpdateReviewModal
+                            review={review}
+                          />
+                        }
+                      />
+                  ) : null}
                 </div>
                 <div>
                     {reviewImg}

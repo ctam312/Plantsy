@@ -71,31 +71,28 @@ def validation_errors_to_error_messages(validation_errors):
 #     return new_review.to_dict()
 #   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-# @review_routes.route('/<int:reviewId>', methods=['PUT'])
-# @login_required
-# def edit_review(reviewId):
-#   """ Route to edit a review """
-#   review = Review.query.get(reviewId)
-#   if review is None:
-#     return 'error, review not found', 404
+@review_routes.route('/<int:reviewId>', methods=['PUT'])
+@login_required
+def edit_review(reviewId):
+  """ Route to edit a review """
+  review = Review.query.get(reviewId)
+  print("SINGLE REVIEW ID =======>", review)
+  if review is None:
+    return 'error, review not found', 404
 
-#   # update_data = request.get_json()
-#   # form = ReviewForm(data=update_data)
-#   form = ReviewForm()
-#   form["csrf_token"].data = request.cookies["csrf_token"]
+  form = ReviewForm()
+  form["csrf_token"].data = request.cookies["csrf_token"]
 
-#   data = form.data
-#   if form.validate_on_submit():
-#     # review = Review.query.get(reviewId)
-#     review.review = data['name']
-#     review.stars = data['stars']
-#     review.plant_id = data['plant_id']
-#     review.user_id = data['user_id']
-#     # form.populate_obj(review)
-#     db.session.commit()
-#     return review.to_dict(), 200
+  data = form.data
+  if form.validate_on_submit():
+    review.review = data['review']
+    review.stars = data['stars']
+    review.plant_id = data['plant_id']
+    review.user_id = data['user_id']
+    db.session.commit()
+    return review.to_dict(), 200
 
-#   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # # delete a review

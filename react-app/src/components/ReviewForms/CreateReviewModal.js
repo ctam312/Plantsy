@@ -9,7 +9,6 @@ import { getPlantDetailsThunk } from "../../store/plants";
 const CreateReviewModal = () => {
     const dispatch = useDispatch();
     const history = useHistory()
-    const { plantId } = useParams();
 	const myPlant = useSelector((state) => state.plants.singlePlant);
 
     const [review, setReview] = useState("");

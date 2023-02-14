@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { createPlantReviewThunk, updateReviewForPlantThunk } from "../../store/reviewReducer";
+import { getPlantDetailsThunk } from "../../store/plants";
 
 
 const UpdateReviewModal = ({review}) => {
     const dispatch = useDispatch();
     const history = useHistory()
-    const { plantId } = useParams();
+    const myPlant = useSelector((state) => state.plants.singlePlant);
 
     const [editReview, setEditReview] = useState(review.review);
     const [stars, setStars] = useState(review.stars);
-    const [image, setImage] = useState(review.image);
+    // const [image, setImage] = useState(review.image);
     const [errors, setErrors] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const { closeModal } = useModal();
@@ -25,13 +26,12 @@ const UpdateReviewModal = ({review}) => {
         const reviewDetails = {
             review: editReview,
             stars,
-            image,
-            plant_id: plantId,
+            plant_id: myPlant.id,
             user_id: sessionUser.user.id
         }
 
-        return await dispatch(updateReviewForPlantThunk(reviewDetails, reviews.id))
-            .then(() => history.push(`/plants/${plantId}`))
+        return await dispatch(updateReviewForPlantThunk(reviewDetails, review))
+            .then(() => history.push(`/plants/${myPlant.id}`))
             .then(setIsLoaded(true))
             .then(() => closeModal())
             .catch(async (res) => {
@@ -41,10 +41,10 @@ const UpdateReviewModal = ({review}) => {
     }
 
     // Dynamically load the plants details page to show updates
-    // useEffect(() => {
-    //     dispatch()
-    //     setIsLoaded(false)
-    // }, [dispatch, plantId, isLoaded])
+    useEffect(() => {
+        dispatch(getPlantDetailsThunk(myPlant.id))
+        setIsLoaded(false)
+    }, [dispatch, myPlant.id, isLoaded])
 
     return (
         <div className="create-review-container">
@@ -78,7 +78,7 @@ const UpdateReviewModal = ({review}) => {
                             required
                         />
                 </label>
-                <label>
+                {/* <label>
                         Image URL:
                         <input
                             type="url"
@@ -87,7 +87,7 @@ const UpdateReviewModal = ({review}) => {
                             onChange={(e) => setImage(e.target.value)}
                             placeholder="Enter an image URL (http://www.example.com/)"
                             />
-                </label>
+                </label> */}
                 <button type="submit">Submit</button>
             </form>
         </div>
