@@ -30,10 +30,12 @@ const CreateReviewModal = () => {
             plant_id: myPlant.id,
             user_id: sessionUser.user.id
         }
+        console.log('image from component =========> ', image)
 
         const revImage = {
             url: image
         }
+
 
         console.log(reviewDetails.user_id)
 

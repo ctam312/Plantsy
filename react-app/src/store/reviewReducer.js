@@ -46,20 +46,32 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
 
     if (response.ok) {
         const review = await response.json()
-        const response2 = await fetch(`/api/reviews/${review.id}/images`, {
-            method: "POST",
-            headers:{'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                url: revImage.url,
-                review_id: review.id
+        if (revImage.url) {
+            const response2 = await fetch(`/api/reviews/${review.id}/images`, {
+                method: "POST",
+                headers:{'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    url: revImage.url,
+                    review_id: review.id
+                })
             })
-        })
-        if (response2.ok) {
-            const reviewImageData = await response2.json()
-            review.review_image.push(reviewImageData)
+            if (response2.ok) {
+                const reviewImageData = await response2.json()
+                review.review_image.push(reviewImageData)
+                await dispatch(createReviewForPlant(review))
+                return review
+            }
+        } else {
             await dispatch(createReviewForPlant(review))
+            delete review.review_image
             return review
         }
+
+        // console.log('rev image from thunk ============ ', revImage.url)
+        // if (!revImage.url) {
+        //     await dispatch(createReviewForPlant(review))
+        //     // review.review_image.push(null)
+        //     return review
     }
     return response
 }

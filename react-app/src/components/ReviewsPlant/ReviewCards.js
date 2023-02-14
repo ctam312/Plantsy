@@ -28,7 +28,7 @@ const ReviewsForPlant = () =>{
         if (review?.review_image) { /* switch this to check review image variable */
             review?.review_image.forEach(image => {
                 reviewImg = (
-                    <img src={image.url} alt=""/>
+                    <img src={image?.url} alt=""/>
                 )
             })
         } else {
