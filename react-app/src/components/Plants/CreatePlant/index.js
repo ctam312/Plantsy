@@ -32,22 +32,23 @@ function CreatePlantModal() {
 		};
 
 
-		const plant = await dispatch(createPlantThunk(newPlant))
-			// .then((res) => {console.log("THIS IS THE FIRST ONE"); console.log(res); history.push(`/plants/${res.id}`)})
+		dispatch(createPlantThunk(newPlant))
+			// console.log(plant)
+			.then((res) => {console.log("THIS IS THE FIRST ONE"); console.log(res); history.push(`/plants/${res.id}`)})
 
 			// .then(closeModal)
 			.catch(async (res) => {
-				const data = await res.json();
-				if (data && data.errors) setErrors(data.errors);
+				// const data = await res.json();
+				if (res && res.errors) setErrors(res.errors);
 			});
-            newPlantId = plant.id
-            history.push(`/plants/${plant.id}`)
+            // newPlantId = plant?.id
+            // history.push(`/plants/${newPlantId}`)
             closeModal()
 	};
 
 	return (
 		<div className="add-spot-container">
-			
+
 			<div className="close-modal">
 				<button onClick={closeModal}>
 					<i className = "fa-solid fa-xmark" />
@@ -63,7 +64,7 @@ function CreatePlantModal() {
 			<form className="add-spot-form" onSubmit={handleSubmit}>
 				<div className="add-spot-form-parts">
 					<label className="add-spot-form-label">
-						Name: 
+						Name:
 						<input
 						className = "add-spot-form-input"
 							type="text"
@@ -73,7 +74,7 @@ function CreatePlantModal() {
 					</label>
 
 					<label className="add-spot-form-label">
-						Price: 
+						Price:
 						<input
 						className = "add-spot-form-input"
 							type="number"
@@ -83,7 +84,7 @@ function CreatePlantModal() {
 					</label>
 
 					<label className="add-spot-form-label">
-						Details: 
+						Details:
 						<input
 						className = "add-spot-form-input"
 							type="text"
@@ -94,7 +95,7 @@ function CreatePlantModal() {
 
 
 					<label className="add-spot-form-label">
-						Preview Image URL: 
+						Preview Image URL:
 						<input
 						className = "add-spot-form-input"
 							type="text"

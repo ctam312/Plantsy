@@ -14,9 +14,9 @@ class Plant(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
 
     user = db.relationship("User", back_populates="plant")
-    review = db.relationship("Review", back_populates="plant")
-    image = db.relationship("Image", back_populates="plant")
-    cart_item = db.relationship("CartItem", back_populates="plant")
+    review = db.relationship("Review", back_populates="plant", cascade="all, delete")
+    image = db.relationship("Image", back_populates="plant", cascade="all, delete")
+    cart_item = db.relationship("CartItem", back_populates="plant", cascade="all, delete")
 
     def to_dict(self):
         return {
