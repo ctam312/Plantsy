@@ -1,0 +1,35 @@
+.plants-wrapper {
+    margin-top: 130px;
+    margin-right: 50px;
+    margin-left: 50px;
+    width: auto;
+}
+
+.all-plants {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+/* .plants-card-wrapper{
+    width: 250px;
+    height: 250px;
+} */
+
+.plants-image {
+    display: flex;
+    flex-wrap: wrap;
+    width: 250px;
+    height: 250px;
+    margin: 0px;
+    object-fit: cover;
+
+}
+
+.plants-details-wrapper{
+    display: flex;
+    flex-direction: column;
+}
