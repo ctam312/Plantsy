@@ -18,6 +18,7 @@ const OnePlant = () => {
 	const { plantId } = useParams();
 	const history = useHistory();
     const [isLoaded, setIsLoaded] = useState(false);
+	console.log(user)
 
 	useEffect(() => {
 		dispatch(getPlantDetailsThunk(+plantId))
@@ -28,7 +29,7 @@ const OnePlant = () => {
 	if (!myPlant?.id) return null;
 
 	let reviewButton = null
-	if (!user || user?.id !== myPlant?.user_id) {
+	if (user?.id !== myPlant?.user_id) {
 		reviewButton = (
 			<div className="create-review-modal-btn">
 				{user?.user?.id !== myPlant?.user_id ? (
@@ -51,6 +52,8 @@ const OnePlant = () => {
 				reviewButton = (<div>{null}</div>)
 			}
 		})
+	} else {
+		reviewButton = (<div>{null}</div>)
 	}
 
 	return (

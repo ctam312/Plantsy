@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import PlantsyLogo from './LogoFolder/Plantsy.png'
+import OpenModalButton from '../OpenModalButton';
+import LoginFormModal from '../LoginFormModal';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);

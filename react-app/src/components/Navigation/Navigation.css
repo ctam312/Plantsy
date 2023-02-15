@@ -51,7 +51,7 @@
   padding-left: 5px;
 }
 
-.user-menu-items {
+.user-menu-items, .modal-menu-items{
   display: flex;
   flex-direction: column;
   cursor: pointer;
