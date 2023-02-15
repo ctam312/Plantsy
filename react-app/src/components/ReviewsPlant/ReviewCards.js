@@ -23,9 +23,9 @@ const ReviewsForPlant = () =>{
         // .then(() => dispatch(getPlantDetailsThunk(plantId)))
     }, [dispatch, plantId])
 
-    let reviewImg;
     let avgStarRating;
     const cards = reviewsArr.map(review => {
+        let reviewImg;
         if (review?.review_image) { /* switch this to check review image variable */
             review?.review_image.forEach(image => {
                 reviewImg = (
@@ -33,7 +33,7 @@ const ReviewsForPlant = () =>{
                 )
             })
         } else {
-            reviewImg = null
+            reviewImg = <div>{null}</div>
         }
 
         avgStarRating = review?.avg_star_rating;
