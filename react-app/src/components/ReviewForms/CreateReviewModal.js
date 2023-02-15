@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { createPlantReviewThunk } from "../../store/reviewReducer";
+import { createPlantReviewThunk, loadPlantReviewsThunk } from "../../store/reviewReducer";
 import { getPlantDetailsThunk } from "../../store/plants";
 
 
@@ -51,7 +51,8 @@ const CreateReviewModal = () => {
 
     // Dynamically load the plants details page to show updates
     useEffect(() => {
-        dispatch(getPlantDetailsThunk(myPlant.id))
+        // dispatch(getPlantDetailsThunk(myPlant.id))
+        dispatch(loadPlantReviewsThunk(myPlant.id))
         setIsLoaded(false)
     }, [dispatch, myPlant.id, isLoaded])
 

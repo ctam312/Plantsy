@@ -1,0 +1,13 @@
+.whole-sign-in-container {
+    padding: 1em 2em 2.5em;
+}
+
+.agreement-div {
+    width: 300px;
+    font-size: 5px;
+    color: rgb(80, 80, 80);
+}
+
+.underline-span {
+    text-decoration: underline;
+}

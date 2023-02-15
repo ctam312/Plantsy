@@ -6,6 +6,7 @@ import { getPlantDetailsThunk } from "../../store/plants";
 import UpdateReviewModal from "../ReviewForms/UpdateReviewModal";
 import DeleteReview from "./DeleteReview";
 import OpenModalButton from "../OpenModalButton";
+import "./ReviewCard.css"
 
 
 const ReviewsForPlant = () =>{
@@ -22,62 +23,82 @@ const ReviewsForPlant = () =>{
         // .then(() => dispatch(getPlantDetailsThunk(plantId)))
     }, [dispatch, plantId])
 
-    let reviewImg;
-
+    let avgStarRating;
     const cards = reviewsArr.map(review => {
+        let reviewImg;
         if (review?.review_image) { /* switch this to check review image variable */
             review?.review_image.forEach(image => {
                 reviewImg = (
-                    <img src={image?.url} alt=""/>
+                    <img className="review-image" src={image?.url} alt=""/>
                 )
             })
         } else {
-            reviewImg = null
+            reviewImg = <div>{null}</div>
         }
 
-
+        avgStarRating = review?.avg_star_rating;
         return (
             <>
             {/* <div className="total-average-review" key={review}>
                 <div>{reviewsArr.length}</div>
                 <div>{review.avg_star_rating}</div>
             </div> */}
-            <div className="review-card-container" key={review.id}>
-                <div>
-                    <div>{review?.stars}</div>
-                    <div>{review?.review}</div>
-                    <div>Purchased item: {myPlant.name}</div>
-                    <div>
-                        <i className="fas fa-user fa-2x" />
-                        <div>{review.user?.username}</div>
-                        {/* <div> date? </div> */}
+            <div className="whole-review-card-container" key={review.id}>
+                <div className="review-card">
+                    <div className="left-side-review-card">
+                        <div className="star-rating">
+                            {/* <i class="fa fa-star edit-star"></i>
+                            <i class="fa fa-star edit-star"></i>
+                            <i class="fa fa-star edit-star"></i>
+                            <i class="fa fa-star edit-star"></i>
+                            <i class="fa fa-star edit-star"></i>
+                            {review?.stars} */}
+                            {[...Array(5)].map((_, index) => {
+                                const starClass = index < review?.stars ? 'filled-star' : 'empty-star';
+                                return <i key={index} className={`fa fa-star edit-star ${starClass}`} />;
+                            })}
+                        </div>
+                        <div className='actual-review'>{review?.review}</div>
+                        <div className="purchased-item-div"><span className="purchased-span">Purchased item: </span>{myPlant.name}</div>
+                        <div className="user-pic-name-div">
+                            <div>
+                                <i className="fas fa-user fa-2x" />
+                            </div>
+                            <div className='username'>{review.user?.username}</div>
+                            {/* <div> date? </div> */}
+                        </div>
+                        {user !== null && user?.id === review?.user_id ? (
+                            <OpenModalButton
+                            buttonText="Edit"
+                            modalComponent={
+                                <UpdateReviewModal
+                                review={review}
+                                />
+                            }
+                            />
+                            ) : null}
+                    {user !== null && user?.id === review?.user_id ?
+                        <DeleteReview review={review} myPlant={myPlant}/>
+                        : null
+                    }
                     </div>
-                    {user !== null && user?.id === review?.user_id ? (
-                        <OpenModalButton
-                        buttonText="Edit"
-                        modalComponent={
-                          <UpdateReviewModal
-                            review={review}
-                          />
-                        }
-                      />
-                  ) : null}
-                  {user !== null && user?.id === review?.user_id ?
-                    <DeleteReview review={review} myPlant={myPlant}/>
-                    : null
-                }
-                </div>
-                <div>
-                    {reviewImg}
+                    <div className='right-side-review-card'>
+                        {reviewImg}
+                    </div>
                 </div>
             </div>
             </>
         )
     })
 
+    const stars = [...Array(5)].map((_, index) => {
+        const starClass = index < avgStarRating ? 'filled-star' : 'empty-star';
+        return <i key={index} className={`fa fa-star edit-star ${starClass}`} />;
+    })
+
     return(
         <div className="review-container">
-            <h1>REVIEWS</h1>
+            <h1>{reviewsArr.length} review(s) {stars}</h1>
             {cards}
         </div>
     )
