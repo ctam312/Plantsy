@@ -24,7 +24,7 @@ const ReviewsForPlant = () =>{
     }, [dispatch, plantId])
 
     let reviewImg;
-
+    let avgStarRating;
     const cards = reviewsArr.map(review => {
         if (review?.review_image) { /* switch this to check review image variable */
             review?.review_image.forEach(image => {
@@ -36,6 +36,7 @@ const ReviewsForPlant = () =>{
             reviewImg = null
         }
 
+        avgStarRating = review?.avg_star_rating;
         return (
             <>
             {/* <div className="total-average-review" key={review}>
@@ -52,7 +53,7 @@ const ReviewsForPlant = () =>{
                         <i class="fa fa-star edit-star"></i>
                         {review?.stars} */}
                           {[...Array(5)].map((_, index) => {
-                            const starClass = index < review.stars ? 'filled-star' : 'empty-star';
+                            const starClass = index < review?.stars ? 'filled-star' : 'empty-star';
                             return <i key={index} className={`fa fa-star edit-star ${starClass}`} />;
                         })}
                     </div>
@@ -86,9 +87,14 @@ const ReviewsForPlant = () =>{
         )
     })
 
+    const stars = [...Array(5)].map((_, index) => {
+        const starClass = index < avgStarRating ? 'filled-star' : 'empty-star';
+        return <i key={index} className={`fa fa-star edit-star ${starClass}`} />;
+    })
+
     return(
         <div className="review-container">
-            <h1>Shop reviews</h1>
+            <h1>{reviewsArr.length} review(s) {stars}</h1>
             {cards}
         </div>
     )

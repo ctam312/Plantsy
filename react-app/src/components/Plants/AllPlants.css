@@ -7,10 +7,15 @@
     font-size: 32px;
     font-weight: 300;
     color: black;
+    padding-bottom: 15px;
 }
 
 .welcome-header {
     padding-top: 15px;
+}
+
+.underlined-name {
+    text-decoration: underline;
 }
 
 .circle-box-container {
@@ -24,19 +29,52 @@
 }
 
 .front-page-circle {
-    font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(75, 131, 75);
     border: none;
     font-size: 50px;
-    color: black;
-    height: 60px;
-    width: 60px;
-    border-radius: 50px;
+    height: 80px;
+    width: 80px;
+    border-radius: 150px;
     padding: 20px;
     margin: 10px 30px;
+}
+
+.first-pic {
+    background-image: url(https://i.etsystatic.com/28122003/r/il/cbe649/4424304311/il_300x300.4424304311_fwj1.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.second-pic {
+    background-image: url(https://i.etsystatic.com/28983586/r/il/ea26f1/4542175805/il_300x300.4542175805_mqah.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.third-pic {
+    background-image: url(https://i.etsystatic.com/32414244/r/il/f5f6fe/4175198479/il_300x300.4175198479_2sy5.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.fourth-pic {
+    background-image: url(https://i.etsystatic.com/23697056/r/il/e484bb/3654457157/il_794xN.3654457157_7jy3.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.fifth-pic {
+    background-image: url(https://i.etsystatic.com/22605970/r/il/cc5554/2862861572/il_340x270.2862861572_hjfe.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.sixth-pic {
+    background-image: url(https://i.etsystatic.com/26046121/c/2250/1788/0/1009/il/77d160/3243269737/il_340x270.3243269737_g3oj.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .plants-wrapper {
@@ -54,10 +92,12 @@
     grid-auto-flow: column; */
     display: flex;
     flex-wrap: wrap;
+    margin-top: 40px;
 }
 
 .all-plants {
-    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
-import { deleteReviewForPlantThunk } from "../../store/reviewReducer";
+import { deleteReviewForPlantThunk, loadPlantReviewsThunk } from "../../store/reviewReducer";
 import { getPlantDetailsThunk } from "../../store/plants";
 
 const DeleteReview = ({review, myPlant}) => {
@@ -10,8 +10,6 @@ const DeleteReview = ({review, myPlant}) => {
 
     const [isLoaded, setIsLoaded] = useState(false);
 
-
-    console.log("AM I GETTING TO MY DELETE COMPONENT FROM CLICKING ======>")
     const handleClick = async () => {
         dispatch(deleteReviewForPlantThunk(review.id))
         setIsLoaded(true)
@@ -20,7 +18,8 @@ const DeleteReview = ({review, myPlant}) => {
 
 
     useEffect(() => {
-        dispatch(getPlantDetailsThunk(myPlant.id))
+        // dispatch(getPlantDetailsThunk(myPlant.id))
+        dispatch(loadPlantReviewsThunk(myPlant.id))
         setIsLoaded(false)
     }, [dispatch, myPlant.id, isLoaded])
 

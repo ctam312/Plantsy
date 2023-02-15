@@ -7,6 +7,8 @@ import "./AllPlants.css"
 function AllPlants() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector((state) => state.session.user)
+  console.log(user)
 
   useEffect(() => {
     dispatch(getAllPlantsThunk());
@@ -16,31 +18,32 @@ function AllPlants() {
   const allPlantsArr = Object.values(allPlants);
   if (!allPlantsArr) return null;
 
+  let userLoggedIn;
+
+  if (user !== null) {
+    userLoggedIn = (
+      <div className="welcome-header">Welcome back, <span className="underlined-name">{user?.username}</span>!</div>
+    )
+  } else {
+    userLoggedIn = (
+      <div className="welcome-header">Pick out your favorite plant!</div>
+    )
+  }
+
+
   return (
-    <>
-    <div className="under-nav-header">
-      <div className="welcome-header">Welcome to Plantsy!</div>
-    </div>
-    <div className= "circle-box-container">
-      <span className="front-page-circle">
-        P
-      </span>
-      <span className="front-page-circle">
-        L
-      </span>
-      <span className="front-page-circle">
-        A
-      </span>
-      <span className="front-page-circle">
-        N
-      </span >
-      <span className="front-page-circle">
-        T
-      </span>
-      <span className="front-page-circle">
-        S
-      </span>
-    </div>
+    <div className="all-plants-container">
+      <div className="under-nav-header">
+        {userLoggedIn}
+      </div>
+      <div className= "circle-box-container">
+        <span className="front-page-circle first-pic"></span>
+        <span className="front-page-circle second-pic"></span>
+        <span className="front-page-circle third-pic"></span>
+        <span className="front-page-circle fourth-pic"></span >
+        <span className="front-page-circle fifth-pic"></span>
+        <span className="front-page-circle sixth-pic"></span>
+      </div>
       <div className="plants-wrapper">
         <div className="all-plants">
           {allPlantsArr.map((plant) => (
@@ -70,7 +73,7 @@ function AllPlants() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -54,7 +54,7 @@ const OnePlant = () => {
 	}
 
 	return (
-		<>
+		<div className="one-plant-container">
 			<div className="top-plant-container">
 				<img className="preview-image-div" src={myPlant.preview_image_url} alt={myPlant.name} />
 				<div className="plant-information-container">
@@ -84,7 +84,7 @@ const OnePlant = () => {
 				</div>
 				{reviewButton}
 				<ReviewsForPlant />
-		</>
+		</div>
 	);
 };
 
