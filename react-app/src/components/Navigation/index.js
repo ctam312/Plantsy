@@ -6,6 +6,7 @@ import './Navigation.css';
 import PlantsyLogo from './LogoFolder/Plantsy.png'
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
+import Cart from '../Cart/Cart';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -26,6 +27,12 @@ function Navigation({ isLoaded }){
 						<ProfileButton user={sessionUser} />
 					// </li>
 				)}
+			</div>
+
+			<div>
+			<NavLink className="checkout-button" exact to="/cart">
+          		<i className="fas fa-shopping-cart"  />
+        	</NavLink>
 			</div>
 		</div>
 	);

@@ -7,6 +7,8 @@ import EditPlant from "../EditPlant";
 import DeletePlantModal from "../DeletePlant/DeletePlant";
 import ReviewsForPlant from "../../ReviewsPlant/ReviewCards";
 import CreateReviewModal from "../../ReviewForms/CreateReviewModal";
+import Cart from "../../Cart/Cart"
+
 import "./OnePlant.css"
 
 const OnePlant = () => {
@@ -63,7 +65,10 @@ const OnePlant = () => {
 				<div className="plant-information-container">
 					<p className="price-tag">$ {myPlant.price.toFixed(2)}</p>
 					<div className="plant-name-div">{myPlant.name}</div>
-					<button>Add to Cart</button>
+
+					<button className='add-cart-button'>
+						Add to Cart</button>
+
 					<p>Details: {myPlant.details}</p>
 				</div>
 			</div>
