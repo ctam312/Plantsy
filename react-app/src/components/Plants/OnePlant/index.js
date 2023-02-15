@@ -7,6 +7,7 @@ import EditPlant from "../EditPlant";
 import DeletePlantModal from "../DeletePlant/DeletePlant";
 import ReviewsForPlant from "../../ReviewsPlant/ReviewCards";
 import CreateReviewModal from "../../ReviewForms/CreateReviewModal";
+import "./OnePlant.css"
 
 const OnePlant = () => {
 	const myPlant = useSelector((state) => state.plants.singlePlant);
@@ -53,40 +54,37 @@ const OnePlant = () => {
 	}
 
 	return (
-		<div>
-			<h1>{myPlant.name}</h1>
-			<p>Price: {myPlant.price}</p>
-			<p>Details: {myPlant.details}</p>
-			<img src={myPlant.preview_image_url} alt={myPlant.name} />
-			<div className="edit-delete-modal">
-				{user && user?.id === myPlant?.user_id ? (
-					<div className="edit-delete-btn">
-						<OpenModalButton
-							className="edit-spot"
-							modalComponent={<EditPlant />}
-							buttonText="Edit Plant"
-						/>
-						<OpenModalButton
-							className="delete-spot"
-							modalComponent={<DeletePlantModal />}
-							buttonText="Delete Spot"
-						/>
-					</div>
-				) : (
-					// <div className="create-review-button">
-					// 	<OpenModalButton
-					// 		modalComponent={<CreateReview />}
-					// 		buttonText="Create Review"
-					// 	/>
-					// </div>
-					<div>
-						<p>create button here</p>
-					</div>
-				)}
+		<>
+			<div className="top-plant-container">
+				<img className="preview-image-div" src={myPlant.preview_image_url} alt={myPlant.name} />
+				<div className="plant-information-container">
+					<p className="price-tag">$ {myPlant.price.toFixed(2)}</p>
+					<div className="plant-name-div">{myPlant.name}</div>
+					<button>Add to Cart</button>
+					<p>Details: {myPlant.details}</p>
+				</div>
+			</div>
+				<div className="edit-delete-modal">
+					{user && user?.id === myPlant?.user_id ? (
+						<div className="edit-delete-btn">
+							<OpenModalButton
+								className="edit-spot"
+								modalComponent={<EditPlant />}
+								buttonText="Edit Plant"
+							/>
+							<OpenModalButton
+								className="delete-spot"
+								modalComponent={<DeletePlantModal />}
+								buttonText="Delete Spot"
+								/>
+						</div>
+					) : (
+						null
+					)}
+				</div>
 				{reviewButton}
 				<ReviewsForPlant />
-			</div>
-		</div>
+		</>
 	);
 };
 

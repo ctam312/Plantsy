@@ -1,8 +1,59 @@
+.under-nav-header {
+    font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(107, 141, 107);
+    font-size: 32px;
+    font-weight: 300;
+    color: black;
+}
+
+.welcome-header {
+    padding-top: 15px;
+}
+
+.circle-box-container {
+    display: flex;
+    justify-content: center;
+    /* background-color: linear-gradient(to bottom, peachpuff 50%, #fff 50%); */
+    height: 110px; /* Set the height of the container */
+    width: auto;
+    background-image: linear-gradient(to bottom, rgb(107, 141, 107) 50%, #fff 50%);
+    padding-bottom: 30px;
+}
+
+.front-page-circle {
+    font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(75, 131, 75);
+    border: none;
+    font-size: 50px;
+    color: black;
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    padding: 20px;
+    margin: 10px 30px;
+}
+
 .plants-wrapper {
+    /* display: flex;
     margin-top: 130px;
     margin-right: 50px;
     margin-left: 50px;
-    width: auto;
+    width: auto; */
+    /* display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 18px;
+    column-gap: 18px;
+    justify-items: stretch;
+    grid-auto-flow: column; */
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .all-plants {
@@ -12,12 +63,13 @@
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 10px;
+
 }
 
-/* .plants-card-wrapper{
-    width: 250px;
-    height: 250px;
-} */
+.plants-card-wrapper{
+    border: 2px solid blue;
+    cursor: pointer;
+}
 
 .plants-image {
     display: flex;
@@ -32,4 +84,15 @@
 .plants-details-wrapper{
     display: flex;
     flex-direction: column;
+}
+
+.plant-price {
+    position: relative;
+    text-align: center;
+    width: 70px;
+    margin-left: 5px;
+    padding: 5px;
+    top: -35px;
+    background-color: white;
+    border-radius: 20px;
 }

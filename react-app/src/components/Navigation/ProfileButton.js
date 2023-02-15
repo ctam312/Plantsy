@@ -41,16 +41,17 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className="user-button" onClick={openMenu}>
+        <i className="fas fa-user-circle fa-2x" />
+        <i class="fas fa-caret-down fa-lg arrow-down"></i>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
+          <div className="user-menu-items">
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li className ="li-button">
-        
+
 						<button>
 							<OpenModalButton
 								itemText="Create a new plant"
@@ -58,12 +59,12 @@ function ProfileButton({ user }) {
 								modalComponent={<CreatePlantModal/>}
 							/>
 						</button>
-            
+
 						</li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>
-          </>
+          </div>
         ) : (
           <>
             <OpenModalButton

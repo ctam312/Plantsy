@@ -1,0 +1,38 @@
+.whole-review-card-container {
+    display: flex;
+    width: 55%;
+}
+
+.review-section {
+    border: 2px solid red;
+}
+
+.purchased-item-div {
+    width: 90%;
+    font-size: 12px;
+    padding: 10px 0px;
+    color: rgb(100, 99, 99);
+}
+
+.purchased-span {
+    font-weight: bold;
+    color: rgb(88, 88, 88);
+}
+
+.review-image {
+    height: 184px;
+    width: auto;
+}
+
+.user-name-pic-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.filled-star {
+    color: rgb(0, 0, 0);
+  }
+
+.empty-star {
+    color: rgb(202, 202, 202);
+}

@@ -3,21 +3,29 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import PlantsyLogo from './LogoFolder/Plantsy.png'
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<ul>
-			<li>
-				<NavLink exact to="/">Home</NavLink>
-			</li>
-			{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
-			)}
-		</ul>
+		<div className='navigation-container'>
+			{/* <div className='website-name'>Plantsy</div> */}
+			<div>
+				{/* <li> */}
+					<NavLink className="website-name" exact to="/">
+						<img src={PlantsyLogo} className="plantsy-logo" alt="" />
+					</NavLink>
+				{/* </li> */}
+			</div>
+			<div className='profile-button-container'>
+				{isLoaded && (
+					// <li>
+						<ProfileButton user={sessionUser} />
+					// </li>
+				)}
+			</div>
+		</div>
 	);
 }
 
