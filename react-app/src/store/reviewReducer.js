@@ -73,7 +73,6 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
         //     // review.review_image.push(null)
         //     return review
     }
-    return response
 }
 
 export const updateReviewForPlantThunk = (reviewDetails, review ) => async dispatch => {
@@ -91,15 +90,11 @@ export const updateReviewForPlantThunk = (reviewDetails, review ) => async dispa
 }
 
 export const deleteReviewForPlantThunk = (reviewId) => async dispatch => {
-    console.log("reviewId from DELETE THUNKER", reviewId)
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: "DELETE"
     })
 
-    console.log("RESPONSE AM I GETTING HERE BEFORE CONDITONAL =========?")
-
     if (response.ok) {
-        console.log("AM I GETTING HIT HERE ? DELETE THUNKER ==========?")
         await dispatch(deleteReviewForPlant(reviewId))
     }
 

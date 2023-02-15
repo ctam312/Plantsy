@@ -1,23 +1,122 @@
+.under-nav-header {
+    font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(107, 141, 107);
+    font-size: 32px;
+    font-weight: 300;
+    color: black;
+    padding-bottom: 15px;
+}
+
+.welcome-header {
+    padding-top: 15px;
+}
+
+.underlined-name {
+    text-decoration: underline;
+}
+
+.circle-box-container {
+    display: flex;
+    justify-content: center;
+    /* background-color: linear-gradient(to bottom, peachpuff 50%, #fff 50%); */
+    height: 110px; /* Set the height of the container */
+    width: auto;
+    background-image: linear-gradient(to bottom, rgb(107, 141, 107) 50%, #fff 50%);
+    padding-bottom: 30px;
+}
+
+.front-page-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 50px;
+    height: 80px;
+    width: 80px;
+    border-radius: 150px;
+    padding: 20px;
+    margin: 10px 30px;
+}
+
+.first-pic {
+    background-image: url(https://i.etsystatic.com/26046121/c/2250/1788/0/1009/il/77d160/3243269737/il_340x270.3243269737_g3oj.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.second-pic {
+    background-image: url(https://i.etsystatic.com/26309032/r/il/7562bb/4448234318/il_794xN.4448234318_135q.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.third-pic {
+    background-image: url(https://i.etsystatic.com/32414244/r/il/f5f6fe/4175198479/il_300x300.4175198479_2sy5.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.fourth-pic {
+    background-image: url(https://i.etsystatic.com/26309032/r/il/6a9d19/4495580145/il_794xN.4495580145_gnnw.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.fifth-pic {
+    background-image: url(https://i.etsystatic.com/23697056/r/il/e484bb/3654457157/il_794xN.3654457157_7jy3.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.sixth-pic {
+    background-image: url(https://i.etsystatic.com/13687258/r/il/b10366/2367862502/il_794xN.2367862502_dnnp.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
 .plants-wrapper {
+    /* display: flex;
     margin-top: 130px;
     margin-right: 50px;
     margin-left: 50px;
-    width: auto;
+    width: auto; */
+    /* display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 18px;
+    column-gap: 18px;
+    justify-items: stretch;
+    grid-auto-flow: column; */
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
 }
 
 .all-plants {
-    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 10px;
+
 }
 
-/* .plants-card-wrapper{
-    width: 250px;
-    height: 250px;
-} */
+.plants-card-wrapper{
+    /* border: 2px solid blue; */
+    cursor: pointer;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+    border: none;
+}
+
+.plants-card-wrapper:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
 .plants-image {
     display: flex;
@@ -26,10 +125,36 @@
     height: 250px;
     margin: 0px;
     object-fit: cover;
-
+    border-radius: 10px;
 }
 
 .plants-details-wrapper{
     display: flex;
     flex-direction: column;
+}
+
+.plant-price {
+    position: relative;
+    text-align: center;
+    width: 70px;
+    margin-left: 5px;
+    /* padding: 10px 3px; */
+    /* padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 10px;
+    padding-bottom:10px; */
+    /* top: -35px; */
+    bottom: 20px;
+    background-color: white;
+    /* border-radius: 20px; */
+    line-height: 0;
+}
+
+.price {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom:4px;
+    border-radius: 20px;
+    background-color: white;
 }

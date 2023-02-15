@@ -1,0 +1,32 @@
+.one-plant-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.top-plant-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+
+.preview-image-div {
+    height: 600px;
+    width: 500px;
+    object-fit: cover;
+}
+
+.plant-information-container {
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    border: 2px solid purple;
+}
+
+.price-tag {
+    font-size: 30px;
+}
+
+.plant-name-div {
+    font-weight: bold;
+}

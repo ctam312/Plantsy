@@ -22,16 +22,17 @@ function LoginFormModal() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
+    <div className="whole-login-container">
+      <h3>Sign in</h3>
+      <form onSubmit={handleSubmit} className="form-container">
+        <ul className="errors-map">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        <div className="label-tag-container">
         <label>
-          Email
+          Email address
           <input
             type="text"
             value={email}
@@ -48,9 +49,21 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        </div>
+        <button className= "log-in-demo-button" type="submit">Sign in</button>
+        <button
+            className="log-in-demo-button demo-button"
+            type="submit"
+            onClick={() => {
+              setEmail("demo@aa.io");
+              setPassword("password");
+            }}
+          >
+            <span>Demo User</span>
+        </button>
+        <div className="agreement-div">By clicking Sign in, you agree to Plantsy's <span className="underline-span">Terms of Use</span> and <span className="underline-span">Privacy Policy</span>. Plantsy may send you communications; you may change your preferences in your account settings. We'll never post without your permission.</div>
       </form>
-    </>
+    </div>
   );
 }
 
