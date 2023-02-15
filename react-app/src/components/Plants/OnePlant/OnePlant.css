@@ -13,6 +13,7 @@
 .preview-image-div {
     height: 600px;
     width: 500px;
+    object-fit: cover;
 }
 
 .plant-information-container {

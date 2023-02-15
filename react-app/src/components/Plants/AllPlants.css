@@ -107,8 +107,15 @@
 }
 
 .plants-card-wrapper{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     cursor: pointer;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+    border: none;
+}
+
+.plants-card-wrapper:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .plants-image {
@@ -118,7 +125,7 @@
     height: 250px;
     margin: 0px;
     object-fit: cover;
-
+    border-radius: 10px;
 }
 
 .plants-details-wrapper{
@@ -131,8 +138,23 @@
     text-align: center;
     width: 70px;
     margin-left: 5px;
-    padding: 5px;
-    top: -35px;
+    /* padding: 10px 3px; */
+    /* padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 10px;
+    padding-bottom:10px; */
+    /* top: -35px; */
+    bottom: 20px;
     background-color: white;
+    /* border-radius: 20px; */
+    line-height: 0;
+}
+
+.price {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom:4px;
     border-radius: 20px;
+    background-color: white;
 }

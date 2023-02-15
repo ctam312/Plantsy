@@ -44,43 +44,47 @@ const ReviewsForPlant = () =>{
                 <div>{review.avg_star_rating}</div>
             </div> */}
             <div className="whole-review-card-container" key={review.id}>
-                <div className="review-section">
-                    <div className="star-rating">
-                        {/* <i class="fa fa-star edit-star"></i>
-                        <i class="fa fa-star edit-star"></i>
-                        <i class="fa fa-star edit-star"></i>
-                        <i class="fa fa-star edit-star"></i>
-                        <i class="fa fa-star edit-star"></i>
-                        {review?.stars} */}
-                          {[...Array(5)].map((_, index) => {
-                            const starClass = index < review?.stars ? 'filled-star' : 'empty-star';
-                            return <i key={index} className={`fa fa-star edit-star ${starClass}`} />;
-                        })}
-                    </div>
-                    <div>{review?.review}</div>
-                    <div className="purchased-item-div"><span className="purchased-span">Purchased item: </span>{myPlant.name}</div>
-                    <div className="user-pic-name-div">
-                        <i className="fas fa-user fa-2x" />
-                        <div>{review.user?.username}</div>
-                        {/* <div> date? </div> */}
-                    </div>
-                    {user !== null && user?.id === review?.user_id ? (
-                        <OpenModalButton
-                        buttonText="Edit"
-                        modalComponent={
-                            <UpdateReviewModal
-                            review={review}
+                <div className="review-card">
+                    <div className="left-side-review-card">
+                        <div className="star-rating">
+                            {/* <i class="fa fa-star edit-star"></i>
+                            <i class="fa fa-star edit-star"></i>
+                            <i class="fa fa-star edit-star"></i>
+                            <i class="fa fa-star edit-star"></i>
+                            <i class="fa fa-star edit-star"></i>
+                            {review?.stars} */}
+                            {[...Array(5)].map((_, index) => {
+                                const starClass = index < review?.stars ? 'filled-star' : 'empty-star';
+                                return <i key={index} className={`fa fa-star edit-star ${starClass}`} />;
+                            })}
+                        </div>
+                        <div className='actual-review'>{review?.review}</div>
+                        <div className="purchased-item-div"><span className="purchased-span">Purchased item: </span>{myPlant.name}</div>
+                        <div className="user-pic-name-div">
+                            <div>
+                                <i className="fas fa-user fa-2x" />
+                            </div>
+                            <div className='username'>{review.user?.username}</div>
+                            {/* <div> date? </div> */}
+                        </div>
+                        {user !== null && user?.id === review?.user_id ? (
+                            <OpenModalButton
+                            buttonText="Edit"
+                            modalComponent={
+                                <UpdateReviewModal
+                                review={review}
+                                />
+                            }
                             />
-                        }
-                        />
-                        ) : null}
-                  {user !== null && user?.id === review?.user_id ?
-                    <DeleteReview review={review} myPlant={myPlant}/>
-                    : null
-                }
-                </div>
-                <div>
-                    {reviewImg}
+                            ) : null}
+                    {user !== null && user?.id === review?.user_id ?
+                        <DeleteReview review={review} myPlant={myPlant}/>
+                        : null
+                    }
+                    </div>
+                    <div className='right-side-review-card'>
+                        {reviewImg}
+                    </div>
                 </div>
             </div>
             </>

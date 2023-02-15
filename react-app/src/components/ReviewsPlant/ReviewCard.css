@@ -3,8 +3,18 @@
     width: 55%;
 }
 
-.review-section {
+.review-card {
     border: 2px solid red;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: */
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+
+.actual-review {
+    margin-top: 10px;
 }
 
 .purchased-item-div {
@@ -20,13 +30,19 @@
 }
 
 .review-image {
-    height: 184px;
+    height: 100%;
     width: auto;
+    object-fit: cover;
 }
 
-.user-name-pic-div {
+.user-pic-name-div {
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+.username {
+    margin-left: 8px;
 }
 
 .filled-star {
