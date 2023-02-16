@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import OnePlant from "./components/Plants/OnePlant/index";
 import AllPlants from "./components/Plants/AllPlants";
+import SearchPage from "./components/SearchPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <AllPlants />
+          </Route>
+          <Route path='/search' exact>
+            <SearchPage />
           </Route>
           <Route path="/plants/:plantId">
             <OnePlant />
