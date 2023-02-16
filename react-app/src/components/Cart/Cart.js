@@ -3,16 +3,24 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllCartItems, reset } from '../../store/cart'
 import CartItem from './CartItem';
 import './Cart.css';
+import { useEffect, useState } from 'react';
 
 function Cart() {
   const dispatch = useDispatch();
-  const cartItems = useSelector(getAllCartItems);
-  console.log('cart-item from cart -----> ', cartItems)
+  // const cartItems = useSelector(getAllCartItems);
+  // console.log('cart-item from cart -----> ', cartItems)
   const cartItemsState = useSelector(state => state.cart)
   console.log('state of the cart ---->', cartItemsState)
+  const [cartItems, setCart] = useState({})
+  useEffect(()=>{
+    setCart(JSON.parse(localStorage.getItem('cartData')))
+  }, [cartItems])
 
-  const localStorageState = JSON.parse(localStorage.getItem('cartData'))
-  console.log('localStorageState -----> ', localStorageState)
+  // console.log(cart)
+  console.log(cartItems)
+
+  // const cartItems = JSON.parse(localStorage.getItem('cartData'))
+  // console.log('localStorageState -----> ', localStorageState)
   if (!cartItems || !cartItems.length) return (
     <div className="cart">
       No items in the cart. Start selecting items to purchase.

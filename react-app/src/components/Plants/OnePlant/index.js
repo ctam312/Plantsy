@@ -21,7 +21,7 @@ const OnePlant = () => {
 	const dispatch = useDispatch();
 	const { plantId } = useParams();
 	const history = useHistory();
-  const [isLoaded, setIsLoaded] = useState(false);
+  	const [isLoaded, setIsLoaded] = useState(false);
 	console.log(user)
 	const cartItem = useSelector(getCartItemById(myPlant.id));
 	console.log('cartItem[plantId] ------> ', cartItem)
@@ -29,18 +29,18 @@ const OnePlant = () => {
 
 
 	useEffect(() => {
+		console.log(cartItemsState)
+		localStorage.setItem('cartData', JSON.stringify(cartItemsState))
 		dispatch(getPlantDetailsThunk(+plantId))
 			.then(() => (setIsLoaded(true)))
 			// .catch(() => history.push("/"));
-	}, [dispatch, plantId, history]);
+	}, [dispatch, plantId, history, cartItemsState]);
 
 	const cartAdd = () => {
-		if (cartItem){
+		if (cartItem)
 			dispatch(updateCount(+plantId, cartItem.count + 1));
-			localStorage.setItem('cartData', JSON.stringify(cartItemsState))
 		} else {
 			dispatch(addItem(+plantId));
-			localStorage.setItem('cartData', JSON.stringify(cartItemsState))
 		}
 		history.push('/cart');
 	};
