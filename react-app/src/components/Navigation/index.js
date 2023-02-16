@@ -21,7 +21,9 @@ function Navigation({ isLoaded }){
 					</NavLink>
 				{/* </li> */}
 			</div>
+
 				<SearchBar />
+
 			<div className='profile-button-container'>
 				{isLoaded && (
 					// <li>

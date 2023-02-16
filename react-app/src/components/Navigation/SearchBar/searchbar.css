@@ -1,0 +1,25 @@
+.search-bar {
+  border: 1px solid black;
+  width: 900px;
+  margin-top: 16px;
+  padding: 14px;
+  border-right: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  /* font-size: 17px; */
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+.search-icon {
+  background-color: white;
+  border-top: 1px solid rgb(22, 22, 22);
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: none;
+  padding: 14px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}

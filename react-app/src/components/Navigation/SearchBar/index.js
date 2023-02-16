@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { loadAllSearchThunk } from "../../../store/SearchReducer";
 import { useDispatch } from "react-redux";
+import './searchbar.css'
 
 const SearchBar = () => {
   const dispatch = useDispatch()
@@ -32,17 +33,26 @@ const SearchBar = () => {
       .then(() => setSearchInput(''))
   }
 
+
   return (
     <div>
       <div>
         <form onSubmit={handleSearch}>
-          <input type='text' value={searchInput} onChange={e => setSearchInput(e.target.value)}/>
-          <button type="submit">Search</button>
+          <input className='search-bar' type='text' value={searchInput} onChange={e => setSearchInput(e.target.value)}/>
+          <button className='search-icon' type="submit"><i className="fa fa-search"></i></button>
         </form>
       </div>
       <div>
         <ul>
-          {slicedSearchedPlants.map(plant => <li>{plant.name}</li>)}
+        { slicedSearchedPlants.map(plant =>
+          <li className='search-list-item'
+          onClick={() => {
+          history.push(`/plants/${plant.id}`);
+          setSearchInput('');
+          }}>
+          {plant.name}
+          </li>
+)}
         </ul>
       </div>
     </div>

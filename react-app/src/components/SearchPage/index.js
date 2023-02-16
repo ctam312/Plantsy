@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import './searchPage.css'
 
 const SearchPage = () => {
   const history = useHistory()
@@ -16,31 +17,25 @@ const SearchPage = () => {
 
   return (
     <div>
-      {searchedPlantsArr.length ? <div className="plants-wrapper">
-        <div className="all-plants">
+      {searchedPlantsArr.length ? <div >
+        <div className="search-plants-container">
           {searchedPlantsArr.map((plant) => (
             <div
             key={plant.id}
-            className="plant-card"
+            className="search-plant-card"
             onClick={() => history.push(`/plants/${plant.id}`)}
             >
-              <div className="plants-card-wrapper">
+              <div className="search-plant-top-card-container">
                 <img
-                  className="plants-image"
+                  className="search-plant-image"
                   src={plant.preview_image_url}
-                  alt=""
-                  />
-                <div className="plant-price">
-                  <span className="price">${plant.price}&nbsp;</span>
+                  alt=""/>
                 </div>
-              </div>
-
-              <div className="plants-details-wrapper">
-                  <div className="plant-details">
-                      {/* <p className="name">{plant.name}</p> */}
-                  </div>
-              </div>
-
+                <div className="search-plant-card-bottom-container">
+                  <div className='search-plant-name'>{plant.name}</div>
+                  {/* <div>plant avg rating goes here</div> */}
+                  <div className='search-plant-price'>{`$${plant.price}`}</div>
+                </div>
             </div>
           ))}
         </div>
