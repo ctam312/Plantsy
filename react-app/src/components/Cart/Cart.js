@@ -7,7 +7,7 @@ import './Cart.css';
 function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector(getAllCartItems);
-
+  console.log(cartItems)
 
   if (!cartItems || !cartItems.length) return (
     <div className="cart">

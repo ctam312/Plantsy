@@ -87,14 +87,16 @@ export default function cartReducer(state = initialState, action) {
           [action.itemId]: {
             ...state[action.itemId],
             count: action.count,
+            id: action.itemId
           },
         },
       };
     case REMOVE_ITEM:
       const newState = { ...state, items: { ...state.items } };
       delete newState.items[action.itemId];
-      newState.order = newState.order.filter(id => id !== action.itemId);
+      newState.order = newState.order.filter(id => id !== action.itemId.toString());
       return newState;
+
     case RESET:
       return initialState;
     default:
