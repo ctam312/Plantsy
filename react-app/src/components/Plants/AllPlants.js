@@ -8,7 +8,6 @@ function AllPlants() {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user)
-  console.log(user)
 
   useEffect(() => {
     dispatch(getAllPlantsThunk());
@@ -16,6 +15,7 @@ function AllPlants() {
 
   const allPlants = useSelector((state) => state.plants.allPlants);
   const allPlantsArr = Object.values(allPlants);
+  // const [plantState, setPlantState] = useState()
   if (!allPlantsArr) return null;
 
   let userLoggedIn;

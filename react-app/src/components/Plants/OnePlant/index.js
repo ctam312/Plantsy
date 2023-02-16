@@ -22,10 +22,7 @@ const OnePlant = () => {
 	const { plantId } = useParams();
 	const history = useHistory();
   const [isLoaded, setIsLoaded] = useState(false);
-	console.log(user)
 	const cartItem = useSelector(getCartItemById(myPlant.id));
-	console.log('cartItem[plantId] ------> ', cartItem)
-	const cartItemsState = useSelector(state => state.cart)
 
 
 	useEffect(() => {
@@ -37,10 +34,8 @@ const OnePlant = () => {
 	const cartAdd = () => {
 		if (cartItem){
 			dispatch(updateCount(+plantId, cartItem.count + 1));
-			// localStorage.setItem('cartData', JSON.stringify(cartItemsState))
 		} else {
 			dispatch(addItem(+plantId));
-			// localStorage.setItem('cartData', JSON.stringify(cartItemsState))
 		}
 		history.push('/cart');
 	};

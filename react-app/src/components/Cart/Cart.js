@@ -1,34 +1,33 @@
-
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllCartItems, reset } from '../../store/cart'
 import CartItem from './CartItem';
 import './Cart.css';
 import { useEffect, useState } from 'react';
-import { getPlantDetailsThunk } from '../../store/plants';
+import { getAllPlantsThunk, getPlantDetailsThunk } from '../../store/plants';
 
 function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector(getAllCartItems);
-  console.log('cart-item from cart -----> ', cartItems)
   const cartItemsState = useSelector(state => state.cart)
-  console.log('state of the cart ---->', cartItemsState)
-  // const localStorageState = JSON.parse(localStorage.getItem('cartData'))
-  // console.log('localStorageState -----> ', localStorageState)
 
-  // const newCartItems = Object.values(localStorageState.items)
-  // console.log('newCartItems ---->' ,newCartItems)
+  const localStorageState = JSON.parse(localStorage.getItem('cartData'))
+  const newCartItems = Object.values(localStorageState.items)
+  // console.log("===========================>", localStorageState)
 
   const [storage, setStorage] = useState([])
 
   useEffect(() => {
-        localStorage.setItem('cartData', JSON.stringify(cartItemsState))
-        const localStorageState = JSON.parse(localStorage.getItem('cartData'))
-        console.log("=========== LOCAL STATE UPDATE SAME TIME",localStorageState)
-        // if (localStorageState) {
-          setStorage(Object.values(localStorageState.items))
-          console.log("STORAGE -------------------->", storage)
+    if (cartItemsState.order.length == 0) {
+      setStorage(newCartItems)
+      dispatch(getAllPlantsThunk())
+    } else {
+      localStorage.setItem('cartData', JSON.stringify(cartItemsState))
+      const localStorageState = JSON.parse(localStorage.getItem('cartData'))
+      setStorage(Object.values(localStorageState.items))
+      dispatch(getAllPlantsThunk())
+    }
 
-  }, [cartItemsState])
+  }, [cartItemsState, dispatch])
 
 
 
