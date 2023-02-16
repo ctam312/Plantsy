@@ -36,14 +36,23 @@ export const reset = () => {
 
 /* ------ SELECTORS ------ */
 
-export const getAllCartItems = ({ cart, produce }) => {
+export const getAllCartItems = ({ cart, plants }) => {
   return Object.values(cart.order).map((id) => {
     return {
       ...cart.items[id],
-      ...produce[id],
+      ...plants[id],
     };
   });
 };
+
+// export const getAllCartItems = (state) => {
+//   return state.cart.order.map((id) => {
+//     return {
+//       ...state.cart.items[id],
+//       ...state.produce[id],
+//     };
+//   });
+// };
 
 export const getCartItemById = (id) => (state) => state.cart.items[id];
 
@@ -92,3 +101,37 @@ export default function cartReducer(state = initialState, action) {
       return state;
   }
 }
+
+// const initialState = JSON.parse(window.localStorage.getItem('cart')) || {};
+
+// const cartReducer = (state = initialState, action) => {
+// 	switch (action.type) {
+// 		case ADD_ITEM: {
+// 			const newState = { ...state };
+// 			newState[action.id] = { id: action.id, count: 1 };
+// 			window.localStorage.setItem('cart', JSON.stringify(newState));
+// 			return newState;
+// 		}
+// 		case REMOVE_ITEM: {
+// 			const newState = { ...state };
+// 			delete newState[action.id];
+// 			window.localStorage.setItem('cart', JSON.stringify(newState));
+// 			return newState;
+// 		}
+// 		case UPDATE_COUNT: {
+// 			const newState = { ...state };
+// 			newState[action.id].count = action.count;
+// 			window.localStorage.setItem('cart', JSON.stringify(newState));
+// 			return newState;
+// 		}
+// 		case RESET: {
+// 			const newState = {};
+// 			window.localStorage.setItem('cart', JSON.stringify(newState));
+// 			return newState;
+// 		}
+// 		default:
+// 			return state;
+// 	}
+// };
+
+// export default cartReducer;

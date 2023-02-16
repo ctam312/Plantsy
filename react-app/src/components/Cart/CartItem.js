@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateCount, removeItem } from '../../store/cart'
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
   const [count, setCount] = useState(item.count);
+  const myPlant = useSelector((state) => state.plants.allPlants[item.id]);
 
   useEffect(() => {
     setCount(item.count);
@@ -12,26 +13,28 @@ function CartItem({ item }) {
 
   return (
     <li className="cart-item">
-      <div className="cart-item-header">{item.name}</div>
+      <div className="cart-item-header">{myPlant?.name}</div>
+      <div className="cart-item-header">{myPlant?.price}</div>
+      <img className="preview-image-div" src={myPlant?.preview_image_url} alt={myPlant?.name} />
       <div className="cart-item-menu">
-        <input
+        {/* <input
           type="number"
           value={count}
           onChange={(e) => setCount(e.target.value)}
-          onBlur={() => dispatch(updateCount(item.id, Number(count)))}
+          onBlur={() => dispatch(updateCount(myPlant.id, Number(count)))}
         />
         <button
           className="cart-item-button"
-          onClick={() => dispatch(updateCount(item.id, item.count + 1))}
+          onClick={() => dispatch(updateCount(myPlant.id, item.count + 1))}
         >
           +
-        </button>
-        <button
+        </button> */}
+        {/* <button
           className="cart-item-button"
-          onClick={() => dispatch(updateCount(item.id, item.count - 1))}
+          onClick={() => dispatch(updateCount(myPlant.id, item.count - 1))}
         >
           -
-        </button>
+        </button> */}
         <button
           className="cart-item-button"
           onClick={() => dispatch(removeItem(item.id))}

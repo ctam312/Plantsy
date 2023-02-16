@@ -8,6 +8,7 @@ function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector(getAllCartItems);
 
+
   if (!cartItems || !cartItems.length) return (
     <div className="cart">
       No items in the cart. Start selecting items to purchase.
@@ -29,9 +30,9 @@ function Cart() {
         {cartItems.map(item => <CartItem key={item.id} item={item}/>)}
       </ul>
       <hr />
-      <form onSubmit={onSubmit}>
+      {/* <form onSubmit={onSubmit}>
         <button type="submit">Purchase</button>
-      </form>
+      </form> */}
     </div>
   )
 }
