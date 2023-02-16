@@ -7,16 +7,16 @@ import './Cart.css';
 
 function Cart() {
   const dispatch = useDispatch();
-  // const cartItems = useSelector(getAllCartItems);
-  const [cartItems, setCartItems] = useState([])
+  const cartItems = useSelector(getAllCartItems);
+  // const [cartItems, setCartItems] = useState([])
   console.log(cartItems)
 
-  useEffect(() => {
-    const cartData = localStorage.getItem('cart')
-    if (cartData) {
-      setCartItems(JSON.parse(cartData))
-    }
-	}, []);
+  // useEffect(() => {
+  //   const cartData = localStorage.getItem('cart')
+  //   if (cartData) {
+  //     setCartItems(JSON.parse(cartData))
+  //   }
+	// }, []);
 
 
   if (!cartItems || !cartItems.length) return (

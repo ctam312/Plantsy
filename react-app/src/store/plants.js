@@ -105,7 +105,7 @@ export default function plantsReducer(state = initialState, action){
         case LOAD_ALL_PLANTS: {
             console.log('allPlants', action.allPlants)
             const newState = { allPlants: {}, singlePlant: {} }
-            console.log(newState)
+            // console.log(newState)
             action.plants.allPlants.forEach(plant => {
                 newState.allPlants[plant.id] = plant
             })
