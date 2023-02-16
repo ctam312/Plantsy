@@ -37,6 +37,8 @@ export const reset = () => {
 /* ------ SELECTORS ------ */
 
 export const getAllCartItems = ({ cart, plants }) => {
+  console.log('cart --> ', cart)
+  console.log('plants -----> ',plants)
   return Object.values(cart.order).map((id) => {
     return {
       ...cart.items[id],

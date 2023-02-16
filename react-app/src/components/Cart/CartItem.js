@@ -7,7 +7,7 @@ function CartItem({ item }) {
   const [count, setCount] = useState(item.count);
   const myPlant = useSelector((state) => state.plants.allPlants[item.id]);
   // const thisPlant = useSelector((state) => state.plants.singlePlant);
-
+  const cartItemsState = useSelector(state => state.cart)
   useEffect(() => {
     setCount(item.count);
   }, [item.count]);
@@ -24,23 +24,31 @@ function CartItem({ item }) {
           type="number"
           value={count}
           onChange={(e) => setCount(e.target.value)}
-          onBlur={() => dispatch(updateCount(myPlant.id, Number(count)))}
+          onBlur={() => {
+            dispatch(updateCount(myPlant.id, Number(count)));
+            localStorage.setItem('cartData', JSON.stringify(cartItemsState))}}
         />
         <button
           className="cart-item-button"
-          onClick={() => dispatch(updateCount(myPlant.id, item.count + 1))}
+          onClick={() => {
+            dispatch(updateCount(myPlant.id, item.count + 1));
+            localStorage.setItem('cartData', JSON.stringify(cartItemsState))}}
         >
           +
         </button>
         <button
           className="cart-item-button"
-          onClick={() => dispatch(updateCount(myPlant.id, item.count - 1))}
+          onClick={() => {
+            dispatch(updateCount(myPlant.id, item.count - 1))
+            localStorage.setItem('cartData', JSON.stringify(cartItemsState))}}
         >
           -
         </button>
         <button
           className="cart-item-button"
-          onClick={() => dispatch(removeItem(item.id))}
+          onClick={() => {
+            dispatch(removeItem(item.id))
+            localStorage.setItem('cartData', JSON.stringify(cartItemsState))}}
         >
           Remove
         </button>

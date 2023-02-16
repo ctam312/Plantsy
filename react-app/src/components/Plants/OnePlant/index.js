@@ -9,6 +9,7 @@ import ReviewsForPlant from "../../ReviewsPlant/ReviewCards";
 import CreateReviewModal from "../../ReviewForms/CreateReviewModal";
 import Cart from "../../Cart/Cart"
 import { addItem, updateCount } from '../../../store/cart';
+import { getCartItemById } from "../../../store/cart";
 
 import "./OnePlant.css"
 
@@ -20,9 +21,12 @@ const OnePlant = () => {
 	const dispatch = useDispatch();
 	const { plantId } = useParams();
 	const history = useHistory();
-    const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 	console.log(user)
-	const cartItem = useSelector((state) => state.cart[plantId]);
+	const cartItem = useSelector(getCartItemById(myPlant.id));
+	console.log('cartItem[plantId] ------> ', cartItem)
+	const cartItemsState = useSelector(state => state.cart)
+
 
 	useEffect(() => {
 		dispatch(getPlantDetailsThunk(+plantId))
@@ -30,9 +34,14 @@ const OnePlant = () => {
 			// .catch(() => history.push("/"));
 	}, [dispatch, plantId, history]);
 
-	const cartAdd = async () => {
-		if (cartItem) await dispatch(updateCount(plantId, cartItem.count + 1));
-		else await dispatch(addItem(plantId));
+	const cartAdd = () => {
+		if (cartItem){
+			dispatch(updateCount(+plantId, cartItem.count + 1));
+			localStorage.setItem('cartData', JSON.stringify(cartItemsState))
+		} else {
+			dispatch(addItem(+plantId));
+			localStorage.setItem('cartData', JSON.stringify(cartItemsState))
+		}
 		history.push('/cart');
 	};
 
