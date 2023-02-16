@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllCartItems, reset } from '../../store/cart'
 import CartItem from './CartItem';
 import './Cart.css';
+import { useEffect, useState } from 'react';
+import { getPlantDetailsThunk } from '../../store/plants';
 
 function Cart() {
   const dispatch = useDispatch();
@@ -13,6 +15,21 @@ function Cart() {
 
   const localStorageState = JSON.parse(localStorage.getItem('cartData'))
   console.log('localStorageState -----> ', localStorageState)
+
+  const newCartItems = Object.values(localStorageState.items)
+  console.log('newCartItems ---->' ,newCartItems)
+
+  const [storage, setStorage] = useState([])
+
+  useEffect(() => {
+    const localStorageState = JSON.parse(localStorage.getItem('cartData'))
+    if (localStorageState) {
+      setStorage(Object.values(localStorageState.items))
+    }
+    dispatch(getPlantDetailsThunk)
+    // dispatch()
+  }, [cartItemsState])
+
   if (!cartItems || !cartItems.length) return (
     <div className="cart">
       No items in the cart. Start selecting items to purchase.
@@ -33,7 +50,7 @@ function Cart() {
   return (
     <div className="cart">
       <ul>
-        {cartItems.map(item => <CartItem key={item.id} item={item}/>)}
+        {storage.map(item => <CartItem key={item.id} item={item}/>)}
       </ul>
       <hr />
       {/* <form onSubmit={onSubmit}>
