@@ -104,36 +104,3 @@ export default function cartReducer(state = initialState, action) {
   }
 }
 
-// const initialState = JSON.parse(window.localStorage.getItem('cart')) || {};
-
-// const cartReducer = (state = initialState, action) => {
-// 	switch (action.type) {
-// 		case ADD_ITEM: {
-// 			const newState = { ...state };
-// 			newState[action.id] = { id: action.id, count: 1 };
-// 			window.localStorage.setItem('cart', JSON.stringify(newState));
-// 			return newState;
-// 		}
-// 		case REMOVE_ITEM: {
-// 			const newState = { ...state };
-// 			delete newState[action.id];
-// 			window.localStorage.setItem('cart', JSON.stringify(newState));
-// 			return newState;
-// 		}
-// 		case UPDATE_COUNT: {
-// 			const newState = { ...state };
-// 			newState[action.id].count = action.count;
-// 			window.localStorage.setItem('cart', JSON.stringify(newState));
-// 			return newState;
-// 		}
-// 		case RESET: {
-// 			const newState = {};
-// 			window.localStorage.setItem('cart', JSON.stringify(newState));
-// 			return newState;
-// 		}
-// 		default:
-// 			return state;
-// 	}
-// };
-
-// export default cartReducer;

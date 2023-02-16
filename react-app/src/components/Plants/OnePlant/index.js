@@ -34,6 +34,7 @@ const OnePlant = () => {
 	const cartAdd = async () => {
 		if (cartItem) await dispatch(updateCount(plantId, cartItem.count + 1));
 		else await dispatch(addItem(plantId));
+		localStorage.setItem('cart', JSON.stringify(Object.values(cartItem)))
 		history.push('/cart');
 	};
 

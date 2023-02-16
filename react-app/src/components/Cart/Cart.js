@@ -1,4 +1,5 @@
 
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllCartItems, reset } from '../../store/cart'
 import CartItem from './CartItem';
@@ -6,8 +7,17 @@ import './Cart.css';
 
 function Cart() {
   const dispatch = useDispatch();
-  const cartItems = useSelector(getAllCartItems);
+  // const cartItems = useSelector(getAllCartItems);
+  const [cartItems, setCartItems] = useState([])
   console.log(cartItems)
+
+  useEffect(() => {
+    const cartData = localStorage.getItem('cart')
+    if (cartData) {
+      setCartItems(JSON.parse(cartData))
+    }
+	}, []);
+
 
   if (!cartItems || !cartItems.length) return (
     <div className="cart">
@@ -15,14 +25,14 @@ function Cart() {
     </div>
   );
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    window.alert(
-      "Purchased the following:\n" +
-      `${cartItems.map(item => `${item.count} of ${item.name}`).join('\n')}`
-    );
-    dispatch(reset());
-  }
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   window.alert(
+  //     "Purchased the following:\n" +
+  //     `${cartItems.map(item => `${item.count} of ${item.name}`).join('\n')}`
+  //   );
+  //   dispatch(reset());
+  // }
 
   return (
     <div className="cart">
