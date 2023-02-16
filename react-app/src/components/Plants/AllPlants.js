@@ -59,7 +59,7 @@ function AllPlants() {
                   alt={`NO IMAGE AVAILABLE`}
                   />
                 <div className="plant-price">
-                  <span className="price">${plant.price}&nbsp;</span>
+                  <span className="price">${plant.price.toFixed(2)}&nbsp;</span>
                 </div>
               </div>
 

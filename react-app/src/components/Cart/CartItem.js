@@ -6,7 +6,7 @@ function CartItem({ item }) {
   const dispatch = useDispatch();
   const [count, setCount] = useState(item.count);
   const myPlant = useSelector((state) => state.plants.allPlants[item.id]);
-  const thisPlant = useSelector((state) => state.plants.singlePlant);
+  // const thisPlant = useSelector((state) => state.plants.singlePlant);
 
   useEffect(() => {
     setCount(item.count);
@@ -17,7 +17,7 @@ function CartItem({ item }) {
   return (
     <li className="cart-item">
       <div className="cart-item-header">{myPlant.name}</div>
-      <div className="cart-item-header">{myPlant.price}</div>
+      <div className="cart-item-header">${myPlant.price.toFixed(2)}</div>
       <img className="preview-image-div" src={myPlant.preview_image_url} alt={myPlant.name} />
       <div className="cart-item-menu">
         <input
