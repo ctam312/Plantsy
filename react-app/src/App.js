@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import OnePlant from "./components/Plants/OnePlant/index";
 import AllPlants from "./components/Plants/AllPlants";
+import ErrorPlant from "./components/ErrorPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/plants/:plantId">
             <OnePlant />
+          </Route>
+          <Route>
+            <ErrorPlant/>
           </Route>
         </Switch>
       )}
