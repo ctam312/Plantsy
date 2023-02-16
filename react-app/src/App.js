@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/">
             <AllPlants />
           </Route>
-          <Route path='/search' exact>
+          <Route path='/search/:q'>
             <SearchPage />
           </Route>
           <Route path="/plants/:plantId">

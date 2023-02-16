@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { loadSearch } from "../../../store/SearchReducer";
+import { loadAllSearchThunk } from "../../../store/SearchReducer";
 import { useDispatch } from "react-redux";
-
 
 const SearchBar = () => {
   const dispatch = useDispatch()
@@ -11,8 +10,6 @@ const SearchBar = () => {
   const [searchInput, setSearchInput] = useState('')
   const allPlants = useSelector(state => state.plants.allPlants)
   const allPlantsArray = Object.values(allPlants)
-  // const allPlantsArray2 = Object.values(allPlantsArray[0])
-  console.log('allpantsarray ======>', allPlantsArray)
 
   const searchedPlants = allPlantsArray.filter(plant => {
     if (searchInput == '') {
@@ -24,22 +21,15 @@ const SearchBar = () => {
     }
   })
 
-
-
   const slicedSearchedPlants = searchedPlants.slice(0,10)
 
-
-  // console.log('searchInput',searchInput)
-  console.log('searched plants', searchedPlants)
-
-  // console.log(searchInput)
-
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault()
-    // console.log(searchInput)
-    dispatch(loadSearch(searchedPlants))
-    history.push('/search')
-    // setSearchInput('')
+
+      return await dispatch(loadAllSearchThunk(searchInput))
+      .then(() => localStorage.setItem('searchData', JSON.stringify(searchedPlants)))
+      .then(() => history.push(`/search/${searchInput}`))
+      .then(() => setSearchInput(''))
   }
 
   return (
@@ -47,7 +37,7 @@ const SearchBar = () => {
       <div>
         <form onSubmit={handleSearch}>
           <input type='text' value={searchInput} onChange={e => setSearchInput(e.target.value)}/>
-          <button>Search</button>
+          <button type="submit">Search</button>
         </form>
       </div>
       <div>

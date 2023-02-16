@@ -6,6 +6,15 @@ export const loadSearch = (search) => ({
   search
 })
 
+export const loadAllSearchThunk = (q) => async dispatch => {
+  const response = await fetch(`/api/search/${q}`)
+
+  if (response.ok) {
+    const searchResults = await response.json();
+    dispatch(loadSearch(searchResults))
+    return searchResults
+  }
+}
 
 const initialState = {}
 
