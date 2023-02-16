@@ -26,13 +26,15 @@ function CartItem({ item }) {
           onChange={(e) => setCount(e.target.value)}
           onBlur={() => {
             dispatch(updateCount(myPlant.id, Number(count)));
-            localStorage.setItem('cartData', JSON.stringify(cartItemsState))}}
+            // localStorage.setItem('cartData', JSON.stringify(cartItemsState))
+          }}
         />
         <button
           className="cart-item-button"
           onClick={() => {
             dispatch(updateCount(myPlant.id, item.count + 1));
-            localStorage.setItem('cartData', JSON.stringify(cartItemsState))}}
+            // localStorage.setItem('cartData', JSON.stringify(cartItemsState))
+          }}
         >
           +
         </button>
@@ -40,7 +42,8 @@ function CartItem({ item }) {
           className="cart-item-button"
           onClick={() => {
             dispatch(updateCount(myPlant.id, item.count - 1))
-            localStorage.setItem('cartData', JSON.stringify(cartItemsState))}}
+            // localStorage.setItem('cartData', JSON.stringify(cartItemsState))
+          }}
         >
           -
         </button>
@@ -48,7 +51,8 @@ function CartItem({ item }) {
           className="cart-item-button"
           onClick={() => {
             dispatch(removeItem(item.id))
-            localStorage.setItem('cartData', JSON.stringify(cartItemsState))}}
+            // localStorage.setItem('cartData', JSON.stringify(cartItemsState))
+          }}
         >
           Remove
         </button>

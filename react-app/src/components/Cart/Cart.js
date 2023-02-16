@@ -12,25 +12,27 @@ function Cart() {
   console.log('cart-item from cart -----> ', cartItems)
   const cartItemsState = useSelector(state => state.cart)
   console.log('state of the cart ---->', cartItemsState)
+  // const localStorageState = JSON.parse(localStorage.getItem('cartData'))
+  // console.log('localStorageState -----> ', localStorageState)
 
-  const localStorageState = JSON.parse(localStorage.getItem('cartData'))
-  console.log('localStorageState -----> ', localStorageState)
-
-  const newCartItems = Object.values(localStorageState.items)
-  console.log('newCartItems ---->' ,newCartItems)
+  // const newCartItems = Object.values(localStorageState.items)
+  // console.log('newCartItems ---->' ,newCartItems)
 
   const [storage, setStorage] = useState([])
 
   useEffect(() => {
-    const localStorageState = JSON.parse(localStorage.getItem('cartData'))
-    if (localStorageState) {
-      setStorage(Object.values(localStorageState.items))
-    }
-    dispatch(getPlantDetailsThunk)
-    // dispatch()
+        localStorage.setItem('cartData', JSON.stringify(cartItemsState))
+        const localStorageState = JSON.parse(localStorage.getItem('cartData'))
+        console.log("=========== LOCAL STATE UPDATE SAME TIME",localStorageState)
+        // if (localStorageState) {
+          setStorage(Object.values(localStorageState.items))
+          console.log("STORAGE -------------------->", storage)
+
   }, [cartItemsState])
 
-  if (!cartItems || !cartItems.length) return (
+
+
+  if (!storage || !storage.length) return (
     <div className="cart">
       No items in the cart. Start selecting items to purchase.
     </div>
