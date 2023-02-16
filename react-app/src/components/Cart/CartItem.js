@@ -12,7 +12,7 @@ function CartItem({ item }) {
     setCount(item.count);
   }, [item.count]);
 
-  console.log(item)
+  // console.log(item)
 
   return (
     <li className="cart-item">

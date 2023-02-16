@@ -8,7 +8,7 @@ import DeletePlantModal from "../DeletePlant/DeletePlant";
 import ReviewsForPlant from "../../ReviewsPlant/ReviewCards";
 import CreateReviewModal from "../../ReviewForms/CreateReviewModal";
 import Cart from "../../Cart/Cart"
-import { addItem, updateCount } from '../../../store/cart';
+import { addItem, updateCount, getAllCartItems } from '../../../store/cart';
 
 import "./OnePlant.css"
 
@@ -21,8 +21,9 @@ const OnePlant = () => {
 	const { plantId } = useParams();
 	const history = useHistory();
     const [isLoaded, setIsLoaded] = useState(false);
-	console.log(user)
 	const cartItem = useSelector((state) => state.cart[plantId]);
+	const cart = useSelector(getAllCartItems);
+	// const [found, setFound] = useState(false);
 
 	useEffect(() => {
 		dispatch(getPlantDetailsThunk(+plantId))
@@ -66,6 +67,14 @@ const OnePlant = () => {
 		reviewButton = (<div>{null}</div>)
 	}
 
+	// for (let i = 0; i < cart.length; i++) {
+	// 	if (cart[i].id === plantId) {
+	// 		setFound(true)
+	// 		break;
+	// 	  }
+	// 	}
+
+
 	return (
 		<div className="one-plant-container">
 			<div className="top-plant-container">
@@ -74,6 +83,13 @@ const OnePlant = () => {
 					<p className="price-tag">$ {myPlant.price.toFixed(2)}</p>
 					<div className="plant-name-div">{myPlant.name}</div>
 
+					{/* { found ? (
+						<p>Item already in cart</p>
+					):(
+					<button className='add-cart-button' onClick={cartAdd}>
+						Add to Cart</button>
+					)} */}
+					
 					<button className='add-cart-button' onClick={cartAdd}>
 						Add to Cart</button>
 
