@@ -89,7 +89,7 @@ const OnePlant = () => {
 					<button className='add-cart-button' onClick={cartAdd}>
 						Add to Cart</button>
 					)} */}
-					
+
 					<button className='add-cart-button' onClick={cartAdd}>
 						Add to Cart</button>
 
@@ -107,7 +107,7 @@ const OnePlant = () => {
 							<OpenModalButton
 								className="delete-spot"
 								modalComponent={<DeletePlantModal />}
-								buttonText="Delete Spot"
+								buttonText="Delete Plant"
 								/>
 						</div>
 					) : (
