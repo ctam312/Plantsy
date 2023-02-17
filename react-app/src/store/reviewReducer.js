@@ -72,6 +72,11 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
         //     await dispatch(createReviewForPlant(review))
         //     // review.review_image.push(null)
         //     return review
+    } else {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
     }
 }
 

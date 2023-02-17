@@ -36,14 +36,24 @@ const CreateReviewModal = () => {
 
         console.log(reviewDetails.user_id)
 
-        return await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage))
-            .then(() => history.push(`/plants/${myPlant.id}`))
-            .then(setIsLoaded(true))
-            .then(() => closeModal())
-            .catch(async (res) => {
-                // const data = await res.json();
-                if (res && res.errors) setErrors(res.errors)
-            });
+        const data = await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage));
+        if (data) {
+            setErrors(data)
+        } else {
+            history.push(`/plants/${myPlant.id}`);
+            setIsLoaded(true);
+            closeModal()
+        }
+
+        // return await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage))
+        //     .then(() => history.push(`/plants/${myPlant.id}`))
+        //     .then(setIsLoaded(true))
+        //     .then(() => closeModal())
+        //     .catch(async (res) => {
+        //         // const data = await res.json();
+        //         console.log('res.errors ---------> ', res.errors)
+        //         if (res && res.errors) setErrors(res.errors)
+        //     });
     }
 
     // Dynamically load the plants details page to show updates
@@ -60,7 +70,7 @@ const CreateReviewModal = () => {
                 className="review-form-container"
                 onSubmit={handleSubmit}
             >
-                <ul className="error-map">
+                <ul className="errors-map">
                     {errors.map((error) => <li key={error}>{error}</li>)}
                 </ul>
                 <div className="label-tag-container">
