@@ -88,6 +88,8 @@ function CreatePlantModal() {
 							className = "add-spot-form-input"
 								type="number"
 								value={price}
+								min="0.01"
+								step="0.01"
 								onChange={(e) => setPrice(e.target.value)}
 								required
 							/>

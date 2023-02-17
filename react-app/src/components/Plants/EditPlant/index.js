@@ -90,15 +90,19 @@ function EditPlant() {
 								type="text"
 								value={name}
 								onChange={(e) => setName(e.target.value)}
+								required
 							/>
 						</label>
 						<label className="edit-plant-form-label">
 							Price:
 							<input
 							className="edit-plant-form-input"
-								type="text"
+								type="number"
 								value={price}
+								min="0.01"
+								step="0.01"
 								onChange={(e) => setPrice(e.target.value)}
+								required
 							/>
 						</label>
 						<label className="plant-form-details-label">
@@ -108,6 +112,7 @@ function EditPlant() {
 								type="text"
 								value={details}
 								onChange={(e) => setDetails(e.target.value)}
+								required
 							/>
 						</label>
 					</div>
