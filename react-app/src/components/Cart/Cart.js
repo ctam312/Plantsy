@@ -18,7 +18,7 @@ function Cart() {
   
   const [storage, setStorage] = useState([])
   const totalQuantity = storage.reduce((total, item) => total + item.count, 0);
-  const totalPrice = storage.reduce((total, item) => total + (item.count * allPlants[item.id].price), 0);
+  const totalPrice = storage.reduce((total, item) => total + (item.count * allPlants[item.id]?.price), 0);
   
   useEffect(() => {
     console.log('this the state fr', cartItemsState)
