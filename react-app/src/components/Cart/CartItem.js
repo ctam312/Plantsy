@@ -21,15 +21,7 @@ function CartItem({ item }) {
       <div className="cart-item-header">${myPlant?.price.toFixed(2)}</div>
       <img className="preview-image-div" src={myPlant?.preview_image_url} alt={myPlant?.name} />
       <div className="cart-item-menu">
-        <input
-          className='cart-item-number'
-          type="number"
-          value={count}
-          onChange={(e) => setCount(e.target.value)}
-          onBlur={() => {
-            dispatch(updateCount(myPlant?.id, Number(count)));
-          }}
-        />
+        <span>{count}</span>
         <button
           className="cart-item-button"
           onClick={() => {
