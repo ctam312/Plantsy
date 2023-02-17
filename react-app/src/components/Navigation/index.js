@@ -6,6 +6,7 @@ import './Navigation.css';
 import PlantsyLogo from './LogoFolder/Plantsy.png'
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
+import SearchBar from './SearchBar';
 import Cart from '../Cart/Cart';
 
 function Navigation({ isLoaded }){
@@ -21,6 +22,9 @@ function Navigation({ isLoaded }){
 					</NavLink>
 				{/* </li> */}
 			</div>
+
+				<SearchBar />
+
 			<div className='profile-button-container'>
 				{isLoaded && (
 					// <li>

@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import OnePlant from "./components/Plants/OnePlant/index";
 import AllPlants from "./components/Plants/AllPlants";
+import SearchPage from "./components/SearchPage";
 import Cart from "./components/Cart/Cart"
 import ErrorPlant from "./components/ErrorPage";
 
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <AllPlants />
+          </Route>
+          <Route path='/search/:q'>
+            <SearchPage />
           </Route>
           <Route path="/plants/:plantId">
             <OnePlant />

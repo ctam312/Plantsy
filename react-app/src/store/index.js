@@ -3,14 +3,16 @@ import thunk from 'redux-thunk';
 import session from './session'
 import plantsReducer from './plants'
 import reviewReducer from './reviewReducer'
+import searchReducer from './SearchReducer';
 import cartReducer from './cart';
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' 
+import storage from 'redux-persist/lib/storage'
 
 const rootReducer = combineReducers({
   session,
   plants: plantsReducer,
   reviews: reviewReducer,
+  search: searchReducer,
   cart: cartReducer
 });
 
@@ -53,4 +55,3 @@ export {
   store,
   persistor
 }
-

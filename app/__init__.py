@@ -38,6 +38,13 @@ migrate = Migrate(app, db)
 # Application Security
 CORS(app)
 
+@app.route("/api/search/<string:q>")
+def search_route(q):
+    results = Plant.query.filter(Plant.name.ilike(f'%{q}%')).all()
+    results_dicts = [result.to_dict() for result in results]
+    return results_dicts, 200
+
+
 
 # Since we are deploying with Docker and Flask,
 # we won't be using a buildpack when we deploy to Heroku.
