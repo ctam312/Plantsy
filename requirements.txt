@@ -30,6 +30,4 @@ wtforms==3.0.1
 
 
 
-    price = FloatField('Price', validators=[DataRequired('Price for plant is required.'), NumberRange(min=0.01, message='Price must be greater than 0.01')])
-
-    price = FloatField('Price', validators=[DataRequired('Price for plant is required.'), NumberRange(min='0.01', message='Price must be greater than 0.01')])
+  
