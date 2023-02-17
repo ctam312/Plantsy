@@ -102,6 +102,7 @@ function CreatePlantModal() {
 									type="text"
 									value={details}
 									onChange={(e) => setDetails(e.target.value)}
+									maxLength="1000"
 									required
 								/>
 							</label>
