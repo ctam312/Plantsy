@@ -47,11 +47,12 @@ function CreatePlantModal() {
 	};
 
 	return (
-		<div className="add-spot-container">
+		<div className="add-plant-container">
 
 			<div className="close-modal">
 				<button onClick={closeModal}>
-					<i className = "fa-solid fa-xmark" />
+					{/* <i className = "fa-solid fa-xmark" /> */}
+					X
 				</button>
 			</div>
 
@@ -59,60 +60,65 @@ function CreatePlantModal() {
 				<h1>Create a plant</h1>
 			</div>
 
-
-
-			<form className="add-spot-form" onSubmit={handleSubmit}>
-				<div className="add-spot-form-parts">
-					<label className="add-spot-form-label">
-						Name:
-						<input
-						className = "add-spot-form-input"
-							type="text"
-							value={name}
-							onChange={(e) => setName(e.target.value)}
-						/>
-					</label>
-
-					<label className="add-spot-form-label">
-						Price:
-						<input
-						className = "add-spot-form-input"
-							type="number"
-							value={price}
-							onChange={(e) => setPrice(e.target.value)}
-						/>
-					</label>
-
-					<label className="add-spot-form-label">
-						Details:
-						<input
-						className = "add-spot-form-input"
-							type="text"
-							value={details}
-							onChange={(e) => setDetails(e.target.value)}
-						/>
-					</label>
-
-
-					<label className="add-spot-form-label">
-						Preview Image URL:
-						<input
-						className = "add-spot-form-input"
-							type="text"
-							value={preview_image_url}
-							onChange={(e) => setPreview_image_url(e.target.value)}
-						/>
-					</label>
-
 			<div className="add-spot-errors">
-				<ul className="errors">
+				<ul className="errors-map">
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
 			</div>
+
+			<form className="add-plant-form" onSubmit={handleSubmit}>
+				<div>
+					<div className="label-tag-container">
+						<label className="add-spot-form-label">
+							Name:
+							<input
+							className = "add-spot-form-input"
+								type="text"
+								value={name}
+								onChange={(e) => setName(e.target.value)}
+								required
+							/>
+						</label>
+
+						<label className="add-spot-form-label">
+							Price:
+							<input
+							className = "add-spot-form-input"
+								type="number"
+								value={price}
+								onChange={(e) => setPrice(e.target.value)}
+								required
+							/>
+						</label>
+						<div className="details-label">Details:</div>
+							<label className="plant-add-details-label">
+								{/* Details: */}
+								<textarea
+								className = "plant-add-details"
+									type="text"
+									value={details}
+									onChange={(e) => setDetails(e.target.value)}
+									required
+								/>
+							</label>
+
+						<label className="add-spot-form-label">
+							Preview Image URL:
+							<input
+							className = "add-spot-form-input"
+								name="url"
+								type="url"
+								value={preview_image_url}
+								onChange={(e) => setPreview_image_url(e.target.value)}
+								required
+							/>
+						</label>
+					</div>
+
                     <div className = "submitBtn">
-					<button type="submit">
+					<button className="log-in-demo-button" type="submit">
 						Create Plant
 					</button>
                     </div>

@@ -22,6 +22,7 @@ function CartItem({ item }) {
       <img className="preview-image-div" src={myPlant?.preview_image_url} alt={myPlant?.name} />
       <div className="cart-item-menu">
         <input
+          className='cart-item-number'
           type="number"
           value={count}
           onChange={(e) => setCount(e.target.value)}

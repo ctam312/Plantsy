@@ -10,3 +10,15 @@
     height: 55vh;
     width: 300px;
 }
+
+.plant-form-details-label {
+    margin-left: 6px;
+}
+
+.plant-form-details {
+    height: 100px;
+    width: 310px;
+    border-radius: 10px;
+    resize: none;
+    overflow-y: auto;
+}

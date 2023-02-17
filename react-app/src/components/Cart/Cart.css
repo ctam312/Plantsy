@@ -40,12 +40,12 @@
   justify-content: flex-end;
 }
 
-input[type="number"] {
+.cart-item-number {
   -moz-appearance: textfield;
   text-align: center;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.cart-item-number::-webkit-outer-spin-button,
+.cart-item-number::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }

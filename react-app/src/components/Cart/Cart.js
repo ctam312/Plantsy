@@ -10,16 +10,16 @@ function Cart() {
   const cartItems = useSelector(getAllCartItems);
   const cartItemsState = useSelector(state => state.cart)
   const allPlants = useSelector((state) => state.plants.allPlants);
-  
+
   const localStorageState = JSON.parse(localStorage.getItem('cartData'))
   const newCartItems = Object.values(localStorageState.items)
   // console.log("NEW CART ITEMSSSS ========>", newCartItems)
   // console.log("===========================>", localStorageState)
-  
+
   const [storage, setStorage] = useState([])
   const totalQuantity = storage.reduce((total, item) => total + item.count, 0);
   const totalPrice = storage.reduce((total, item) => total + (item.count * allPlants[item.id]?.price), 0);
-  
+
   useEffect(() => {
     console.log('this the state fr', cartItemsState)
     if (Object.keys(cartItemsState.items).length === 0) {

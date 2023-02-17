@@ -101,10 +101,10 @@ function EditPlant() {
 								onChange={(e) => setPrice(e.target.value)}
 							/>
 						</label>
-						<label className="edit-plant-form-label">
+						<label className="plant-form-details-label">
 							Details:
-							<input
-							className="plant-form-details"
+							<textarea
+								className="plant-form-details"
 								type="text"
 								value={details}
 								onChange={(e) => setDetails(e.target.value)}
