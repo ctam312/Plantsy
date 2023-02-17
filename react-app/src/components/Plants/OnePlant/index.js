@@ -24,6 +24,7 @@ const OnePlant = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 	const cartItem = useSelector(getCartItemById(myPlant.id));
 
+	// console.log('myPlant ----> ', myPlant)
 
 	useEffect(() => {
 		dispatch(getPlantDetailsThunk(+plantId))
@@ -73,15 +74,28 @@ const OnePlant = () => {
 	return (
 		<div className="one-plant-container">
 			<div className="top-plant-container">
-				<img className="preview-image-div" src={myPlant.preview_image_url} alt={myPlant.name} />
+				<div className='extra-photos-container'>optional photos</div>
+				<div>
+					<img className="preview-image-div" src={myPlant.preview_image_url} alt={myPlant.name} />
+				</div>
 				<div className="plant-information-container">
 					<p className="price-tag">$ {myPlant.price.toFixed(2)}</p>
 					<div className="plant-name-div">{myPlant.name}</div>
 
 					<button className='add-cart-button' onClick={cartAdd}>
 						Add to Cart</button>
-
-					<p>Details: {myPlant.details}</p>
+					<div className='fast-shipping'>
+						<div>
+							<i className="fa-solid fa-truck-fast fa-2x"></i>
+						</div>
+						<div>
+							<span className='fast-shipping-text-hoo'>Hooray!</span> <span className='fast-shipping-text'>This item ships for free</span>
+						</div>
+						</div>
+					<div>
+						<h4 className='desc-title'>Description</h4>
+						<div className='description'> {myPlant.details}</div>
+					</div>
 				</div>
 			</div>
 				<div className="edit-delete-modal">

@@ -41,10 +41,10 @@ const SearchPage = () => {
         </div>
       </div>
         :
-        <>
+        <div className='not-found-page'>
           <h1>We couldn't find any results for your search</h1>
           <div>Try searching for something else instead?</div>
-        </>
+        </div>
         }
     </div>
   )

@@ -50,3 +50,9 @@
   font-weight: 600;
   margin-top: 5px;
 }
+
+.not-found-page {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
