@@ -11,8 +11,8 @@ function Cart() {
   const cartItemsState = useSelector(state => state.cart)
   const allPlants = useSelector((state) => state.plants.allPlants);
 
-  const localStorageState = JSON.parse(localStorage.getItem('cartData'))
-  const newCartItems = Object.values(localStorageState.items)
+  const localStorageState = JSON.parse(localStorage.getItem('cartData'));
+  const newCartItems = localStorageState && localStorageState.items ? Object.values(localStorageState.items) : [];
   // console.log("NEW CART ITEMSSSS ========>", newCartItems)
   // console.log("===========================>", localStorageState)
 
