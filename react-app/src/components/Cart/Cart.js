@@ -17,7 +17,8 @@ function Cart() {
   const [storage, setStorage] = useState([])
 
   useEffect(() => {
-    if (cartItemsState.order.length == 0) {
+    console.log('this the state fr', cartItemsState)
+    if (Object.keys(cartItemsState.items).length === 0) {
       setStorage(newCartItems)
       dispatch(getAllPlantsThunk())
     } else {
@@ -36,7 +37,6 @@ function Cart() {
       No items in the cart. Start selecting items to purchase.
     </div>
   );
-
 
 
   const onSubmit = (e) => {

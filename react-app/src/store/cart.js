@@ -14,6 +14,7 @@ export const addItem = (itemId) => {
 
 export const updateCount = (itemId, count) => {
   if (count < 1) return removeItem(itemId);
+  console.log('THIS IT ITEM ID', itemId)
   return {
     type: UPDATE_COUNT,
     itemId,
@@ -82,6 +83,7 @@ export default function cartReducer(state = initialState, action) {
         order: [...state.order, action.itemId],
       };
     case UPDATE_COUNT:
+      console.log('tin brings the..', action)
       return {
         ...state,
         items: {
@@ -92,11 +94,13 @@ export default function cartReducer(state = initialState, action) {
             id: action.itemId
           },
         },
+        order: []
       };
     case REMOVE_ITEM:
       const newState = { ...state, items: { ...state.items } };
       delete newState.items[action.itemId];
       newState.order = newState.order.filter(id => id !== action.itemId.toString());
+      localStorage.setItem('cartData', JSON.stringify(newState))
       return newState;
 
     case RESET:
