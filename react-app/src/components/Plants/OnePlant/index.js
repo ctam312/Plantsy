@@ -7,6 +7,10 @@ import EditPlant from "../EditPlant";
 import DeletePlantModal from "../DeletePlant/DeletePlant";
 import ReviewsForPlant from "../../ReviewsPlant/ReviewCards";
 import CreateReviewModal from "../../ReviewForms/CreateReviewModal";
+import Cart from "../../Cart/Cart"
+import { addItem, updateCount } from '../../../store/cart';
+import { getCartItemById } from "../../../store/cart";
+
 import "./OnePlant.css"
 
 const OnePlant = () => {
@@ -17,14 +21,24 @@ const OnePlant = () => {
 	const dispatch = useDispatch();
 	const { plantId } = useParams();
 	const history = useHistory();
-    const [isLoaded, setIsLoaded] = useState(false);
-	console.log(user)
+  const [isLoaded, setIsLoaded] = useState(false);
+	const cartItem = useSelector(getCartItemById(myPlant.id));
+
 
 	useEffect(() => {
 		dispatch(getPlantDetailsThunk(+plantId))
 			.then(() => (setIsLoaded(true)))
 			// .catch(() => history.push("/"));
 	}, [dispatch, plantId, history]);
+
+	const cartAdd = () => {
+		if (cartItem){
+			dispatch(updateCount(+plantId, cartItem.count + 1));
+		} else {
+			dispatch(addItem(+plantId));
+		}
+		history.push('/cart');
+	};
 
 	if (!myPlant?.id) return null;
 
@@ -63,7 +77,10 @@ const OnePlant = () => {
 				<div className="plant-information-container">
 					<p className="price-tag">$ {myPlant.price.toFixed(2)}</p>
 					<div className="plant-name-div">{myPlant.name}</div>
-					<button>Add to Cart</button>
+
+					<button className='add-cart-button' onClick={cartAdd}>
+						Add to Cart</button>
+
 					<p>Details: {myPlant.details}</p>
 				</div>
 			</div>

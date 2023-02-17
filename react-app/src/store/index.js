@@ -3,12 +3,26 @@ import thunk from 'redux-thunk';
 import session from './session'
 import plantsReducer from './plants'
 import reviewReducer from './reviewReducer'
+import cartReducer from './cart';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' 
 
 const rootReducer = combineReducers({
   session,
   plants: plantsReducer,
-  reviews: reviewReducer
+  reviews: reviewReducer,
+  cart: cartReducer
 });
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: [
+    'cart'
+  ]
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 
 let enhancer;
@@ -22,8 +36,21 @@ if (process.env.NODE_ENV === 'production') {
   enhancer = composeEnhancers(applyMiddleware(thunk, logger));
 }
 
-const configureStore = (preloadedState) => {
-  return createStore(rootReducer, preloadedState, enhancer);
-};
+// const configureStore = (preloadedState) => {
+//   return createStore(persistedReducer, preloadedState, enhancer);
+// };
 
-export default configureStore;
+// export default configureStore;
+
+const store = createStore(
+  persistedReducer,
+  enhancer
+)
+
+let persistor = persistStore(store)
+
+export {
+  store,
+  persistor
+}
+

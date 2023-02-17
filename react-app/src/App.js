@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import OnePlant from "./components/Plants/OnePlant/index";
 import AllPlants from "./components/Plants/AllPlants";
+import Cart from "./components/Cart/Cart"
 import ErrorPlant from "./components/ErrorPage";
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
           <Route path="/plants/:plantId">
             <OnePlant />
           </Route>
+          <Route path='/cart'>
+					  <Cart />
+				  </Route>
           <Route>
             <ErrorPlant/>
           </Route>
