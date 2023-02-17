@@ -12,6 +12,7 @@ function Cart() {
 
   const localStorageState = JSON.parse(localStorage.getItem('cartData'))
   const newCartItems = Object.values(localStorageState.items)
+  // console.log("NEW CART ITEMSSSS ========>", newCartItems)
   // console.log("===========================>", localStorageState)
 
   const [storage, setStorage] = useState([])

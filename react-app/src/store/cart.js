@@ -71,7 +71,7 @@ const initialState = {
 export default function cartReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_ITEM:
-      return {
+      const newStateAdd = {
         ...state,
         items: {
           ...state.items,
@@ -81,7 +81,9 @@ export default function cartReducer(state = initialState, action) {
           },
         },
         order: [...state.order, action.itemId],
-      };
+      }
+      localStorage.setItem('cartData', JSON.stringify(newStateAdd))
+      return newStateAdd;
     case UPDATE_COUNT:
       console.log('tin brings the..', action)
       return {
@@ -94,10 +96,14 @@ export default function cartReducer(state = initialState, action) {
             id: action.itemId
           },
         },
-        order: []
+        order: [...state.order, action.itemId],
       };
     case REMOVE_ITEM:
-      const newState = { ...state, items: { ...state.items } };
+      const newState = { ...state, items: { ...state.items }};
+      console.log('this is the newstate', newState)
+      console.log('STATE BOYS ', state)
+      console.log('THIS IS THE ULTIMATE ACTION', action.itemId)
+      console.log('THE ORDER MUST BE GOOD', newState.order)
       delete newState.items[action.itemId];
       newState.order = newState.order.filter(id => id !== action.itemId.toString());
       localStorage.setItem('cartData', JSON.stringify(newState))
