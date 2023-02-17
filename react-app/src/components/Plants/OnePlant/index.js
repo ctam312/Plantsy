@@ -95,7 +95,7 @@ const OnePlant = () => {
 							<OpenModalButton
 								className="delete-spot"
 								modalComponent={<DeletePlantModal />}
-								buttonText="Delete Spot"
+								buttonText="Delete Plant"
 								/>
 						</div>
 					) : (

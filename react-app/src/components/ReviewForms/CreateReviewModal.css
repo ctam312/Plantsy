@@ -1,8 +1,8 @@
-.edit-plant-container {
+.create-review-container {
     padding: 1em 2em 0em;
 }
 
-.edit-plant-form {
+.review-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,3 +10,4 @@
     height: 55vh;
     width: 300px;
 }
+

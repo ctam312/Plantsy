@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { createPlantReviewThunk, updateReviewForPlantThunk } from "../../store/reviewReducer";
+import { createPlantReviewThunk, loadPlantReviewsThunk, updateReviewForPlantThunk } from "../../store/reviewReducer";
 import { getPlantDetailsThunk } from "../../store/plants";
+import "./UpdateReviewModal.css"
 
 
 const UpdateReviewModal = ({review}) => {
@@ -42,13 +43,13 @@ const UpdateReviewModal = ({review}) => {
 
     // Dynamically load the plants details page to show updates
     useEffect(() => {
-        dispatch(getPlantDetailsThunk(myPlant.id))
+        dispatch(loadPlantReviewsThunk(myPlant.id))
         setIsLoaded(false)
     }, [dispatch, myPlant.id, isLoaded])
 
     return (
         <div className="create-review-container">
-            <h3 className="create-review-header">Leave review</h3>
+            <h3 className="create-review-header">Update review</h3>
             <form
                 className="review-form-container"
                 onSubmit={handleSubmit}
@@ -56,28 +57,31 @@ const UpdateReviewModal = ({review}) => {
                 <ul className="review-error-map">
                     {errors.map((error) => <li key={error}>{error}</li>)}
                 </ul>
-                <label>
-                    Review:
-                    <input
-                        type="text"
-                        name="review"
-                        value={editReview}
-                        placeholder="Enter a review"
-                        onChange={(e) => setEditReview(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                        Star Rating:
+                <div className="label-tag-container">
+
+                    <label>
+                        Review:
                         <input
-                            type='number'
-                            value={stars}
-                            onChange={(e) => setStars(e.target.value)}
-                            max='5'
-                            min='1'
+                            type="text"
+                            name="review"
+                            value={editReview}
+                            placeholder="Enter a review"
+                            onChange={(e) => setEditReview(e.target.value)}
                             required
                         />
-                </label>
+                    </label>
+                    <label>
+                            Star Rating:
+                            <input
+                                type='number'
+                                value={stars}
+                                onChange={(e) => setStars(e.target.value)}
+                                max='5'
+                                min='1'
+                                required
+                            />
+                    </label>
+                </div>
                 {/* <label>
                         Image URL:
                         <input
@@ -88,7 +92,7 @@ const UpdateReviewModal = ({review}) => {
                             placeholder="Enter an image URL (http://www.example.com/)"
                             />
                 </label> */}
-                <button type="submit">Submit</button>
+                <button className="log-in-demo-button" type="submit">Submit</button>
             </form>
         </div>
     )

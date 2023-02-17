@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { createPlantReviewThunk, loadPlantReviewsThunk } from "../../store/reviewReducer";
-import { getPlantDetailsThunk } from "../../store/plants";
-
+import "./CreateReviewModal.css"
 
 const CreateReviewModal = () => {
     const dispatch = useDispatch();
@@ -26,11 +25,9 @@ const CreateReviewModal = () => {
         const reviewDetails = {
             review,
             stars,
-            // review_image: image,
             plant_id: myPlant?.id,
             user_id: sessionUser?.user?.id
         }
-        // console.log('image from component =========> ', image)
 
         const revImage = {
             url: image
@@ -63,21 +60,22 @@ const CreateReviewModal = () => {
                 className="review-form-container"
                 onSubmit={handleSubmit}
             >
-                <ul className="review-error-map">
+                <ul className="error-map">
                     {errors.map((error) => <li key={error}>{error}</li>)}
                 </ul>
-                <label>
-                    Review:
-                    <input
-                        type="text"
-                        name="review"
-                        value={review}
-                        placeholder="Enter a review"
-                        onChange={(e) => setReview(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
+                <div className="label-tag-container">
+                    <label>
+                        Review:
+                        <input
+                            type="text"
+                            name="review"
+                            value={review}
+                            placeholder="Enter a review"
+                            onChange={(e) => setReview(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label>
                         Star Rating:
                         <input
                             type='number'
@@ -87,18 +85,19 @@ const CreateReviewModal = () => {
                             min='1'
                             required
                         />
-                </label>
-                <label>
-                        Image URL:
-                        <input
-                            type="url"
-                            name="url"
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
-                            placeholder="Enter an image URL (http://www.example.com/)"
-                            />
-                </label>
-                <button type="submit">Submit</button>
+                    </label>
+                    <label>
+                            Image URL:
+                            <input
+                                type="url"
+                                name="url"
+                                value={image}
+                                onChange={(e) => setImage(e.target.value)}
+                                placeholder="Enter an image URL (http://www.example.com/)"
+                                />
+                    </label>
+                </div>
+                <button className="log-in-demo-button" type="submit">Submit</button>
             </form>
         </div>
     )

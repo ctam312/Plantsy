@@ -52,3 +52,12 @@
 .empty-star {
     color: rgb(202, 202, 202);
 }
+
+.edit-delete-btn {
+    margin-left: 500px;
+}
+
+.edit-btn {
+    margin-right: 5px;
+}
+
