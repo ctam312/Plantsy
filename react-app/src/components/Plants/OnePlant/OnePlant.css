@@ -80,5 +80,6 @@
 
 .description {
     line-height: 25px;
+    word-wrap: break-word;
     /* overflow-y: scroll; */
 }
