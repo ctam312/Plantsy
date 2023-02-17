@@ -40,9 +40,9 @@ const CreateReviewModal = () => {
         if (data) {
             setErrors(data)
         } else {
+            closeModal()
             history.push(`/plants/${myPlant.id}`);
             setIsLoaded(true);
-            closeModal()
         }
 
         // return await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage))
@@ -56,12 +56,24 @@ const CreateReviewModal = () => {
         //     });
     }
 
+    // let errorList;
+    // if (errors.length > 0) {
+    //     errorList = (errors.map((error) => <li key={error}>{error}</li>));
+    // } else {
+    //     errorList = null;
+    //     setErrors([])
+    // }
+
     // Dynamically load the plants details page to show updates
     useEffect(() => {
         // dispatch(getPlantDetailsThunk(myPlant.id))
+
         dispatch(loadPlantReviewsThunk(myPlant.id))
         setIsLoaded(false)
+        // closeModal()
     }, [dispatch, myPlant.id, isLoaded])
+
+
 
     return (
         <div className="create-review-container">
@@ -71,7 +83,8 @@ const CreateReviewModal = () => {
                 onSubmit={handleSubmit}
             >
                 <ul className="errors-map">
-                    {errors.map((error) => <li key={error}>{error}</li>)}
+                    {/* {errorList} */}
+                    {errors.length > 0 ? errors.map((error) => <li key={error}>{error}</li>) : null}
                 </ul>
                 <div className="label-tag-container">
                     <label>
@@ -114,3 +127,5 @@ const CreateReviewModal = () => {
 }
 
 export default CreateReviewModal
+
+

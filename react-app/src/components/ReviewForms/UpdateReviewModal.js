@@ -31,21 +31,30 @@ const UpdateReviewModal = ({review}) => {
             user_id: sessionUser.user.id
         }
 
-        return await dispatch(updateReviewForPlantThunk(reviewDetails, review))
-            .then(() => history.push(`/plants/${myPlant.id}`))
-            .then(setIsLoaded(true))
-            .then(() => closeModal())
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors)
-            });
+        // return await dispatch(updateReviewForPlantThunk(reviewDetails, review))
+        //     .then(() => history.push(`/plants/${myPlant.id}`))
+        //     .then(setIsLoaded(true))
+        //     .then(() => closeModal())
+        //     .catch(async (res) => {
+        //         const data = await res.json();
+        //         if (data && data.errors) setErrors(data.errors)
+        //     });
+
+        const data = await dispatch(updateReviewForPlantThunk(reviewDetails, review));
+        if (data) {
+            setErrors(data)
+        } else {
+            closeModal()
+            dispatch(loadPlantReviewsThunk(myPlant.id))
+            history.push(`/plants/${myPlant.id}`);
+            setIsLoaded(true);
+        }
     }
 
     // Dynamically load the plants details page to show updates
-    useEffect(() => {
-        dispatch(loadPlantReviewsThunk(myPlant.id))
-        setIsLoaded(false)
-    }, [dispatch, myPlant.id, isLoaded])
+    // useEffect(() => {
+    //     setIsLoaded(false)
+    // }, [dispatch, myPlant.id, isLoaded])
 
     return (
         <div className="create-review-container">
@@ -55,7 +64,7 @@ const UpdateReviewModal = ({review}) => {
                 onSubmit={handleSubmit}
             >
                 <ul className="review-error-map">
-                    {errors.map((error) => <li key={error}>{error}</li>)}
+                    {errors.length > 0 ? errors.map((error) => <li key={error}>{error}</li>) : null}
                 </ul>
                 <div className="label-tag-container">
 

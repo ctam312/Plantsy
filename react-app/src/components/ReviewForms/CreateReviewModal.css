@@ -8,6 +8,6 @@
     align-items: center;
     justify-items: center;
     height: 55vh;
+    min-height: 400px;
     width: 300px;
 }
-

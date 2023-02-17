@@ -4,24 +4,36 @@
 }
 
 .review-card {
-    border: 2px solid red;
+    /* border: 1px solid lightgrey; */
     display: flex;
     flex-direction: row;
     /* justify-content: */
     height: 150px;
+    margin-top: 10px;
     margin-bottom: 10px;
+    width: 100%;
 }
 
+.left-side-review-card {
+    width: 700px;
+}
 
 .actual-review {
     margin-top: 10px;
+    text-overflow: wrap;
+    word-wrap: break-word;
+    width: 700px;
+    /* overflow: auto; */
 }
 
 .purchased-item-div {
-    width: 90%;
+    width: 100%;
     font-size: 12px;
     padding: 10px 0px;
     color: rgb(100, 99, 99);
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 
 .purchased-span {
@@ -33,6 +45,7 @@
     height: 100%;
     width: auto;
     object-fit: cover;
+    margin-left: 10px;
 }
 
 .user-pic-name-div {
@@ -57,6 +70,42 @@
     padding-left: 325px;
 }
 
+.delete-review {
+    background-color: white;
+    border: 1px red solid;
+    color: red;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
 .edit-btn {
     margin-right: 5px;
+    background-color: white;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.star-rating-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.reviews-and-btn-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 860px;
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 15px;
+}
+
+.review-btn {
+    background-color: white;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
 }

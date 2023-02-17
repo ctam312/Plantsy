@@ -1,12 +1,30 @@
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  max-width: 900px;
+  width: 100%;
+  margin: 16px auto;
+}
+
 .search-bar {
-  border: 1px solid black;
-  width: 900px;
-  margin-top: 16px;
+  flex: 1;
+  max-width: 900px;
+  width: 100%;
   padding: 14px;
+  border: 1px solid black;
   border-right: none;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
-  /* font-size: 17px; */
+  font-size: 17px;
+  box-sizing: border-box;
+  transition: max-width 0.3s ease; /* add this line to enable smooth transition */
+}
+
+@media only screen and (max-width: 900px) {
+  .search-bar {
+    max-width: 300px; /* set the max-width to 300px when the screen size is less than or equal to 900px */
+    transition: max-width 0.3s ease; /* add this line to enable smooth transition */
+  }
 }
 
 .search-bar:focus {

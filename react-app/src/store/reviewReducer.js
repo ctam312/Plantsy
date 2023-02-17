@@ -59,12 +59,12 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
                 const reviewImageData = await response2.json()
                 review.review_image.push(reviewImageData)
                 await dispatch(createReviewForPlant(review))
-                return review
+                return null
             }
         } else {
             await dispatch(createReviewForPlant(review))
             delete review.review_image
-            return review
+            return null
         }
 
         // console.log('rev image from thunk ============ ', revImage.url)
@@ -90,7 +90,12 @@ export const updateReviewForPlantThunk = (reviewDetails, review ) => async dispa
     if (response.ok) {
         const updatedReview = await response.json()
         dispatch(updateReviewForPlant(updatedReview))
-        return updatedReview
+        return null
+    } else {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
     }
 }
 
