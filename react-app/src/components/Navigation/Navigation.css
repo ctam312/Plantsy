@@ -6,8 +6,13 @@
   display: none;
 }
 
+.other-container {
+  border-bottom: 1px solid lightgrey;
+
+}
+
 .navigation-container {
-  border: 1px solid red;
+  /* border-bottom: 1px solid red; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -70,4 +75,12 @@
 .user-menu-items li{
   padding: 5px 5px;
   font-size: 14px;
+}
+
+.search-list-item {
+  cursor: pointer;
+}
+
+.search-list-item:hover {
+  background-color: grey;
 }

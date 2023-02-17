@@ -8,7 +8,6 @@ function AllPlants() {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user)
-  console.log(user)
 
   useEffect(() => {
     dispatch(getAllPlantsThunk());
@@ -16,6 +15,7 @@ function AllPlants() {
 
   const allPlants = useSelector((state) => state.plants.allPlants);
   const allPlantsArr = Object.values(allPlants);
+  // const [plantState, setPlantState] = useState()
   if (!allPlantsArr) return null;
 
   let userLoggedIn;
@@ -26,7 +26,7 @@ function AllPlants() {
     )
   } else {
     userLoggedIn = (
-      <div className="welcome-header">Pick out your favorite plant!</div>
+      <div className="welcome-header">Welcome to Plantsy!</div>
     )
   }
 
@@ -59,7 +59,7 @@ function AllPlants() {
                   alt={`NO IMAGE AVAILABLE`}
                   />
                 <div className="plant-price">
-                  <span className="price">${plant.price}&nbsp;</span>
+                  <span className="price">${plant.price.toFixed(2)}&nbsp;</span>
                 </div>
               </div>
 
@@ -76,5 +76,4 @@ function AllPlants() {
     </div>
   );
 }
-
 export default AllPlants;

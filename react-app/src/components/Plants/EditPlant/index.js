@@ -41,7 +41,7 @@ function EditPlant() {
 
 		const { id, preview_image_url, user_id } = myPlant;
 		// console.log(myPlant)
-		
+
 		const plantNeed = {
 			id,
 			preview_image_url,
@@ -60,54 +60,58 @@ function EditPlant() {
 	};
 
 	return (
-		<div className="edit-spot-container">
+		<div className="edit-plant-container">
 			<div className="close-modal">
 				<button onClick={closeModal}>
-					<i className="fa-solid fa-xmark" />
+					{/* <i className="fa-solid fa-x" /> */}
+					X
 				</button>
 			</div>
 
-			<div className="edit-spot-header">
-				<h1>Edit your listing</h1>
+			<div className="edit-plant-header">
+				<h1>Edit your plant</h1>
 			</div>
 
-			<form className="edit-spot-form" onSubmit={handleSubmit}>
-				<div className="edit-spot-form-parts">
-					<div className="edit-spot-errors">
+			<form className="edit-plant-form" onSubmit={handleSubmit}>
+				<div className="edit-plant-form-parts">
+					<div className="errors-map">
 						<ul>
 							{errors.map((item, idx) => (
 								<li key={idx}>{item}</li>
 							))}
 						</ul>
 					</div>
-					<label className="edit-spot-form-label">
-						Name:
-						<input
-						className="edit-spot-form-input"
-							type="text"
-							value={name}
-							onChange={(e) => setName(e.target.value)}
-						/>
-					</label>
-					<label className="edit-spot-form-label">
-						Price:
-						<input
-						className="edit-spot-form-input"
-							type="text"
-							value={price}
-							onChange={(e) => setPrice(e.target.value)}
-						/>
-					</label>
-					<label className="edit-spot-form-label">
-						Details:
-						<input
-						className="edit-spot-form-input"
-							type="text"
-							value={details}
-							onChange={(e) => setDetails(e.target.value)}
-						/>
-					</label>
-					<button className ="submitBtn" type="submit">Apply Edits</button>
+					<div className="label-tag-container">
+
+						<label className="edit-plant-form-label">
+							Name:
+							<input
+							className="edit-plant-form-input"
+								type="text"
+								value={name}
+								onChange={(e) => setName(e.target.value)}
+							/>
+						</label>
+						<label className="edit-plant-form-label">
+							Price:
+							<input
+							className="edit-plant-form-input"
+								type="text"
+								value={price}
+								onChange={(e) => setPrice(e.target.value)}
+							/>
+						</label>
+						<label className="plant-form-details-label">
+							Details:
+							<textarea
+								className="plant-form-details"
+								type="text"
+								value={details}
+								onChange={(e) => setDetails(e.target.value)}
+							/>
+						</label>
+					</div>
+					<button className ="log-in-demo-button" type="submit">Apply Edits</button>
 				</div>
 			</form>
 		</div>

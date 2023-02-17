@@ -7,6 +7,10 @@ import EditPlant from "../EditPlant";
 import DeletePlantModal from "../DeletePlant/DeletePlant";
 import ReviewsForPlant from "../../ReviewsPlant/ReviewCards";
 import CreateReviewModal from "../../ReviewForms/CreateReviewModal";
+import Cart from "../../Cart/Cart"
+import { addItem, updateCount } from '../../../store/cart';
+import { getCartItemById } from "../../../store/cart";
+
 import "./OnePlant.css"
 
 const OnePlant = () => {
@@ -17,14 +21,25 @@ const OnePlant = () => {
 	const dispatch = useDispatch();
 	const { plantId } = useParams();
 	const history = useHistory();
-    const [isLoaded, setIsLoaded] = useState(false);
-	console.log(user)
+  const [isLoaded, setIsLoaded] = useState(false);
+	const cartItem = useSelector(getCartItemById(myPlant.id));
+
+	// console.log('myPlant ----> ', myPlant)
 
 	useEffect(() => {
 		dispatch(getPlantDetailsThunk(+plantId))
 			.then(() => (setIsLoaded(true)))
 			// .catch(() => history.push("/"));
 	}, [dispatch, plantId, history]);
+
+	const cartAdd = () => {
+		if (cartItem){
+			dispatch(updateCount(+plantId, cartItem.count + 1));
+		} else {
+			dispatch(addItem(+plantId));
+		}
+		history.push('/cart');
+	};
 
 	if (!myPlant?.id) return null;
 
@@ -59,12 +74,28 @@ const OnePlant = () => {
 	return (
 		<div className="one-plant-container">
 			<div className="top-plant-container">
-				<img className="preview-image-div" src={myPlant.preview_image_url} alt={myPlant.name} />
+				{/* <div className='extra-photos-container'>optional photos</div> */}
+				<div>
+					<img className="preview-image-div" src={myPlant.preview_image_url} alt={myPlant.name} />
+				</div>
 				<div className="plant-information-container">
 					<p className="price-tag">$ {myPlant.price.toFixed(2)}</p>
 					<div className="plant-name-div">{myPlant.name}</div>
-					<button>Add to Cart</button>
-					<p>Details: {myPlant.details}</p>
+
+					<button className='add-cart-button' onClick={cartAdd}>
+						Add to Cart</button>
+					<div className='fast-shipping'>
+						<div>
+							<i className="fa-solid fa-truck-fast fa-2x"></i>
+						</div>
+						<div>
+							<span className='fast-shipping-text-hoo'>Hooray!</span> <span className='fast-shipping-text'>This item ships for free</span>
+						</div>
+						</div>
+					<div>
+						<h4 className='desc-title'>Description</h4>
+						<div className='description'> {myPlant.details}</div>
+					</div>
 				</div>
 			</div>
 				<div className="edit-delete-modal">
@@ -78,7 +109,7 @@ const OnePlant = () => {
 							<OpenModalButton
 								className="delete-spot"
 								modalComponent={<DeletePlantModal />}
-								buttonText="Delete Spot"
+								buttonText="Delete Plant"
 								/>
 						</div>
 					) : (

@@ -1,0 +1,15 @@
+.add-plant-container {
+    padding: 1em 2em 2em;
+}
+
+.details-label {
+    padding-right: 270px;
+}
+
+.plant-add-details {
+    height: 100px;
+    width: 310px;
+    border-radius: 10px;
+    resize: none;
+    overflow-y: auto;
+}

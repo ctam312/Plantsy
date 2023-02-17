@@ -65,22 +65,28 @@ const ReviewsForPlant = () =>{
                                 <i className="fas fa-user fa-2x" />
                             </div>
                             <div className='username'>{review.user?.username}</div>
+                                <span className="edit-delete-btn">
+                                    <span className="edit-btn">
+                                        {user !== null && user?.id === review?.user_id ? (
+                                            <OpenModalButton
+                                            buttonText="Edit"
+                                            modalComponent={
+                                                <UpdateReviewModal
+                                                review={review}
+                                                />
+                                            }
+                                            />
+                                            ) : null}
+                                    </span>
+                                    <span className="delete-btn">
+                                        {user !== null && user?.id === review?.user_id ?
+                                            <DeleteReview review={review} myPlant={myPlant}/>
+                                            : null
+                                        }
+                                    </span>
+                                </span>
                             {/* <div> date? </div> */}
                         </div>
-                        {user !== null && user?.id === review?.user_id ? (
-                            <OpenModalButton
-                            buttonText="Edit"
-                            modalComponent={
-                                <UpdateReviewModal
-                                review={review}
-                                />
-                            }
-                            />
-                            ) : null}
-                    {user !== null && user?.id === review?.user_id ?
-                        <DeleteReview review={review} myPlant={myPlant}/>
-                        : null
-                    }
                     </div>
                     <div className='right-side-review-card'>
                         {reviewImg}

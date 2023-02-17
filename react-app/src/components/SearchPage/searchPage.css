@@ -1,0 +1,58 @@
+.search-plants-container {
+  max-width: 1340px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  /* margin-bottom: 30px; */
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  gap: 10px;
+
+}
+
+
+.search-plant-card {
+  /* width: 25%; */
+  height: 300px;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.search-plant-top-card-container {
+  height: 80%
+}
+
+.search-plant-card-bottom-container {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.search-plant-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.search-plant-name {
+  /* width: 100%; */
+  font-size: 12px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.search-plant-price {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.not-found-page {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}

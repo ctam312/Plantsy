@@ -1,0 +1,17 @@
+#fullErrorDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	height: 100vh;
+}
+
+.errorImgDiv {
+	max-width: 80%;
+	text-align: center;
+}
+
+.errorImgDiv img {
+	max-width: 80%;
+	height: auto;
+}
