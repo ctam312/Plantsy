@@ -23,7 +23,7 @@ function LoginFormModal() {
 
   return (
     <div className="whole-login-container">
-      <h3>Sign in</h3>
+      <h3>Sign In</h3>
       <form onSubmit={handleSubmit} className="form-container">
         <ul className="errors-map">
           {errors.map((error, idx) => (
@@ -50,7 +50,7 @@ function LoginFormModal() {
           />
         </label>
         </div>
-        <button className= "log-in-demo-button" type="submit">Sign in</button>
+        <button className= "log-in-demo-button" type="submit">Sign In</button>
         <button
             className="log-in-demo-button demo-button"
             type="submit"
