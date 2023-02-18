@@ -115,7 +115,7 @@ const CreateReviewModal = () => {
                         />
                     </label>
                     <label>
-                            Image URL:
+                            Image URL (optional):
                             <input
                                 type="url"
                                 name="url"
