@@ -78,6 +78,7 @@ function CreatePlantModal() {
 								type="text"
 								value={name}
 								onChange={(e) => setName(e.target.value)}
+								maxLength="300"
 								required
 							/>
 						</label>
@@ -115,6 +116,7 @@ function CreatePlantModal() {
 								type="url"
 								value={preview_image_url}
 								onChange={(e) => setPreview_image_url(e.target.value)}
+								maxLength="300"
 								required
 							/>
 						</label>

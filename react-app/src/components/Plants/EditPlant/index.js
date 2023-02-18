@@ -90,6 +90,7 @@ function EditPlant() {
 								type="text"
 								value={name}
 								onChange={(e) => setName(e.target.value)}
+								maxLength="300"
 								required
 							/>
 						</label>
@@ -112,6 +113,7 @@ function EditPlant() {
 								type="text"
 								value={details}
 								onChange={(e) => setDetails(e.target.value)}
+								maxLength="1000"
 								required
 							/>
 						</label>
