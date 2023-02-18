@@ -102,7 +102,7 @@ const ReviewsForPlant = ({reviewButton}) =>{
     })
 
     return(
-        <div className="review-container">
+        <div className="bottom-review-container">
             <div className='reviews-and-btn-container'>
                 <h1>{reviewsArr.length} review(s) {stars}</h1>
                 <div>{reviewButton}</div>
