@@ -49,7 +49,6 @@ function SignupFormPage() {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            maxLength={15}
             required
           />
         </label>
