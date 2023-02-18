@@ -14,7 +14,7 @@ export const addItem = (itemId) => {
 
 export const updateCount = (itemId, count) => {
   if (count < 1) return removeItem(itemId);
-  console.log('THIS IT ITEM ID', itemId)
+  // console.log('THIS IT ITEM ID', itemId)
   return {
     type: UPDATE_COUNT,
     itemId,
@@ -38,8 +38,8 @@ export const reset = () => {
 /* ------ SELECTORS ------ */
 
 export const getAllCartItems = ({ cart, plants }) => {
-  console.log('cart --> ', cart)
-  console.log('plants -----> ',plants)
+  // console.log('cart --> ', cart)
+  // console.log('plants -----> ',plants)
   return Object.values(cart.order).map((id) => {
     return {
       ...cart.items[id],
@@ -85,7 +85,7 @@ export default function cartReducer(state = initialState, action) {
       localStorage.setItem('cartData', JSON.stringify(newStateAdd))
       return newStateAdd;
     case UPDATE_COUNT:
-      console.log('tin brings the..', action)
+      // console.log('tin brings the..', action)
       return {
         ...state,
         items: {
@@ -100,10 +100,10 @@ export default function cartReducer(state = initialState, action) {
       };
     case REMOVE_ITEM:
       const newState = { ...state, items: { ...state.items }};
-      console.log('this is the newstate', newState)
-      console.log('STATE BOYS ', state)
-      console.log('THIS IS THE ULTIMATE ACTION', action.itemId)
-      console.log('THE ORDER MUST BE GOOD', newState.order)
+      // console.log('this is the newstate', newState)
+      // console.log('STATE BOYS ', state)
+      // console.log('THIS IS THE ULTIMATE ACTION', action.itemId)
+      // console.log('THE ORDER MUST BE GOOD', newState.order)
       delete newState.items[action.itemId];
       newState.order = newState.order.filter(id => id !== action.itemId.toString());
       localStorage.setItem('cartData', JSON.stringify(newState))

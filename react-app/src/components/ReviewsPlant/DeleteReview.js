@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
-import { useHistory, useParams } from "react-router-dom";
 import { deleteReviewForPlantThunk, loadPlantReviewsThunk } from "../../store/reviewReducer";
-import { getPlantDetailsThunk } from "../../store/plants";
 
 const DeleteReview = ({review, myPlant}) => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
 
     const [isLoaded, setIsLoaded] = useState(false);
 

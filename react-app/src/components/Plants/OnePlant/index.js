@@ -7,7 +7,6 @@ import EditPlant from "../EditPlant";
 import DeletePlantModal from "../DeletePlant/DeletePlant";
 import ReviewsForPlant from "../../ReviewsPlant/ReviewCards";
 import CreateReviewModal from "../../ReviewForms/CreateReviewModal";
-import Cart from "../../Cart/Cart"
 import { addItem, updateCount } from '../../../store/cart';
 import { getCartItemById } from "../../../store/cart";
 

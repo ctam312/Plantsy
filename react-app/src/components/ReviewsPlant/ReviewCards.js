@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadPlantReviewsThunk } from "../../store/reviewReducer";
-import { getPlantDetailsThunk } from "../../store/plants";
 import UpdateReviewModal from "../ReviewForms/UpdateReviewModal";
 import DeleteReview from "./DeleteReview";
 import OpenModalButton from "../OpenModalButton";
@@ -39,10 +38,6 @@ const ReviewsForPlant = ({reviewButton}) =>{
         avgStarRating = review?.avg_star_rating;
         return (
             <>
-            {/* <div className="total-average-review" key={review}>
-                <div>{reviewsArr.length}</div>
-                <div>{review.avg_star_rating}</div>
-            </div> */}
             <div className="whole-review-card-container" key={review.id}>
                 <div className="review-card">
                     <div className="left-side-review-card">

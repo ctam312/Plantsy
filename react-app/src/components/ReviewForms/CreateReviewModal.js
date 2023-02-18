@@ -56,13 +56,6 @@ const CreateReviewModal = () => {
         //     });
     }
 
-    // let errorList;
-    // if (errors.length > 0) {
-    //     errorList = (errors.map((error) => <li key={error}>{error}</li>));
-    // } else {
-    //     errorList = null;
-    //     setErrors([])
-    // }
 
     // Dynamically load the plants details page to show updates
     useEffect(() => {

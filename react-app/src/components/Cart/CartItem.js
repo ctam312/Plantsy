@@ -13,7 +13,7 @@ function CartItem({ item }) {
     dispatch(getPlantDetailsThunk(item.id))
   }, [item.count]);
 
-  console.log(item)
+
 
   return (
     <div className="cart-item">

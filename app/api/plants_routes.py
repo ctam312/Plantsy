@@ -12,7 +12,6 @@ plants_routes = Blueprint('plants_routes', __name__)
 # GET ROUTES
 @plants_routes.route("/")
 def plants_home():
-    print('PLANT ROUTES R BUSSIN IT DOWN')
     allPlants = Plant.query.all()
     return {"allPlants": [plant.to_dict() for plant in allPlants]}
 
@@ -28,7 +27,7 @@ def create_plants_listing():
     form = PlantFormCreate()
     form['csrf_token'].data = request.cookies['csrf_token']
     data = form.data
-    print(data)
+    # print(data)
 
     if form.validate_on_submit():
         plant = Plant(
@@ -39,7 +38,7 @@ def create_plants_listing():
             user_id = data['user_id']
         )
 
-        print(plant)
+        # print(plant)
 
         db.session.add(plant)
         db.session.commit()
@@ -53,7 +52,7 @@ def edit_plants_listing(plantId):
     form = PlantForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     data = form.data
-    print(data)
+    # print(data)
 
     if form.validate_on_submit():
         plant = Plant.query.get(plantId)
@@ -73,8 +72,8 @@ def edit_plants_listing(plantId):
 @login_required
 def delete_plant(plantId):
     plant = Plant.query.get(plantId)
-    print('LOOK HERE LOL')
-    print(plant)
+    # print('LOOK HERE LOL')
+    # print(plant)
     db.session.delete(plant)
     db.session.commit()
     return {
@@ -114,5 +113,5 @@ def create_review(plantId):
       db.session.add(review)
       db.session.commit()
       return review.to_dict()
-    print('form.erros ------->', form.errors)
+    # print('form.erros ------->', form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 403
