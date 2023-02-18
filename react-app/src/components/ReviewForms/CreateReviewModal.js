@@ -34,15 +34,24 @@ const CreateReviewModal = () => {
         }
 
 
-        console.log(reviewDetails.user_id)
+        // console.log(reviewDetails.user_id)
 
-        const data = await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage));
-        if (data) {
-            setErrors(data)
-        } else {
+        // const data = await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage));
+        // if (data) {
+        //     setErrors(data)
+        // } else {
+        //     closeModal()
+        //     history.push(`/plants/${myPlant.id}`);
+        //     setIsLoaded(true);
+        // }
+
+        const response = await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage));
+        if (response === null) {
             closeModal()
             history.push(`/plants/${myPlant.id}`);
             setIsLoaded(true);
+        } else {
+            setErrors(response);
         }
 
         // return await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage))
