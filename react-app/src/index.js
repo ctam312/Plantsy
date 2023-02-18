@@ -2,15 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-
 import { ModalProvider, Modal } from "./context/Modal";
-import configureStore from "./store";
 import * as sessionActions from "./store/session";
 import App from "./App";
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
 import { store, persistor} from "./store"
-
 import "./index.css";
 import { PersistGate } from "redux-persist/integration/react";
 

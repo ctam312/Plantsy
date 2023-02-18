@@ -1,29 +1,51 @@
-.whole-review-card-container {
+.bottom-review-container {
     display: flex;
-    width: 55%;
+    flex-direction: column;
+    height: auto;
+    width: 860px;
+    /* border: 1px solid red; */
 }
+
+
+.whole-review-card-container {
+    /* display: flex; */
+    width: 860px;
+    height: auto;
+}
+
 
 .review-card {
-    /* border: 1px solid lightgrey; */
     display: flex;
     flex-direction: row;
-    /* justify-content: */
-    height: 150px;
+    height: 180px;
+    /* max-height: 200px; */
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 100%;
+    width: 840px;
+    /* border: 1px solid blue; */
 }
 
+
 .left-side-review-card {
-    width: 700px;
+    width: 80%;
+    /* border: solid green 2px; */
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.right-side-review-card {
+    width: 20%;
+    /* border: solid 2px yellow; */
 }
 
 .actual-review {
     margin-top: 10px;
     text-overflow: wrap;
     word-wrap: break-word;
-    width: 700px;
-    /* overflow: auto; */
+    max-height: 70px;
+    width: 100%;
+    overflow-y: auto;
 }
 
 .purchased-item-div {
@@ -43,9 +65,10 @@
 
 .review-image {
     height: 100%;
-    width: auto;
+    width: 100%;
     object-fit: cover;
     margin-left: 10px;
+    border-radius: 15px;
 }
 
 .user-pic-name-div {

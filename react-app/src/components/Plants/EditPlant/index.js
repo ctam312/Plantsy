@@ -35,8 +35,6 @@ function EditPlant() {
 			name,
 			price,
             details,
-			// preview_image_url: myPlant.preview_image_url,
-			// user_id: myPlant.user_id
 		};
 
 		const { id, preview_image_url, user_id } = myPlant;

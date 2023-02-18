@@ -7,7 +7,6 @@ import EditPlant from "../EditPlant";
 import DeletePlantModal from "../DeletePlant/DeletePlant";
 import ReviewsForPlant from "../../ReviewsPlant/ReviewCards";
 import CreateReviewModal from "../../ReviewForms/CreateReviewModal";
-import Cart from "../../Cart/Cart"
 import { addItem, updateCount } from '../../../store/cart';
 import { getCartItemById } from "../../../store/cart";
 
@@ -80,7 +79,27 @@ const OnePlant = () => {
 					<img className="preview-image-div" src={myPlant.preview_image_url} alt={myPlant.name} />
 				</div>
 				<div className="plant-information-container">
-					<p className="price-tag">$ {myPlant.price.toFixed(2)}</p>
+					<div className='price-edit'>
+						<p className="price-tag ">$ {myPlant.price.toFixed(2)}</p>
+						<div className="edit-delete-modal">
+							{user && user?.id === myPlant?.user_id ? (
+								<div className="edit-delete-button">
+									<OpenModalButton
+										className="edit-spot"
+										modalComponent={<EditPlant />}
+										buttonText="Edit Plant"
+									/>
+									<OpenModalButton
+										className="delete-spot"
+										modalComponent={<DeletePlantModal />}
+										buttonText="Delete Plant"
+										/>
+								</div>
+							) : (
+								null
+							)}
+						</div>
+					</div>
 					<div className="plant-name-div">{myPlant.name}</div>
 
 					<button className='add-cart-button' onClick={cartAdd}>
@@ -99,24 +118,6 @@ const OnePlant = () => {
 					</div>
 				</div>
 			</div>
-				<div className="edit-delete-modal">
-					{user && user?.id === myPlant?.user_id ? (
-						<div className="edit-delete-btn">
-							<OpenModalButton
-								className="edit-spot"
-								modalComponent={<EditPlant />}
-								buttonText="Edit Plant"
-							/>
-							<OpenModalButton
-								className="delete-spot"
-								modalComponent={<DeletePlantModal />}
-								buttonText="Delete Plant"
-								/>
-						</div>
-					) : (
-						null
-					)}
-				</div>
 				{/* {reviewButton} */}
 				<ReviewsForPlant reviewButton={reviewButton}/>
 		</div>

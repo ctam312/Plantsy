@@ -13,13 +13,13 @@ function CartItem({ item }) {
     dispatch(getPlantDetailsThunk(item.id))
   }, [item.count]);
 
-  console.log(item)
+
 
   return (
-    <li className="cart-item">
+    <div className="cart-item">
       <div className="cart-item-header">{myPlant?.name}</div>
       <div className="cart-item-header">${myPlant?.price.toFixed(2)}</div>
-      <img className="preview-image-div" src={myPlant?.preview_image_url} alt={myPlant?.name} />
+      <img className="cart-image-pic" src={myPlant?.preview_image_url} alt={myPlant?.name} />
       <div className="cart-item-menu">
         <span>{count}</span>
         <button
@@ -47,7 +47,7 @@ function CartItem({ item }) {
           Remove
         </button>
       </div>
-    </li>
+    </div>
   );
 }
 

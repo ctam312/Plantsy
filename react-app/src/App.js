@@ -10,6 +10,7 @@ import AllPlants from "./components/Plants/AllPlants";
 import SearchPage from "./components/SearchPage";
 import Cart from "./components/Cart/Cart"
 import ErrorPlant from "./components/ErrorPage";
+import Footer from "./components/Footer/footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

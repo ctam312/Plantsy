@@ -56,13 +56,6 @@ const CreateReviewModal = () => {
         //     });
     }
 
-    // let errorList;
-    // if (errors.length > 0) {
-    //     errorList = (errors.map((error) => <li key={error}>{error}</li>));
-    // } else {
-    //     errorList = null;
-    //     setErrors([])
-    // }
 
     // Dynamically load the plants details page to show updates
     useEffect(() => {
@@ -96,6 +89,7 @@ const CreateReviewModal = () => {
                         <input
                             type="text"
                             name="review"
+                            maxLength='1000'
                             value={review}
                             placeholder="Enter a review"
                             onChange={(e) => setReview(e.target.value)}
@@ -114,7 +108,7 @@ const CreateReviewModal = () => {
                         />
                     </label>
                     <label>
-                            Image URL:
+                            Image URL (optional):
                             <input
                                 type="url"
                                 name="url"

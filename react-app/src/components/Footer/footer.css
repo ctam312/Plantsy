@@ -1,0 +1,38 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+  background-color: rgb(107, 141, 107);
+  height: 200px;
+  padding-bottom: 50px;
+  /* justify-content: space-between */
+}
+
+
+.about {
+  text-decoration: underline;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.coders {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+  /* font-weight: bold; */
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100px;
+}
+
+a {
+  color: black;
+}

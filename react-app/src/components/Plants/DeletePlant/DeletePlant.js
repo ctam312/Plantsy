@@ -30,27 +30,26 @@ return (
 
         <div className="x-button">
             <div className="exit" onClick={closeModal}>
-                x
+                {/* x */}
                 <i className="fa-solid fa-xmark" />
             </div>
         </div>
 
-        <div className="header">
+        <div className="delete-pop-up">
             <h2>Delete this listing?</h2>
             <p>(This is permanent and cannot be undone.)</p>
+            <form onSubmit={handleSubmit}>
+              <button className="log-in-demo-button" type="submit">Confirm Delete</button>
+            </form>
         </div>
 
-        <div>
+        {/* <div>
             <ul className="errors">
             {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
             ))}
             </ul>
-        </div>
-
-        <form onSubmit={handleSubmit}>
-                <button className="confirm-delete-btn" type="submit">Confirm Delete</button>
-        </form>
+        </div> */}
 
     </div>
   )

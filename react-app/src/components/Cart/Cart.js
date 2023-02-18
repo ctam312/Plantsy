@@ -3,7 +3,7 @@ import { getAllCartItems, reset } from '../../store/cart'
 import CartItem from './CartItem';
 import './Cart.css';
 import { useEffect, useState } from 'react';
-import { getAllPlantsThunk, getPlantDetailsThunk } from '../../store/plants';
+import { getAllPlantsThunk} from '../../store/plants';
 
 function Cart() {
   const dispatch = useDispatch();
@@ -13,8 +13,6 @@ function Cart() {
 
   const localStorageState = JSON.parse(localStorage.getItem('cartData'));
   const newCartItems = localStorageState && localStorageState.items ? Object.values(localStorageState.items) : [];
-  // console.log("NEW CART ITEMSSSS ========>", newCartItems)
-  // console.log("===========================>", localStorageState)
 
   const [storage, setStorage] = useState([])
   const totalQuantity = storage.reduce((total, item) => total + item.count, 0);
@@ -37,8 +35,8 @@ function Cart() {
 
 
   if (!storage || !storage.length) return (
-    <div className="cart">
-      No items in the cart. Start selecting items to purchase.
+    <div className="no-item cart-container">
+      <h2>No items in the cart. Start selecting items to purchase.</h2>
     </div>
   );
 
@@ -53,10 +51,10 @@ function Cart() {
   }
 
   return (
-    <div className="cart">
-      <ul>
+    <div className="cart-container">
+      <div>
         {storage.map(item => <CartItem key={item.id} item={item}/>)}
-      </ul>
+      </div>
       <hr />
       {/* <form onSubmit={onSubmit}>
         <button type="submit">Purchase</button>

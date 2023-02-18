@@ -18,7 +18,7 @@ class Review(db.Model):
 
 
     def to_dict(self):
-        print('self.user =============> ', self.user)
+        # print('self.user =============> ', self.user)
         return {
             "id": self.id,
             "review": self.review,
