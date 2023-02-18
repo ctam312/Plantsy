@@ -36,32 +36,59 @@ const CreateReviewModal = () => {
 
         console.log(reviewDetails.user_id)
 
-        return await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage))
-            .then(() => history.push(`/plants/${myPlant.id}`))
-            .then(setIsLoaded(true))
-            .then(() => closeModal())
-            .catch(async (res) => {
-                // const data = await res.json();
-                if (res && res.errors) setErrors(res.errors)
-            });
+        const data = await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage));
+        if (data) {
+            setErrors(data)
+        } else {
+            closeModal()
+            history.push(`/plants/${myPlant.id}`);
+            setIsLoaded(true);
+        }
+
+        // return await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage))
+        //     .then(() => history.push(`/plants/${myPlant.id}`))
+        //     .then(setIsLoaded(true))
+        //     .then(() => closeModal())
+        //     .catch(async (res) => {
+        //         // const data = await res.json();
+        //         console.log('res.errors ---------> ', res.errors)
+        //         if (res && res.errors) setErrors(res.errors)
+        //     });
     }
+
+    // let errorList;
+    // if (errors.length > 0) {
+    //     errorList = (errors.map((error) => <li key={error}>{error}</li>));
+    // } else {
+    //     errorList = null;
+    //     setErrors([])
+    // }
 
     // Dynamically load the plants details page to show updates
     useEffect(() => {
         // dispatch(getPlantDetailsThunk(myPlant.id))
+
         dispatch(loadPlantReviewsThunk(myPlant.id))
         setIsLoaded(false)
+        // closeModal()
     }, [dispatch, myPlant.id, isLoaded])
+
+
 
     return (
         <div className="create-review-container">
+            <span className="review-close-button" onClick={closeModal}>
+					{/* <i className = "fa-solid fa-xmark" /> */}
+					X
+				</span>
             <h3 className="create-review-header">Leave review</h3>
             <form
                 className="review-form-container"
                 onSubmit={handleSubmit}
             >
-                <ul className="error-map">
-                    {errors.map((error) => <li key={error}>{error}</li>)}
+                <ul className="errors-map">
+                    {/* {errorList} */}
+                    {errors.length > 0 ? errors.map((error) => <li key={error}>{error}</li>) : null}
                 </ul>
                 <div className="label-tag-container">
                     <label>

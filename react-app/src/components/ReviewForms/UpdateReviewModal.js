@@ -31,31 +31,46 @@ const UpdateReviewModal = ({review}) => {
             user_id: sessionUser.user.id
         }
 
-        return await dispatch(updateReviewForPlantThunk(reviewDetails, review))
-            .then(() => history.push(`/plants/${myPlant.id}`))
-            .then(setIsLoaded(true))
-            .then(() => closeModal())
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors)
-            });
+        // return await dispatch(updateReviewForPlantThunk(reviewDetails, review))
+        //     .then(() => history.push(`/plants/${myPlant.id}`))
+        //     .then(setIsLoaded(true))
+        //     .then(() => closeModal())
+        //     .catch(async (res) => {
+        //         const data = await res.json();
+        //         if (data && data.errors) setErrors(data.errors)
+        //     });
+
+        const data = await dispatch(updateReviewForPlantThunk(reviewDetails, review));
+        if (data) {
+            setErrors(data)
+        } else {
+            closeModal()
+            dispatch(loadPlantReviewsThunk(myPlant.id))
+            history.push(`/plants/${myPlant.id}`);
+            setIsLoaded(true);
+        }
     }
 
     // Dynamically load the plants details page to show updates
-    useEffect(() => {
-        dispatch(loadPlantReviewsThunk(myPlant.id))
-        setIsLoaded(false)
-    }, [dispatch, myPlant.id, isLoaded])
+    // useEffect(() => {
+    //     setIsLoaded(false)
+    // }, [dispatch, myPlant.id, isLoaded])
 
     return (
         <div className="create-review-container">
+            {/* <div className="close-modal"> */}
+				<span className="review-close-button" onClick={closeModal}>
+					{/* <i className = "fa-solid fa-xmark" /> */}
+					X
+				</span>
+			{/* </div> */}
             <h3 className="create-review-header">Update review</h3>
             <form
                 className="review-form-container"
                 onSubmit={handleSubmit}
             >
                 <ul className="review-error-map">
-                    {errors.map((error) => <li key={error}>{error}</li>)}
+                    {errors.length > 0 ? errors.map((error) => <li key={error}>{error}</li>) : null}
                 </ul>
                 <div className="label-tag-container">
 

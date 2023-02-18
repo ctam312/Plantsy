@@ -35,7 +35,7 @@
     border: none;
     font-size: 50px;
     height: 80px;
-    width: 80px;
+    min-width: 80px;
     border-radius: 150px;
     padding: 20px;
     margin: 10px 30px;

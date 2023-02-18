@@ -51,6 +51,7 @@ const OnePlant = () => {
 					<div>
 						<OpenModalButton
 							buttonText="Leave Review"
+							className='review-btn'
 							modalComponent={
 								<CreateReviewModal />
 							}
@@ -116,8 +117,8 @@ const OnePlant = () => {
 						null
 					)}
 				</div>
-				{reviewButton}
-				<ReviewsForPlant />
+				{/* {reviewButton} */}
+				<ReviewsForPlant reviewButton={reviewButton}/>
 		</div>
 	);
 };

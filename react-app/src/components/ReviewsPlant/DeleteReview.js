@@ -25,7 +25,7 @@ const DeleteReview = ({review, myPlant}) => {
 
     return (
             <>
-                <button className="delete-review" onClick={handleClick}>Delete</button>
+                <button className="delete-review" onClick={handleClick}>x</button>
             </>
     )
 }

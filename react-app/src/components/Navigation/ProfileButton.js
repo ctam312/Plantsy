@@ -52,18 +52,17 @@ function ProfileButton({ user }) {
             <li>{user.email}</li>
             <li className ="li-button">
 
-						<button>
 							<OpenModalButton
+                className="create-plant-button"
 								buttonText="Create a new plant"
 								onItemClick={closeMenu}
 								modalComponent={<CreatePlantModal/>}
 							/>
-						</button>
 
 						</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
+            {/* <li> */}
+              <li  className="log-out-button" onClick={handleLogout}>Log Out</li>
+            {/* </li> */}
           </div>
         ) : (
           <div className="modal-menu-items">
