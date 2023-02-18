@@ -39,23 +39,23 @@ const SearchBar = () => {
       <div>
         <form onSubmit={handleSearch}>
           <div className='search-bar-container'>
-            <input className='search-bar' type='text' value={searchInput} onChange={e => setSearchInput(e.target.value)}/>
+            <input className='search-bar' type='text' placeholder="Search for anything" value={searchInput} onChange={e => setSearchInput(e.target.value)}/>
             <button className='search-icon' type="submit"><i className="fa fa-search"></i></button>
           </div>
         </form>
       </div>
       <div>
-        <ul>
+        <div className="search-bar-list-items">
         { slicedSearchedPlants.map(plant =>
-          <li className='search-list-item'
+          <div className='search-list-item'
           onClick={() => {
           history.push(`/plants/${plant.id}`);
           setSearchInput('');
           }}>
           {plant.name}
-          </li>
+          </div>
 )}
-        </ul>
+        </div>
       </div>
     </div>
   )

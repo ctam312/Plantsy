@@ -58,6 +58,12 @@ const UpdateReviewModal = ({review}) => {
 
     return (
         <div className="create-review-container">
+            {/* <div className="close-modal"> */}
+				<span className="review-close-button" onClick={closeModal}>
+					{/* <i className = "fa-solid fa-xmark" /> */}
+					X
+				</span>
+			{/* </div> */}
             <h3 className="create-review-header">Update review</h3>
             <form
                 className="review-form-container"

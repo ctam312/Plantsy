@@ -77,6 +77,10 @@ const CreateReviewModal = () => {
 
     return (
         <div className="create-review-container">
+            <span className="review-close-button" onClick={closeModal}>
+					{/* <i className = "fa-solid fa-xmark" /> */}
+					X
+				</span>
             <h3 className="create-review-header">Leave review</h3>
             <form
                 className="review-form-container"
@@ -127,5 +131,3 @@ const CreateReviewModal = () => {
 }
 
 export default CreateReviewModal
-
-

@@ -62,10 +62,10 @@ function EditPlant() {
 	return (
 		<div className="edit-plant-container">
 			<div className="close-modal">
-				<button onClick={closeModal}>
+				<span style={{cursor:"pointer"}} onClick={closeModal}>
 					{/* <i className="fa-solid fa-x" /> */}
 					X
-				</button>
+				</span>
 			</div>
 
 			<div className="edit-plant-header">
