@@ -71,7 +71,8 @@
     /* font-weight: bold; */
     margin-top: 10px;
     line-height: 21px;
-
+    text-overflow: wrap;
+    word-wrap: break-word;
 }
 
 .desc-title {
