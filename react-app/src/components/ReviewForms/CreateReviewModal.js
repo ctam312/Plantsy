@@ -10,6 +10,8 @@ const CreateReviewModal = () => {
     const history = useHistory()
 	const myPlant = useSelector((state) => state.plants.singlePlant);
 
+    console.log('myplant ----> ', myPlant)
+
     const [review, setReview] = useState("");
     const [stars, setStars] = useState("");
     const [image, setImage] = useState("");
