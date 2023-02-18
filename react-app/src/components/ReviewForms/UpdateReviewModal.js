@@ -39,16 +39,27 @@ const UpdateReviewModal = ({review}) => {
         //         if (data && data.errors) setErrors(data.errors)
         //     });
 
-        const data = await dispatch(updateReviewForPlantThunk(reviewDetails, review));
-        if (data) {
-            setErrors(data)
-        } else {
+        // const data = await dispatch(updateReviewForPlantThunk(reviewDetails, review));
+        // if (data) {
+        //     setErrors(data)
+        // } else {
+        //     closeModal()
+        //     dispatch(loadPlantReviewsThunk(myPlant.id))
+        //     history.push(`/plants/${myPlant.id}`);
+        //     setIsLoaded(true);
+        // }
+
+        const response = await dispatch(updateReviewForPlantThunk(reviewDetails, review));
+        if (response === null) {
             closeModal()
             dispatch(loadPlantReviewsThunk(myPlant.id))
             history.push(`/plants/${myPlant.id}`);
             setIsLoaded(true);
+        } else {
+            setErrors(response);
         }
     }
+
 
 
     return (
