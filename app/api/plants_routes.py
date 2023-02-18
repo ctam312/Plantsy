@@ -15,6 +15,44 @@ def plants_home():
     allPlants = Plant.query.all()
     return {"allPlants": [plant.to_dict() for plant in allPlants]}
 
+
+
+# GET Reviews of a Plant
+@plants_routes.route('/<int:plantId>/reviews') #  ****  throw this into plants route *****
+def all_reviews(plantId):
+  """ Route to return and display all the reviews of a plant """
+  reviews = Review.query.filter(Review.plant_id == plantId) #.join user table, review images
+  # return reviews.to_dict(), 200
+  avg_star_rating = db.session.query(func.avg(Review.stars)).filter(Review.plant_id == plantId).scalar()
+  review_dicts = [review.to_dict() for review in reviews]
+  for review_dict in review_dicts:
+    review_dict['avg_star_rating'] = avg_star_rating
+  return review_dicts, 200
+
+# Create Review for Plant
+@plants_routes.route('/<int:plantId>/reviews', methods=['POST'])
+@login_required
+def create_review(plantId):
+    """Route to create a new review"""
+    form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+      params = {
+        "review": form.data['review'],
+        "stars": form.data['stars'],
+        "plant_id": plantId,
+        'user_id': form.data['user_id']
+      }
+      review = Review(**params)
+
+      db.session.add(review)
+      db.session.commit()
+      return review.to_dict()
+    print('form.errors from backend ---------> ', form.errors)
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 403
+
+
+
 @plants_routes.route("/<int:plantId>")
 def plant_details(plantId):
     plant = Plant.query.get(plantId)
@@ -80,38 +118,3 @@ def delete_plant(plantId):
         "statusCode": 200,
         "message": "deleted successfully"
     }
-
-
-# GET Reviews of a Plant
-@plants_routes.route('/<int:plantId>/reviews') #  ****  throw this into plants route *****
-def all_reviews(plantId):
-  """ Route to return and display all the reviews of a plant """
-  reviews = Review.query.filter(Review.plant_id == plantId) #.join user table, review images
-  # return reviews.to_dict(), 200
-  avg_star_rating = db.session.query(func.avg(Review.stars)).filter(Review.plant_id == plantId).scalar()
-  review_dicts = [review.to_dict() for review in reviews]
-  for review_dict in review_dicts:
-    review_dict['avg_star_rating'] = avg_star_rating
-  return review_dicts, 200
-
-# Create Review for Plant
-@plants_routes.route('/<int:plantId>/reviews', methods=['POST'])
-@login_required
-def create_review(plantId):
-    """Route to create a new review"""
-    form = ReviewForm()
-    form["csrf_token"].data = request.cookies["csrf_token"]
-    if form.validate_on_submit():
-      params = {
-        "review": form.data['review'],
-        "stars": form.data['stars'],
-        "plant_id": plantId,
-        'user_id': form.data['user_id']
-      }
-      review = Review(**params)
-
-      db.session.add(review)
-      db.session.commit()
-      return review.to_dict()
-    # print('form.erros ------->', form.errors)
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 403
