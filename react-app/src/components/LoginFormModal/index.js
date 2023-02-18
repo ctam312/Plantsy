@@ -34,9 +34,10 @@ function LoginFormModal() {
         <label>
           Email address
           <input
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            maxLength="50"
             required
           />
         </label>
@@ -46,6 +47,7 @@ function LoginFormModal() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            maxLength="20"
             required
           />
         </label>

@@ -50,10 +50,10 @@ function CreatePlantModal() {
 		<div className="add-plant-container">
 
 			<div className="close-modal">
-				<button onClick={closeModal}>
+				<span style={{cursor:"pointer"}} onClick={closeModal}>
 					{/* <i className = "fa-solid fa-xmark" /> */}
 					X
-				</button>
+				</span>
 			</div>
 
 			<div className="add-spot-header">
@@ -78,6 +78,7 @@ function CreatePlantModal() {
 								type="text"
 								value={name}
 								onChange={(e) => setName(e.target.value)}
+								maxLength="300"
 								required
 							/>
 						</label>
@@ -88,6 +89,8 @@ function CreatePlantModal() {
 							className = "add-spot-form-input"
 								type="number"
 								value={price}
+								min="0.01"
+								step="0.01"
 								onChange={(e) => setPrice(e.target.value)}
 								required
 							/>
@@ -100,6 +103,7 @@ function CreatePlantModal() {
 									type="text"
 									value={details}
 									onChange={(e) => setDetails(e.target.value)}
+									maxLength="1000"
 									required
 								/>
 							</label>
@@ -112,6 +116,7 @@ function CreatePlantModal() {
 								type="url"
 								value={preview_image_url}
 								onChange={(e) => setPreview_image_url(e.target.value)}
+								maxLength="300"
 								required
 							/>
 						</label>

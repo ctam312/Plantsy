@@ -62,10 +62,10 @@ function EditPlant() {
 	return (
 		<div className="edit-plant-container">
 			<div className="close-modal">
-				<button onClick={closeModal}>
+				<span style={{cursor:"pointer"}} onClick={closeModal}>
 					{/* <i className="fa-solid fa-x" /> */}
 					X
-				</button>
+				</span>
 			</div>
 
 			<div className="edit-plant-header">
@@ -90,15 +90,20 @@ function EditPlant() {
 								type="text"
 								value={name}
 								onChange={(e) => setName(e.target.value)}
+								maxLength="300"
+								required
 							/>
 						</label>
 						<label className="edit-plant-form-label">
 							Price:
 							<input
 							className="edit-plant-form-input"
-								type="text"
+								type="number"
 								value={price}
+								min="0.01"
+								step="0.01"
 								onChange={(e) => setPrice(e.target.value)}
+								required
 							/>
 						</label>
 						<label className="plant-form-details-label">
@@ -108,6 +113,8 @@ function EditPlant() {
 								type="text"
 								value={details}
 								onChange={(e) => setDetails(e.target.value)}
+								maxLength="1000"
+								required
 							/>
 						</label>
 					</div>
