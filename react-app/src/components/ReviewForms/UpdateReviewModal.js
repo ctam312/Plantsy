@@ -69,7 +69,7 @@ const UpdateReviewModal = ({review}) => {
                 className="review-form-container"
                 onSubmit={handleSubmit}
             >
-                <ul className="review-error-map">
+                <ul className="errors-map">
                     {errors.length > 0 ? errors.map((error) => <li key={error}>{error}</li>) : null}
                 </ul>
                 <div className="label-tag-container">
@@ -78,6 +78,7 @@ const UpdateReviewModal = ({review}) => {
                         Review:
                         <input
                             type="text"
+                            maxLength='1000'
                             name="review"
                             value={editReview}
                             placeholder="Enter a review"

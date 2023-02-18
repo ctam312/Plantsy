@@ -96,6 +96,7 @@ const CreateReviewModal = () => {
                         <input
                             type="text"
                             name="review"
+                            maxLength='1000'
                             value={review}
                             placeholder="Enter a review"
                             onChange={(e) => setReview(e.target.value)}

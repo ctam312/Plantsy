@@ -19,6 +19,7 @@
     height: 600px;
     width: 600px;
     object-fit: cover;
+    border-radius: 15px;
 }
 
 .plant-information-container {
@@ -82,4 +83,40 @@
     line-height: 25px;
     word-wrap: break-word;
     /* overflow-y: scroll; */
+}
+
+.edit-delete-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-spot, .delete-spot {
+    background-color: white;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.delete-spot {
+    color: red;
+}
+
+.price-edit {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-pop-up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+.x-button {
+    margin-left: 15px;
+    margin-top: 10px;
+    cursor: pointer;
 }
