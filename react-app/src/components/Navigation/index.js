@@ -22,7 +22,6 @@ function Navigation({ isLoaded }){
 			total += item.count
 		}
 		setCartCount(total)
-			// setCartCount((prev) => prev + cartItemsState[].count);
 
 	}, [cartItemsState]);
 
