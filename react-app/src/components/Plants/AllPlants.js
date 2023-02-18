@@ -15,7 +15,6 @@ function AllPlants() {
 
   const allPlants = useSelector((state) => state.plants.allPlants);
   const allPlantsArr = Object.values(allPlants);
-  // const [plantState, setPlantState] = useState()
   if (!allPlantsArr) return null;
 
   let userLoggedIn;

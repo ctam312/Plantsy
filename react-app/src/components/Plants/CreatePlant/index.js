@@ -17,7 +17,6 @@ function CreatePlantModal() {
 	const [preview_image_url, setPreview_image_url] = useState("");
     const user_id = useSelector((state) => state.session.user.id)
 
-    let newPlantId;
 
 
 	const handleSubmit = async(e) => {
