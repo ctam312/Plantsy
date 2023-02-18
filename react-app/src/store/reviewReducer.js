@@ -72,12 +72,14 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
         //     await dispatch(createReviewForPlant(review))
         //     // review.review_image.push(null)
         //     return review
-    } else {
+    } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
             return data.errors;
         }
-    }
+    } else {
+		return ["An error occurred. Please try again."];
+	}
 }
 
 export const updateReviewForPlantThunk = (reviewDetails, review ) => async dispatch => {
@@ -91,12 +93,14 @@ export const updateReviewForPlantThunk = (reviewDetails, review ) => async dispa
         const updatedReview = await response.json()
         dispatch(updateReviewForPlant(updatedReview))
         return null
-    } else {
+    } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
             return data.errors;
         }
-    }
+    } else {
+		return ["An error occurred. Please try again."];
+	}
 }
 
 export const deleteReviewForPlantThunk = (reviewId) => async dispatch => {

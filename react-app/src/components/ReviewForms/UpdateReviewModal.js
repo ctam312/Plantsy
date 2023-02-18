@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory} from "react-router-dom";
 import { useModal } from "../../context/Modal";
@@ -39,27 +39,22 @@ const UpdateReviewModal = ({review}) => {
         //         if (data && data.errors) setErrors(data.errors)
         //     });
 
-        // const data = await dispatch(updateReviewForPlantThunk(reviewDetails, review));
-        // if (data) {
-        //     setErrors(data)
-        // } else {
-        //     closeModal()
-        //     dispatch(loadPlantReviewsThunk(myPlant.id))
-        //     history.push(`/plants/${myPlant.id}`);
-        //     setIsLoaded(true);
-        // }
-
-        const response = await dispatch(updateReviewForPlantThunk(reviewDetails, review));
-        if (response === null) {
+        const data = await dispatch(updateReviewForPlantThunk(reviewDetails, review));
+        if (data) {
+            setErrors(data)
+        } else {
             closeModal()
-            dispatch(loadPlantReviewsThunk(myPlant.id))
             history.push(`/plants/${myPlant.id}`);
             setIsLoaded(true);
-        } else {
-            setErrors(response);
         }
     }
 
+    useEffect(() => {
+        return () => {
+            dispatch(loadPlantReviewsThunk(myPlant.id))
+            setIsLoaded(false)
+        }
+    }, [dispatch, myPlant.id, isLoaded])
 
 
     return (

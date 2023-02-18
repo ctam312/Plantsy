@@ -36,22 +36,13 @@ const CreateReviewModal = () => {
 
         // console.log(reviewDetails.user_id)
 
-        // const data = await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage));
-        // if (data) {
-        //     setErrors(data)
-        // } else {
-        //     closeModal()
-        //     history.push(`/plants/${myPlant.id}`);
-        //     setIsLoaded(true);
-        // }
-
-        const response = await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage));
-        if (response === null) {
+        const data = await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage));
+        if (data) {
+            setErrors(data)
+        } else {
             closeModal()
             history.push(`/plants/${myPlant.id}`);
             setIsLoaded(true);
-        } else {
-            setErrors(response);
         }
 
         // return await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage))
@@ -69,9 +60,10 @@ const CreateReviewModal = () => {
     // Dynamically load the plants details page to show updates
     useEffect(() => {
         // dispatch(getPlantDetailsThunk(myPlant.id))
-
-        dispatch(loadPlantReviewsThunk(myPlant.id))
-        setIsLoaded(false)
+        return () => {
+            dispatch(loadPlantReviewsThunk(myPlant.id))
+            setIsLoaded(false)
+        }
         // closeModal()
     }, [dispatch, myPlant.id, isLoaded])
 
