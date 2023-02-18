@@ -45,7 +45,7 @@
     word-wrap: break-word;
     max-height: 70px;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .purchased-item-div {
