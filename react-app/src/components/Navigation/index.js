@@ -25,7 +25,7 @@ function Navigation({ isLoaded }){
                 </div>
 
                     <SearchBar />
-
+                <div className='icon-container'>
                 <div className='profile-button-container'>
                     {isLoaded && (
                         // <li>
@@ -33,12 +33,13 @@ function Navigation({ isLoaded }){
                         // </li>
                     )}
                 </div>
-
                 <div>
                 <NavLink className="checkout-button" exact to="/cart">
                                 <i className="fas fa-shopping-cart"  />
                         </NavLink>
                 </div>
+                </div>
+
             </div>
 
         </div>

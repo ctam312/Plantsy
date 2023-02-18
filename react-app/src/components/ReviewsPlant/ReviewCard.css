@@ -46,6 +46,7 @@
     width: auto;
     object-fit: cover;
     margin-left: 10px;
+    border-radius: 15px;
 }
 
 .user-pic-name-div {

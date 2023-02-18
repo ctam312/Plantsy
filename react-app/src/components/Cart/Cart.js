@@ -37,8 +37,8 @@ function Cart() {
 
 
   if (!storage || !storage.length) return (
-    <div className="cart">
-      No items in the cart. Start selecting items to purchase.
+    <div className="no-item cart-container">
+      <h2>No items in the cart. Start selecting items to purchase.</h2>
     </div>
   );
 
@@ -53,10 +53,10 @@ function Cart() {
   }
 
   return (
-    <div className="cart">
-      <ul>
+    <div className="cart-container">
+      <div>
         {storage.map(item => <CartItem key={item.id} item={item}/>)}
-      </ul>
+      </div>
       <hr />
       {/* <form onSubmit={onSubmit}>
         <button type="submit">Purchase</button>

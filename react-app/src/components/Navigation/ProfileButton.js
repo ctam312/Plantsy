@@ -50,7 +50,7 @@ function ProfileButton({ user }) {
           <div className="user-menu-items">
             <li>{user.username}</li>
             <li>{user.email}</li>
-            <li className ="li-button">
+            {/* <div className ="li-button"> */}
 
 							<OpenModalButton
                 className="create-plant-button"
@@ -59,7 +59,7 @@ function ProfileButton({ user }) {
 								modalComponent={<CreatePlantModal/>}
 							/>
 
-						</li>
+						{/* </div> */}
             {/* <li> */}
               <li  className="log-out-button" onClick={handleLogout}>Log Out</li>
             {/* </li> */}
@@ -68,12 +68,14 @@ function ProfileButton({ user }) {
           <div className="modal-menu-items">
             <OpenModalButton
               buttonText="Sign In"
+              className='sign-in register'
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
 
             <OpenModalButton
               buttonText="Register"
+              className='register sign-in'
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
