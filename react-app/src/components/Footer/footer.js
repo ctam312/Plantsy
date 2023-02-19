@@ -18,12 +18,12 @@ const Footer = () => {
         <div className='col'>
           <div>Tiana Huynh</div>
           <a href='https://github.com/thuynh789' target='_blank'>GitHub</a>
-          <a href='' target='_blank'>LinkedIn</a>
+          <a href='https://www.linkedin.com/in/tiana-huynh-58b296168' target='_blank'>LinkedIn</a>
         </div>
         <div className='col'>
           <div>Jared Hem</div>
           <a href='https://github.com/JvredH' target='_blank'>GitHub</a>
-          <a href='https://www.linkedin.com/in/tiana-huynh-58b296168' target='_blank'>LinkedIn</a>
+          <a href='' target='_blank'>LinkedIn</a>
         </div>
       </div>
     </footer>
