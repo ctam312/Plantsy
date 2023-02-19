@@ -1,5 +1,6 @@
 # About Plantsy:
-![Plantsy](https://user-images.githubusercontent.com/90665180/219967037-028da926-adab-48e0-ad4d-1b7a0f5304e1.png)
+<img width="1187" alt="Screenshot 2023-02-19 at 1 43 17 PM" src="https://user-images.githubusercontent.com/90665180/219968444-ac9610a1-8ac7-4d53-85b6-9a3dd915fcc8.png">
+
 
 Introducing Plantsy, a full-stack Etsy clone, your go-to online marketplace for plants and plant-related accessories. Browse and discover an array of healthy, high-quality plants from independent nurseries and growers. Shop sustainably and support small businesses while growing your plant collection. Welcome to Plantsy, let's get planting! [Click here to view Plantsy Live Site](https://plantsy.onrender.com/)
 
