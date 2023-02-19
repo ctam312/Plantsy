@@ -25,11 +25,34 @@ Introducing Plantsy, a full-stack Etsy clone, your go-to online marketplace for 
 
 # Getting Started:
 1. Download the starter by cloning this repo.
-2. cd into the backend folder within the terminal and npm install
-3. run "npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all" to retrieve seeder data
-4. npm start while still within the backend folder
-5. cd into the front end folder within the terminal and npm install
-6. npm start while within the frontend folder
+   ```bash
+   git clone https://github.com/ctam312/Plantsy.git
+   ```
+2. Install dependencies
+   ```bash
+   pipenv install -r requirements.txt
+   ```
+3. Create a **.env** file based on the example with proper settings for your
+   development environment
+   ```bash
+   SECRET_KEY=<your secret key>
+   DATABASE_URL=sqlite:///dev.db
+   SCHEMA=flask_schema
+   ```
+4. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+
+   ```bash
+   pipenv shell
+   flask db upgrade
+   flask seed all
+   flask run
+   ```
+5. Start frontend server in `react-app` directory
+   ```bash
+   npm install
+   npm start
+   ```
+6. In your browser go to `localhost:3000`
 
 # Features Directions:
 
