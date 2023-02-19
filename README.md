@@ -60,3 +60,9 @@ You will be able to test most features without logging in, but to test all featu
 
 ## Read/Create/Edit/Delete reviews:
 <img width="768" alt="Screenshot 2023-02-19 at 1 32 37 PM" src="https://user-images.githubusercontent.com/90665180/219967925-d083d643-c803-418b-88be-7969f2ba1546.png">
+
+## Bonus Feature (404 page):
+![404page](https://user-images.githubusercontent.com/90665180/219968839-948cdd96-a92c-47fb-980d-c183a1365b0b.gif)
+
+
+
