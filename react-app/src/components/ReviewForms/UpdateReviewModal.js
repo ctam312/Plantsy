@@ -79,7 +79,7 @@ const UpdateReviewModal = ({review}) => {
                         Review:
                         <input
                             type="text"
-                            maxLength='1000'
+                            // maxLength='1000'
                             name="review"
                             value={editReview}
                             placeholder="Enter a review"
