@@ -76,6 +76,7 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
         //     return review
     } else if (response.status < 500) {
         const data = await response.json();
+        console.log('data from thunk ----->', data)
         if (data.errors) {
             return data.errors;
         }

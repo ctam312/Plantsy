@@ -4,10 +4,21 @@ from app.forms.plant_form import PlantForm
 from app.forms.review_form import ReviewForm
 from app.forms.plant_form_create import PlantFormCreate
 from app.models import Plant, Review, db
-from app.api.auth_routes import validation_errors_to_error_messages
+# from app.api.auth_routes import validation_errors_to_error_messages
 from sqlalchemy import func
 
 plants_routes = Blueprint('plants_routes', __name__)
+
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{error}')
+    return errorMessages
 
 # GET ROUTES
 @plants_routes.route("/")
