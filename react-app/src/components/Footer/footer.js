@@ -3,12 +3,12 @@ import './footer.css'
 const Footer = () => {
   return (
     <footer>
-      <div className="about">About Us</div>
+      <div className="about">About the Devs</div>
       <div className="coders">
         <div className='col'>
           <div>Austin Lam-Tran</div>
           <a href='https://github.com/lamtran415' target='_blank'>GitHub</a>
-          <a href='' target='_blank'>LinkedIn</a>
+          {/* <a href='' target='_blank'>LinkedIn</a> */}
         </div>
         <div className='col'>
           <div>Christian Tam</div>
@@ -23,7 +23,7 @@ const Footer = () => {
         <div className='col'>
           <div>Jared Hem</div>
           <a href='https://github.com/JvredH' target='_blank'>GitHub</a>
-          <a href='' target='_blank'>LinkedIn</a>
+          {/* <a href='' target='_blank'>LinkedIn</a> */}
         </div>
       </div>
     </footer>
