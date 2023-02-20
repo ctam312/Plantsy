@@ -21,9 +21,16 @@
   transition: max-width 0.3s ease; /* add this line to enable smooth transition */
 }
 
- @media only screen and (max-width: 1024px) {
+ @media (max-width: 1024px) {
   .search-bar {
     max-width: 500px;
+    transition: max-width 0.3s ease;
+   }
+}
+
+@media (max-width: 805px) {
+  .search-bar {
+    max-width: 300px;
     transition: max-width 0.3s ease;
    }
 }

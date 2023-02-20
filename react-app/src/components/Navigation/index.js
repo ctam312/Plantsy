@@ -12,7 +12,7 @@ function Navigation({ isLoaded }){
     const sessionUser = useSelector(state => state.session.user);
 	const cartItemsState = useSelector(state => state.cart.items)
 	const [cartCount, setCartCount] = useState(0)
-	console.log(cartItemsState)
+	// console.log(cartItemsState)
 
 	useEffect(() => {
 		setCartCount(0);

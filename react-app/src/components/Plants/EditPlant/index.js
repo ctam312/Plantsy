@@ -9,7 +9,6 @@ function EditPlant() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const { closeModal } = useModal();
-	// console.log(spotId);
 	const myPlant = useSelector((state) => state.plants.singlePlant);
 
 	const [name, setName] = useState(myPlant?.name || "");
