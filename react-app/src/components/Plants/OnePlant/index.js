@@ -20,10 +20,8 @@ const OnePlant = () => {
 	const dispatch = useDispatch();
 	const { plantId } = useParams();
 	const history = useHistory();
-  const [isLoaded, setIsLoaded] = useState(false);
+	const [isLoaded, setIsLoaded] = useState(false);
 	const cartItem = useSelector(getCartItemById(myPlant.id));
-
-	// console.log('myPlant ----> ', myPlant)
 
 	useEffect(() => {
 		dispatch(getPlantDetailsThunk(+plantId))
