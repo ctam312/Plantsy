@@ -68,12 +68,6 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
             delete review.review_image
             return null
         }
-
-        // console.log('rev image from thunk ============ ', revImage.url)
-        // if (!revImage.url) {
-        //     await dispatch(createReviewForPlant(review))
-        //     // review.review_image.push(null)
-        //     return review
     } else if (response.status < 500) {
         const data = await response.json();
         console.log('data from thunk ----->', data)

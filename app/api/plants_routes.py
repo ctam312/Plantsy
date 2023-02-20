@@ -47,19 +47,25 @@ def create_review(plantId):
     """Route to create a new review"""
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    data = form.data
     if form.validate_on_submit():
-      params = {
-        "review": form.data['review'],
-        "stars": form.data['stars'],
-        "plant_id": plantId,
-        'user_id': form.data['user_id']
-      }
-      review = Review(**params)
+    #   params = {
+    #     "review": form.data['review'],
+    #     "stars": form.data['stars'],
+    #     "plant_id": plantId,
+    #     'user_id': form.data['user_id']
+    #   }
+    #   review = Review(**params)
+        new_review = Review(
+                review = data['review'],
+                stars = data['stars'],
+                plant_id = plantId,
+                user_id = data['user_id']
+            )
 
-      db.session.add(review)
-      db.session.commit()
-      return review.to_dict()
-    print('form.errors from backend ---------> ', form.errors)
+        db.session.add(new_review)
+        db.session.commit()
+        return new_review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 403
 
 
