@@ -73,7 +73,7 @@ function EditPlant() {
 			<form className="edit-plant-form" onSubmit={handleSubmit}>
 				<div className="edit-plant-form-parts">
 					<div className="errors-map">
-						<ul>
+						<ul className="errors-map">
 							{errors.map((item, idx) => (
 								<li key={idx}>{item}</li>
 							))}

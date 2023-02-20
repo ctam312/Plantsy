@@ -56,9 +56,8 @@
 }
 
 .errors-map {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
+    /* list-style: none; */
     color: red;
     font-weight: bold;
+    width: 300px;
 }
