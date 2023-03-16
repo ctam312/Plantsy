@@ -10,8 +10,6 @@ const CreateReviewModal = () => {
     const history = useHistory()
 	const myPlant = useSelector((state) => state.plants.singlePlant);
 
-    console.log('myplant ----> ', myPlant)
-
     const [review, setReview] = useState("");
     const [stars, setStars] = useState("");
     const [image, setImage] = useState("");
@@ -36,8 +34,6 @@ const CreateReviewModal = () => {
         }
 
 
-        // console.log(reviewDetails.user_id)
-
         const data = await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage));
         if (data) {
             setErrors(data)
@@ -46,16 +42,6 @@ const CreateReviewModal = () => {
             history.push(`/plants/${myPlant.id}`);
             setIsLoaded(true);
         }
-
-        // return await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage))
-        //     .then(() => history.push(`/plants/${myPlant.id}`))
-        //     .then(setIsLoaded(true))
-        //     .then(() => closeModal())
-        //     .catch(async (res) => {
-        //         // const data = await res.json();
-        //         console.log('res.errors ---------> ', res.errors)
-        //         if (res && res.errors) setErrors(res.errors)
-        //     });
     }
 
 

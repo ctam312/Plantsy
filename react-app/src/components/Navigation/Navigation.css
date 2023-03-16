@@ -119,3 +119,18 @@
 .sign-in:hover, .register:hover {
   background-color:rgb(215, 215, 215);
 }
+
+.checkout-button {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: rgb(107, 141, 107);
+  color: white;
+  border-radius: 50%;
+  padding: 2px;
+  font-size: 10px;
+}

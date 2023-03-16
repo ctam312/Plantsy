@@ -9,7 +9,6 @@ function EditPlant() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const { closeModal } = useModal();
-	// console.log(spotId);
 	const myPlant = useSelector((state) => state.plants.singlePlant);
 
 	const [name, setName] = useState(myPlant?.name || "");
@@ -73,7 +72,7 @@ function EditPlant() {
 			<form className="edit-plant-form" onSubmit={handleSubmit}>
 				<div className="edit-plant-form-parts">
 					<div className="errors-map">
-						<ul>
+						<ul className="errors-map">
 							{errors.map((item, idx) => (
 								<li key={idx}>{item}</li>
 							))}

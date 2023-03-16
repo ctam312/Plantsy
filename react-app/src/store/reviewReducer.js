@@ -44,8 +44,6 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
         body: JSON.stringify(reviewDetails)
     });
 
-    console.log('response from creating review thunk ----> ', response)
-
     if (response.ok) {
         const review = await response.json()
         if (revImage.url) {
@@ -68,15 +66,8 @@ export const createPlantReviewThunk = (reviewDetails, myPlant, revImage) => asyn
             delete review.review_image
             return null
         }
-
-        // console.log('rev image from thunk ============ ', revImage.url)
-        // if (!revImage.url) {
-        //     await dispatch(createReviewForPlant(review))
-        //     // review.review_image.push(null)
-        //     return review
     } else if (response.status < 500) {
         const data = await response.json();
-        console.log('data from thunk ----->', data)
         if (data.errors) {
             return data.errors;
         }
@@ -91,8 +82,6 @@ export const updateReviewForPlantThunk = (reviewDetails, review ) => async dispa
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(reviewDetails)
     })
-
-    console.log('response from creating review thunk ----> ', response)
 
     if (response.ok) {
         const updatedReview = await response.json()
@@ -119,16 +108,6 @@ export const deleteReviewForPlantThunk = (reviewId) => async dispatch => {
 
     return response
 }
-
-// review
-// plant = {
-//     1: {review1: {review,
-//          user :{userdata},
-//         reviewimages: {reviewimage: url},
-//     2: {review2: {review,
-//         user :{userdata},
-//         reviewimages: {reviewimage: url}
-//     } }
 
 const initialState = {plant: {}}
 
