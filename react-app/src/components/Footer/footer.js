@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='col'>
           <div>Austin Lam-Tran</div>
           <a href='https://github.com/lamtran415' target='_blank'>GitHub</a>
-          {/* <a href='' target='_blank'>LinkedIn</a> */}
+          <a href='https://www.linkedin.com/in/austin-lam-tran-93881a155/' target='_blank'>LinkedIn</a>
         </div>
         <div className='col'>
           <div>Christian Tam</div>
@@ -23,7 +23,7 @@ const Footer = () => {
         <div className='col'>
           <div>Jared Hem</div>
           <a href='https://github.com/JvredH' target='_blank'>GitHub</a>
-          {/* <a href='' target='_blank'>LinkedIn</a> */}
+          <a href='https://www.linkedin.com/in/jared-hem/' target='_blank'>LinkedIn</a>
         </div>
       </div>
     </footer>
