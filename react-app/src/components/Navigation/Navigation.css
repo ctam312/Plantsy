@@ -78,6 +78,10 @@
   top: -15px;
 }
 
+.user-menu-items {
+  padding-bottom: 5px;
+}
+
 .user-menu-items li{
   padding: 5px 5px;
   font-size: 14px;
@@ -116,8 +120,14 @@
 }
 
 
-.sign-in:hover, .register:hover {
+.register:hover {
   background-color:rgb(215, 215, 215);
+}
+
+.sign-in:hover {
+  background-color:rgb(215, 215, 215);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .checkout-button {
@@ -127,10 +137,20 @@
 .cart-count {
   position: absolute;
   top: -5px;
-  right: -5px;
+  right: -10px;
   background-color: rgb(107, 141, 107);
   color: white;
-  border-radius: 50%;
+  border-radius: 10px;
+  width: 15px;
+  height: 15px;
   padding: 2px;
   font-size: 10px;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  font-weight: bold;
+}
+
+.fa-times {
+  color: black;
 }

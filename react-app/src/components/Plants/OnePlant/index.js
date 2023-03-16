@@ -11,6 +11,8 @@ import { addItem, updateCount } from '../../../store/cart';
 import { getCartItemById } from "../../../store/cart";
 
 import "./OnePlant.css"
+import ErrorPlant from "../../ErrorPage";
+import Footer from "../../Footer/footer";
 
 const OnePlant = () => {
 	const myPlant = useSelector((state) => state.plants.singlePlant);
@@ -38,7 +40,7 @@ const OnePlant = () => {
 		history.push('/cart');
 	};
 
-	if (!myPlant?.id) return null;
+	if (!myPlant?.id) return <ErrorPlant />;
 
 	let reviewButton = null
 	if (user?.id !== myPlant?.user_id) {
@@ -70,55 +72,58 @@ const OnePlant = () => {
 	}
 
 	return (
-		<div className="one-plant-container">
-			<div className="top-plant-container">
-				{/* <div className='extra-photos-container'>optional photos</div> */}
-				<div>
-					<img className="preview-image-div" src={myPlant.preview_image_url} alt={myPlant.name} />
-				</div>
-				<div className="plant-information-container">
-					<div className='price-edit'>
-						<p className="price-tag ">$ {myPlant.price.toFixed(2)}</p>
-						<div className="edit-delete-modal">
-							{user && user?.id === myPlant?.user_id ? (
-								<div className="edit-delete-button">
-									<OpenModalButton
-										className="edit-spot"
-										modalComponent={<EditPlant />}
-										buttonText="Edit Plant"
-									/>
-									<OpenModalButton
-										className="delete-spot"
-										modalComponent={<DeletePlantModal />}
-										buttonText="Delete Plant"
-										/>
-								</div>
-							) : (
-								null
-							)}
-						</div>
-					</div>
-					<div className="plant-name-div">{myPlant.name}</div>
-
-					<button className='add-cart-button' onClick={cartAdd}>
-						Add to Cart</button>
-					<div className='fast-shipping'>
-						<div>
-							<i className="fa-solid fa-truck-fast fa-2x"></i>
-						</div>
-						<div>
-							<span className='fast-shipping-text-hoo'>Hooray!</span> <span className='fast-shipping-text'>This item ships for free</span>
-						</div>
-						</div>
+		<>
+			<div className="one-plant-container">
+				<div className="top-plant-container">
+					{/* <div className='extra-photos-container'>optional photos</div> */}
 					<div>
-						<h4 className='desc-title'>Description</h4>
-						<div className='description'> {myPlant.details}</div>
+						<img className="preview-image-div" src={myPlant.preview_image_url} alt={myPlant.name} onError={e => { e.currentTarget.src = "https://friendlystock.com/wp-content/uploads/2020/12/3-kawaii-indoor-plant-cartoon-clipart.jpg"; }} />
+					</div>
+					<div className="plant-information-container">
+						<div className='price-edit'>
+							<p className="price-tag ">$ {myPlant.price.toFixed(2)}</p>
+							<div className="edit-delete-modal">
+								{user && user?.id === myPlant?.user_id ? (
+									<div className="edit-delete-button">
+										<OpenModalButton
+											className="edit-spot"
+											modalComponent={<EditPlant />}
+											buttonText="Edit Plant"
+										/>
+										<OpenModalButton
+											className="delete-spot"
+											modalComponent={<DeletePlantModal />}
+											buttonText="Delete Plant"
+											/>
+									</div>
+								) : (
+									null
+								)}
+							</div>
+						</div>
+						<div className="plant-name-div">{myPlant.name}</div>
+
+						<button className='add-cart-button' onClick={cartAdd}>
+							Add to Cart</button>
+						<div className='fast-shipping'>
+							<div>
+								<i className="fa-solid fa-truck-fast fa-2x"></i>
+							</div>
+							<div>
+								<span className='fast-shipping-text-hoo'>Hooray!</span> <span className='fast-shipping-text'>This item ships for free</span>
+							</div>
+							</div>
+						<div>
+							<h4 className='desc-title'>Description</h4>
+							<div className='description'> {myPlant.details}</div>
+						</div>
 					</div>
 				</div>
+					{/* {reviewButton} */}
+					<ReviewsForPlant reviewButton={reviewButton}/>
 			</div>
-				{/* {reviewButton} */}
-				<ReviewsForPlant reviewButton={reviewButton}/>
-		</div>
+			{/* <Footer /> */}
+		</>
 	);
 };
 

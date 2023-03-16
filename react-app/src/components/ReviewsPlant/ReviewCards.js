@@ -28,7 +28,7 @@ const ReviewsForPlant = ({reviewButton}) =>{
         if (review?.review_image) { /* switch this to check review image variable */
             review?.review_image.forEach(image => {
                 reviewImg = (
-                    <img className="review-image" src={image?.url} alt=""/>
+                    <img className="review-image" src={image?.url} alt="" onError={e => { e.currentTarget.src = "https://img.freepik.com/premium-vector/kawaii-home-plant-clipart-cute-cartoon-style-beautiful-clip-art-home-plant_289115-669.jpg?w=2000"; }}/>
                 )
             })
         } else {
@@ -65,8 +65,16 @@ const ReviewsForPlant = ({reviewButton}) =>{
                                     </span>
                                     <span className="delete-btn">
                                         {user !== null && user?.id === review?.user_id ?
-                                            <DeleteReview review={review} myPlant={myPlant}/>
-                                            : null
+                                            (
+                                                <OpenModalButton
+                                                className='edit-btn'
+                                                buttonText="Delete"
+                                                modalComponent={
+                                                    <DeleteReview review={review} myPlant={myPlant}/>
+                                                }
+                                                />
+                                                ) : null
+
                                         }
                                     </span>
                                 </span>

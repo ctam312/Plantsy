@@ -23,3 +23,7 @@
     resize: none;
     overflow-y: auto;
 }
+
+.add-plant-header {
+    margin-left: 10px;
+}

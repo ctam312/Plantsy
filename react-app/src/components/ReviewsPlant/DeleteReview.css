@@ -1,0 +1,53 @@
+.delete-modal-container {
+    height: 135px;
+    width: 300px;
+    padding: 20px;
+}
+
+.delete-review-pop-up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete-header-close-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-header {
+    font-size: 18px;
+}
+
+.close-edit-button {
+    color: rgb(190, 190, 190);
+    /* font-weight: bold; */
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.delete-text-p-tag {
+    font-size: 13px;
+}
+
+.cancel-button {
+    background-color: rgb(151, 151, 151);
+    border: none;
+    font-weight: bold;
+    color: white;
+    padding: 5px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-button {
+    background-color: black;
+    border: none;
+    font-weight: bold;
+    color: white;
+    padding: 5px 18px;
+    border-radius: 4px;
+    margin-left: 12px;
+    cursor: pointer;
+}

@@ -29,7 +29,9 @@ const SearchPage = () => {
                 <img
                   className="search-plant-image"
                   src={plant.preview_image_url}
-                  alt=""/>
+                  alt=""
+                  onError={e => { e.currentTarget.src = "https://friendlystock.com/wp-content/uploads/2020/12/3-kawaii-indoor-plant-cartoon-clipart.jpg"; }}
+                  />
                 </div>
                 <div className="search-plant-card-bottom-container">
                   <div className='search-plant-name'>{plant.name}</div>

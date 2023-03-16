@@ -3,13 +3,13 @@
 }
 
 .details-label {
-    padding-right: 270px;
+    padding-right: 290px;
 }
 
 .plant-add-details {
     font-family: Arial, Helvetica, sans-serif;
     height: 100px;
-    width: 310px;
+    width: 330px;
     border-radius: 10px;
     resize: none;
     overflow-y: auto;

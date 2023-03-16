@@ -32,7 +32,7 @@ export const delete_plant_ac = (plantId) => ({
 
 // Thunks
 export const getAllPlantsThunk = () => async (dispatch) => {
-    const res = await fetch('/api/plants')
+    const res = await fetch('/api/plants/')
     if (res.ok) {
         const plants = await res.json()
         dispatch(load_all_plants_ac(plants))

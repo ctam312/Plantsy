@@ -51,12 +51,12 @@ function CreatePlantModal() {
 			<div className="close-modal">
 				<span style={{cursor:"pointer"}} onClick={closeModal}>
 					{/* <i className = "fa-solid fa-xmark" /> */}
-					X
+					<i className="fas fa-times"></i>
 				</span>
 			</div>
 
-			<div className="add-spot-header">
-				<h1>Create a plant</h1>
+			<div className="add-plant-header">
+				<h2>Create a plant</h2>
 			</div>
 
 			<div className="add-spot-errors">

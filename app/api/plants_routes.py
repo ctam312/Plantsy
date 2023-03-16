@@ -106,7 +106,7 @@ def create_plants_listing():
 def edit_plants_listing(plantId):
     form = PlantForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    data = form.data
+    data = request.get_json()
     # print(data)
 
     if form.validate_on_submit():
@@ -114,7 +114,7 @@ def edit_plants_listing(plantId):
         plant.name = data['name']
         plant.price = data['price']
         plant.details = data['details']
-        # plant.preview_image_url = data['preview_image_url']
+        plant.preview_image_url = data['preview_image_url']
         # plant.user_id = data['user_id']
 
         db.session.commit()

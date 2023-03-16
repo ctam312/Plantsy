@@ -31,12 +31,12 @@ return (
         <div className="x-button">
             <div className="exit" onClick={closeModal}>
                 {/* x */}
-                <i className="fa-solid fa-xmark" />
+                <i className="fas fa-times"></i>
             </div>
         </div>
 
         <div className="delete-pop-up">
-            <h2>Delete this listing?</h2>
+            <div className="delete-header-title">Delete this listing?</div>
             <p>(This is permanent and cannot be undone.)</p>
             <form onSubmit={handleSubmit}>
               <button className="log-in-demo-button" type="submit">Confirm Delete</button>
