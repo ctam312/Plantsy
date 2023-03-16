@@ -1,38 +1,63 @@
-footer {
+.whole-footer-container {
+  height: 45px;
+  background-color: rgb(82, 109, 82);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-top: 150px;
-  background-color: rgb(107, 141, 107);
-  height: 200px;
-  padding-bottom: 50px;
-  /* justify-content: space-between */
-}
-
-
-.about {
-  text-decoration: underline;
-  font-weight: bold;
-  padding-top: 20px;
-}
-
-.coders {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  margin-top: 20px;
-  /* font-weight: bold; */
+  text-align: center;
+  flex-wrap: nowrap;
 }
 
-.col {
+.my-name-footer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 100px;
+  flex-wrap: nowrap;
+  color: white;
+  font-weight: bold;
 }
 
-a {
+.width-name {
+  min-width: 150px;
+}
+
+.language-framework {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-right: auto;
+  padding-left: 10px;
+}
+
+
+.language-framework img {
+  height: 27px;
+  padding: 0 15px;
+}
+
+.sql-icon, .flask-icon {
+  font-size: 35px;
   color: black;
+}
+
+.whole-footer-container .my-name-footer, a{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.devicon-linkedin-plain{
+  margin-right: 10px;
+}
+
+.whole-footer-container a {
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.custom {
+  margin-right: 175px;
 }

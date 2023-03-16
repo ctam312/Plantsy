@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAllPlantsThunk } from "../../store/plants";
+import Footer from "../Footer/footer";
 import "./AllPlants.css"
 
 function AllPlants() {
@@ -56,6 +57,7 @@ function AllPlants() {
                   className="plants-image"
                   src={plant.preview_image_url}
                   alt={`NO IMAGE AVAILABLE`}
+                  onError={e => { e.currentTarget.src = "https://friendlystock.com/wp-content/uploads/2020/12/3-kawaii-indoor-plant-cartoon-clipart.jpg"; }}
                   />
                 <div className="plant-price">
                   <span className="price">${plant.price.toFixed(2)}&nbsp;</span>

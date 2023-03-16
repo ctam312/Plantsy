@@ -13,6 +13,7 @@
     justify-items: center;
     height: 55vh;
     width: 300px;
+    padding: 0 10px;
 }
 
 .log-in-demo-button {
@@ -22,7 +23,7 @@
     align-items: center;
     display: flex;
     height: 5.4vh;
-    width: 324px;
+    width: 335px;
     font-size: 1em;
     border: solid rgb(151, 151, 151);
     border-width: 1px;
@@ -53,6 +54,7 @@
     border: solid rgb(197, 196, 196);
     border-width: 1px;
     border-radius: 12px;
+    padding: 0 10px;
 }
 
 .errors-map {

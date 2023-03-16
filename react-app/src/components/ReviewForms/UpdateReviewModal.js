@@ -13,7 +13,7 @@ const UpdateReviewModal = ({review}) => {
 
     const [editReview, setEditReview] = useState(review.review);
     const [stars, setStars] = useState(review.stars);
-    // const [image, setImage] = useState(review.image);
+    const [image, setImage] = useState(review.image);
     const [errors, setErrors] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const { closeModal } = useModal();
@@ -62,7 +62,7 @@ const UpdateReviewModal = ({review}) => {
             {/* <div className="close-modal"> */}
 				<span className="review-close-button" onClick={closeModal}>
 					{/* <i className = "fa-solid fa-xmark" /> */}
-					X
+					<i className="fas fa-times"></i>
 				</span>
 			{/* </div> */}
             <h3 className="create-review-header">Update review</h3>

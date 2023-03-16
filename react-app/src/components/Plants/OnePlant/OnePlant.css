@@ -1,6 +1,7 @@
 .one-plant-container {
     max-width: 1400px;
     margin: 0 auto;
+    margin-bottom: 75px;
 }
 
 .top-plant-container {
@@ -113,7 +114,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px;
+    padding: 0 15px 15px 15px;
+}
+
+.delete-header-title {
+    font-size: 27px;
+    font-weight: bold;
 }
 
 .x-button {

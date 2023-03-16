@@ -19,7 +19,7 @@ function CartItem({ item }) {
     <div className="cart-item">
       <div className="cart-item-header">{myPlant?.name}</div>
       <div className="cart-item-header">${myPlant?.price.toFixed(2)}</div>
-      <img className="cart-image-pic" src={myPlant?.preview_image_url} alt={myPlant?.name} />
+      <img className="cart-image-pic" src={myPlant?.preview_image_url} alt={myPlant?.name} onError={e => { e.currentTarget.src = "https://friendlystock.com/wp-content/uploads/2020/12/3-kawaii-indoor-plant-cartoon-clipart.jpg"; }} />
       <div className="cart-item-menu">
         <span>{count}</span>
         <button

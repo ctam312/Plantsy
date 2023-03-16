@@ -36,7 +36,9 @@ const CreateReviewModal = () => {
 
         const data = await dispatch(createPlantReviewThunk(reviewDetails, myPlant, revImage));
         if (data) {
-            setErrors(data)
+            const errorMessages = Object.values(data);
+            const formattedErrorMessages = errorMessages.map(error => error.split(": ")[1]);
+            setErrors(formattedErrorMessages);
         } else {
             closeModal()
             history.push(`/plants/${myPlant.id}`);
@@ -61,7 +63,7 @@ const CreateReviewModal = () => {
         <div className="create-review-container">
             <span className="review-close-button" onClick={closeModal}>
 					{/* <i className = "fa-solid fa-xmark" /> */}
-					X
+					<i className="fas fa-times"></i>
 				</span>
             <h3 className="create-review-header">Leave review</h3>
             <form

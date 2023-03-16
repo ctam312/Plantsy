@@ -1,3 +1,7 @@
+.all-plants-container {
+    margin-bottom: 75px;
+}
+
 .under-nav-header {
     font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
     display: flex;
