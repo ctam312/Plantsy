@@ -34,7 +34,7 @@
 
 .language-framework img {
   height: 27px;
-  padding: 0 15px;
+  padding: 0 5px;
 }
 
 .sql-icon, .flask-icon {
@@ -50,14 +50,10 @@
 }
 
 .devicon-linkedin-plain{
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .whole-footer-container a {
   text-decoration: none;
   font-size: 25px;
-}
-
-.custom {
-  margin-right: 175px;
 }

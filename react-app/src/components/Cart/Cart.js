@@ -4,9 +4,11 @@ import CartItem from './CartItem';
 import './Cart.css';
 import { useEffect, useState } from 'react';
 import { getAllPlantsThunk} from '../../store/plants';
+import { useHistory } from "react-router-dom";
 
 function Cart() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const cartItems = useSelector(getAllCartItems);
   const cartItemsState = useSelector(state => state.cart)
   const allPlants = useSelector((state) => state.plants.allPlants);
@@ -50,6 +52,13 @@ function Cart() {
     dispatch(reset());
   }
 
+  const onCheckout = () => {
+    dispatch(reset());
+    localStorage.clear();
+    alert('Thank you for your purchase! Your items will be on its way!');
+    history.push('/')
+  }
+
   return (
     <div className="cart-container">
       <div>
@@ -59,11 +68,17 @@ function Cart() {
       {/* <form onSubmit={onSubmit}>
         <button type="submit">Purchase</button>
       </form> */}
-
-      <h1>Total</h1>
-      {/* {storage.map(item => allPlants[item.id])} */}
-      <p>Total quantity: {totalQuantity}</p>
-    <p>Total price: ${totalPrice.toFixed(2)}</p>
+      <div>
+        {/* {storage.map(item => allPlants[item.id])} */}
+        <div className='quantity-price-checkout-container'>
+          <div>
+            <h2>Total</h2>
+            <p>Total quantity: {totalQuantity}</p>
+            <p>Total price: ${totalPrice.toFixed(2)}</p>
+          </div>
+          <button className= "log-in-demo-button cart-checkout-btn" onClick={onCheckout}>Proceed to checkout</button>
+        </div>
+      </div>
     </div>
   )
 }

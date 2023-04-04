@@ -7,7 +7,7 @@
 .top-plant-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 40px;
 }
 
@@ -18,9 +18,10 @@
 
 .preview-image-div {
     height: 600px;
-    width: 600px;
+    width: 650px;
     object-fit: cover;
     border-radius: 15px;
+    margin-left: 1%;
 }
 
 .plant-information-container {

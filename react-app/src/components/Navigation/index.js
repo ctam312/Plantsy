@@ -12,15 +12,16 @@ function Navigation({ isLoaded }){
     const sessionUser = useSelector(state => state.session.user);
 	const cartItemsState = useSelector(state => state.cart.items)
 	const [cartCount, setCartCount] = useState(0)
-	// console.log(cartItemsState)
+	console.log(cartItemsState)
 
 	useEffect(() => {
 		setCartCount(0);
-		let total = 0
-		for (let key in cartItemsState) {
-			let item = cartItemsState[key]
-			total += item.count
-		}
+        let cartItemsStateArr = Object.values(cartItemsState)
+		let total = cartItemsStateArr.length
+		// for (let key in cartItemsState) {
+		// 	let item = cartItemsState[key]
+		// 	total += item.count
+		// }
 		setCartCount(total)
 
 	}, [cartItemsState]);
