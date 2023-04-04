@@ -5,10 +5,13 @@ import './Cart.css';
 import { useEffect, useState } from 'react';
 import { getAllPlantsThunk} from '../../store/plants';
 import { useHistory } from "react-router-dom";
+import OpenModalButton from '../OpenModalButton';
+import LoginFormModal from '../LoginFormModal';
 
 function Cart() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const sessionUser = useSelector(state => state.session.user)
   const cartItems = useSelector(getAllCartItems);
   const cartItemsState = useSelector(state => state.cart)
   const allPlants = useSelector((state) => state.plants.allPlants);
@@ -53,10 +56,18 @@ function Cart() {
   }
 
   const onCheckout = () => {
-    dispatch(reset());
-    localStorage.clear();
-    alert('Thank you for your purchase! Your items will be on its way!');
-    history.push('/')
+    if (!sessionUser) {
+      <OpenModalButton
+        className="log-in-demo-button cart-checkout-btn"
+        buttonText="Please Log In"
+        modalComponent={<LoginFormModal />}
+      />
+    } else {
+      dispatch(reset());
+      localStorage.clear();
+      alert('Thank you for your purchase! Your items will be on its way!');
+      history.push('/')
+    }
   }
 
   return (
@@ -76,7 +87,13 @@ function Cart() {
             <p>Total quantity: {totalQuantity}</p>
             <p>Total price: ${totalPrice.toFixed(2)}</p>
           </div>
-          <button className= "log-in-demo-button cart-checkout-btn" onClick={onCheckout}>Proceed to checkout</button>
+          {sessionUser ? <button className= "log-in-demo-button cart-checkout-btn" onClick={onCheckout}>Proceed to checkout</button> :
+                <OpenModalButton
+                className="log-in-demo-button cart-checkout-btn"
+                buttonText="Please Log In"
+                modalComponent={<LoginFormModal />}
+              />
+          }
         </div>
       </div>
     </div>
