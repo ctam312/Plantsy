@@ -15,7 +15,7 @@ function AllPlants() {
   }, [dispatch]);
 
   const allPlants = useSelector((state) => state.plants.allPlants);
-  const allPlantsArr = Object.values(allPlants);
+  const allPlantsArr = Object.values(allPlants).reverse()
   if (!allPlantsArr) return null;
 
   let userLoggedIn;

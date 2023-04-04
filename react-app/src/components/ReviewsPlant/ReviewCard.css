@@ -4,6 +4,8 @@
     height: auto;
     width: 860px;
     /* border: 1px solid red; */
+    padding: 10px;
+    margin-left: 6%;
 }
 
 
@@ -27,7 +29,7 @@
 
 
 .left-side-review-card {
-    width: 80%;
+    width: 70%;
     /* border: solid green 2px; */
     display:flex;
     flex-direction: column;
@@ -120,7 +122,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 860px;
+    width: 89%;
     border-bottom: 1px solid lightgrey;
     margin-bottom: 15px;
 }

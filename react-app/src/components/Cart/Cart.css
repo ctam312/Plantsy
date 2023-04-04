@@ -1,8 +1,8 @@
 .cart-container {
   margin-top: 16px;
   max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 15%;
+  margin-right: 10%;
   margin-bottom: 75px;
 }
 
@@ -10,7 +10,14 @@
   min-width: 24px;
   height: 24px;
   background-color: white;
-  margin-left: 8px;
+  margin: auto;
+  border-radius: 5px;
+  border-color: lightgray;
+}
+
+.cart-item-button:hover {
+  cursor: pointer;
+  background-color: rgb(231, 231, 231);
 }
 
 .no-item {
@@ -22,6 +29,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
+  /* max-width: 500px; */
 }
 
 .cart-item input {
@@ -30,11 +38,12 @@
 }
 
 .cart-item-menu {
-  width: 100%;
+  max-width: 150px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-top: 8px;
+  margin-left: auto;
 }
 
 .cart button[type="submit"] {
@@ -68,4 +77,50 @@
   height: 170px;
   width: 200px;
   object-fit: cover;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.cart-header-price-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.quantity-price-checkout-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.count-span {
+  font-weight: bold;
+}
+
+.cart-item-header {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.cart-item-header:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cart-item-price {
+  margin-right: 1%;
+}
+
+.remove-button-cart {
+  /* min-width: 24px; */
+  height: 24px;
+  background-color: white;
+  margin: auto;
+  border-radius: 5px;
+  border-color: lightgray;
+}
+
+.remove-button-cart:hover {
+  cursor: pointer;
+  background-color: rgb(231, 231, 231);
 }
