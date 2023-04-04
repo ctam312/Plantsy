@@ -39,7 +39,6 @@ function EditPlant() {
 		};
 
 		const { id, user_id } = myPlant;
-		// console.log(myPlant)
 
 		const plantNeed = {
 			id,
@@ -51,7 +50,6 @@ function EditPlant() {
 			.then(() => history.push(`/plants/${plantNeed.id}`))
 			.then(closeModal)
 			.catch(async (res) => {
-				// console.log(res)
 				const data = await res.json();
 				if (data && data.errors) setErrors(data.errors);
 			});

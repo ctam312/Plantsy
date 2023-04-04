@@ -60,7 +60,6 @@ export const createPlantThunk = (plant) => async (dispatch) => {
     if (res.ok) {
         const newPlant = await res.json();
         dispatch(create_plant_ac(newPlant));
-        // console.log(newPlant);
         return newPlant;
 
     }
@@ -103,9 +102,7 @@ export default function plantsReducer(state = initialState, action){
     switch (action.type) {
 
         case LOAD_ALL_PLANTS: {
-            // console.log('allPlants', action.allPlants)
             const newState = { allPlants: {}, singlePlant: {} }
-            // console.log(newState)
             action.plants.allPlants.forEach(plant => {
                 newState.allPlants[plant.id] = plant
             })
