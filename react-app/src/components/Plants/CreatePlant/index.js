@@ -32,7 +32,6 @@ function CreatePlantModal() {
 
 
 		dispatch(createPlantThunk(newPlant))
-			// console.log(plant)
 			.then((res) => {history.push(`/plants/${res.id}`)})
 
 			// .then(closeModal)

@@ -24,7 +24,6 @@ function Cart() {
   const totalPrice = storage.reduce((total, item) => total + (item.count * allPlants[item.id]?.price), 0);
 
   useEffect(() => {
-    // console.log('this the state fr', cartItemsState)
     if (Object.keys(cartItemsState.items).length === 0) {
       setStorage(newCartItems)
       dispatch(getAllPlantsThunk())
